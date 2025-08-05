@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<PropsWithChildren>) {
     return (
-        <html lang="en" suppressHydrationWarning data-theme="vymalo-dark-v2">
+        <html lang="en" suppressHydrationWarning>
         <body>
         <TRPCReactProvider>
             <HydrateClient>

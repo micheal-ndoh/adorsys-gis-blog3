@@ -1,5 +1,7 @@
 'use client';
 
+import './display.scss';
+
 import { useEffect, useRef } from 'react';
 import Reveal from 'reveal.js';
 import RevealMermaid from 'reveal.js-mermaid-plugin';
