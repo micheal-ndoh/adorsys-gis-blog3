@@ -1,0 +1,1 @@
+# Adorsys GIS Blog

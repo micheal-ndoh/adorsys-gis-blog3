@@ -1,0 +1,63 @@
+
+/// 1. The base layers
+@use "@vymalo/ui-preset/dist/base";
+
+/// 2. The theme layers
+@use "@vymalo/ui-preset/dist/theme-vymalo-dark-v2";
+@use "@vymalo/ui-preset/dist/theme-vymalo-bangangte-v2";
+
+/// 3. The other layers
+@use "@vymalo/ui-preset/dist/normal";
+
+@use "tailwindcss";
+
+@use 'reveal.js/dist/reveal';
+@use 'reveal.js/dist/theme/night';
+@use 'highlight.js/scss/sunburst';
+
+code.mermaid {
+  svg {
+    max-width: 100% !important;
+  }
+}
+
+.display {
+  section {
+    section {
+      img {
+        height: 12vw;
+      }
+    }
+  }
+
+  img {
+    $logo-margin: 24px;
+
+    &[alt='adorsys-logo'] {
+      width: 25vw;
+    }
+
+    &[alt='@-logo'] {
+      width: 70px;
+      height: auto;
+      margin-left: $logo-margin;
+      margin-top: $logo-margin;
+    }
+  }
+
+  @apply aspect-[16/9] bg-base-200;
+}
+
+article {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-nunito;
+  }
+  
+  h1:first-child {
+    @apply md:font-extrabold xl:text-8xl;
+
+    span {
+      @apply bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent;
+    }
+  }
+}
