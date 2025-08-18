@@ -41,6 +41,11 @@ export default async function SingleBlogPage({params}: Props) {
     const {course, slides} = await loadBlog(blog_slug);
     return (
         <Container>
+            <div className='flex items-start justify-end'>
+                {typeof (course as any)?.lang === 'string' && (
+                    <span className='badge badge-outline uppercase'>{(course as any).lang}</span>
+                )}
+            </div>
             {slides && (
                 <Suspense>
                     <Display data={slides.content}/>
