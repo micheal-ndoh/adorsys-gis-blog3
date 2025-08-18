@@ -3,13 +3,15 @@ import LargeFooter from '../../components/footer/large-footer';
 import type {PropsWithChildren} from "react";
 
 export default function MainLayout({
-                                       children,
-                                   }: Readonly<PropsWithChildren>) {
-    return (
-        <>
-            <AppNavBar/>
-            <div id='main'>{children}</div>
-            <LargeFooter/>
-        </>
-    );
+	children,
+}: Readonly<PropsWithChildren>) {
+	return (
+		<div className='min-h-screen flex flex-col'>
+			<AppNavBar/>
+			<main id='main' className='flex-1'>
+				{children}
+			</main>
+			<LargeFooter/>
+		</div>
+	);
 }
