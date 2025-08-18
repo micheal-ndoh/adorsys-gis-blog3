@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "node:path";
 import _ from "lodash";
+import matter from "gray-matter";
 
 async function* dir_api(dir: string) {
     for await (const d of await fs.promises.opendir(dir)) {
@@ -25,30 +26,24 @@ export type BlogMeta = {
     lang?: string;
 };
 
-/**
- * Loads only the frontmatter for each blog's course.md to avoid heavy markdown conversion.
- */
 export async function getAllBlogMeta(): Promise<BlogMeta[]> {
-    const slugs = await getAllBlogs();
-    const results: BlogMeta[] = [];
-
-    for (const blogSlug of slugs) {
-        try {
-            const filePath = path.join(process.cwd(), 'docs', 'blog', blogSlug, 'course.md');
-            const file = await fs.readFile(filePath, 'utf8');
-            // Lazy import to avoid adding a hard dependency at module load time
-            const matter = (await import('gray-matter')).default;
+    const blogSlugs = await getAllBlogs();
+    const metas: BlogMeta[] = [];
+    for (const blogSlug of blogSlugs) {
+        const coursePath = path.join(process.cwd(), 'docs', 'blog', blogSlug, 'course.md');
+        if (await fs.pathExists(coursePath)) {
+            const file = await fs.readFile(coursePath, 'utf8');
             const parsed = matter(file);
-            results.push({
+            const data = parsed.data as Record<string, any>;
+            metas.push({
                 slug: blogSlug,
-                title: parsed.data?.title,
-                description: parsed.data?.description,
-                lang: parsed.data?.lang,
+                title: typeof data.title === 'string' ? data.title : undefined,
+                description: typeof data.description === 'string' ? data.description : undefined,
+                lang: typeof data.lang === 'string' ? data.lang : undefined,
             });
-        } catch {
-            results.push({ slug: blogSlug });
+        } else {
+            metas.push({ slug: blogSlug });
         }
     }
-
-    return results;
+    return metas;
 }

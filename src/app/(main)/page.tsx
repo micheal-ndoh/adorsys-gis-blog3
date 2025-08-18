@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import {getAllBlogMeta} from "@blog/server/blog";
-import {Suspense} from 'react';
-import {LanguageSelector} from './selector';
+import { getAllBlogMeta } from "@blog/server/blog";
+import { Suspense } from 'react';
+import { LanguageSelector } from './selector';
 
 type Props = {
   searchParams?: Promise<{ lang?: string }>
@@ -11,12 +11,12 @@ export default async function Home({ searchParams }: Props) {
   const params = await searchParams;
   const selected = (params?.lang ?? 'all').toLowerCase();
   const meta = await getAllBlogMeta();
-  const filtered = meta.filter(m => {
+  const filtered = meta.filter((m) => {
     if (selected === 'all') return true;
     if (selected === 'en' || selected === 'fr') return (m.lang ?? 'en').toLowerCase() === selected;
     return true;
   });
-  
+
   return (
     <div>
       <div className='hero min-h-[calc(50vh)] my-4'>
@@ -34,7 +34,7 @@ export default async function Home({ searchParams }: Props) {
           </div>
         </div>
       </div>
-      
+
       <div className='max-w-md mx-auto mb-6'>
         <Suspense>
           <LanguageSelector selected={selected} />
