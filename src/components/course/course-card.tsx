@@ -15,6 +15,11 @@ export function CourseCard({ slug, title, description, lang }: CourseCardProps) 
 			className='relative overflow-hidden rounded-2xl border border-base-300/30 bg-base-200/60 ring-1 ring-white/5 transition-all hover:border-primary/40 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]'
 			aria-label={`Open course ${title}`}
 		>
+			{lang && (
+				<span className='absolute right-4 top-4 z-10 badge badge-outline uppercase'>
+					{lang}
+				</span>
+			)}
 			{/* Grid background overlay */}
 			<div
 				className='pointer-events-none absolute inset-0 opacity-[0.25]'
@@ -39,10 +44,7 @@ export function CourseCard({ slug, title, description, lang }: CourseCardProps) 
 					<p className='mb-4 line-clamp-3 text-sm opacity-80'>{description}</p>
 				)}
 
-				<div className='flex items-center justify-between'>
-					{lang && (
-						<span className='badge badge-outline uppercase'>{lang}</span>
-					)}
+				<div className='flex items-center justify-end'>
 					<span className='btn btn-accent btn-sm rounded-full'>Open</span>
 				</div>
 			</div>
