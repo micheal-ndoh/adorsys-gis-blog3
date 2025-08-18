@@ -5,9 +5,10 @@ interface CourseCardProps {
 	slug: string;
 	title: string;
 	description?: string;
+	lang?: string;
 }
 
-export function CourseCard({ slug, title, description }: CourseCardProps) {
+export function CourseCard({ slug, title, description, lang }: CourseCardProps) {
 	return (
 		<Link
 			href={`/b/${slug}`}
@@ -38,7 +39,10 @@ export function CourseCard({ slug, title, description }: CourseCardProps) {
 					<p className='mb-4 line-clamp-3 text-sm opacity-80'>{description}</p>
 				)}
 
-				<div className='flex items-center justify-end'>
+				<div className='flex items-center justify-between'>
+					{lang && (
+						<span className='badge badge-outline uppercase'>{lang}</span>
+					)}
 					<span className='btn btn-accent btn-sm rounded-full'>Open</span>
 				</div>
 			</div>

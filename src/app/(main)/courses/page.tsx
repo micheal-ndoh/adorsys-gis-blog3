@@ -15,7 +15,8 @@ export default async function CoursesPage() {
 				?.replace(/<[^>]+>/g, ' ')
 				.replace(/\s+/g, ' ')
 				.trim();
-			return { slug, title: course?.title ?? slug, description: plain };
+			const lang = typeof (course as any)?.lang === 'string' ? (course as any).lang : undefined;
+			return { slug, title: course?.title ?? slug, description: plain, lang };
 		})
 	);
 
@@ -27,8 +28,8 @@ export default async function CoursesPage() {
 			</div>
 
 			<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
-				{courses.map(({ slug, title, description }) => (
-					<CourseCard key={slug} slug={slug} title={title} description={description} />
+				{courses.map(({ slug, title, description, lang }) => (
+					<CourseCard key={slug} slug={slug} title={title} description={description} lang={lang} />
 				))}
 			</div>
 		</Container>
