@@ -21,16 +21,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      
-      <div className='grid grid-cols-2 gap-6'>
-        {pages.map((blog_slug) => (
-            <div key={blog_slug}>
-              <Link href={`/b/${blog_slug}`}>
-                {blog_slug}
-              </Link>
-            </div>
-        ))}
-      </div>
     </div>
   );
 }
