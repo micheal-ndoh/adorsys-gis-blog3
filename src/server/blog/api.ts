@@ -17,3 +17,38 @@ export async function getAllBlogs() {
     }
     return _.uniq(list);
 }
+
+export type BlogMeta = {
+    slug: string;
+    title?: string;
+    description?: string;
+    lang?: string;
+};
+
+/**
+ * Loads only the frontmatter for each blog's course.md to avoid heavy markdown conversion.
+ */
+export async function getAllBlogMeta(): Promise<BlogMeta[]> {
+    const slugs = await getAllBlogs();
+    const results: BlogMeta[] = [];
+
+    for (const blogSlug of slugs) {
+        try {
+            const filePath = path.join(process.cwd(), 'docs', 'blog', blogSlug, 'course.md');
+            const file = await fs.readFile(filePath, 'utf8');
+            // Lazy import to avoid adding a hard dependency at module load time
+            const matter = (await import('gray-matter')).default;
+            const parsed = matter(file);
+            results.push({
+                slug: blogSlug,
+                title: parsed.data?.title,
+                description: parsed.data?.description,
+                lang: parsed.data?.lang,
+            });
+        } catch {
+            results.push({ slug: blogSlug });
+        }
+    }
+
+    return results;
+}
