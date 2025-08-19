@@ -64,6 +64,7 @@
     "somethingWrong": "Something went wrong!",
     "tryAgain": "Try again",
     "returnHome": "Return Home",
+    "returnCourses": "Return to Courses",
     "notFound": "Not Found",
     "notFoundDesc": "Could not find requested resource"
   }

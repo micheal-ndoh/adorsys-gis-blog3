@@ -64,6 +64,7 @@
     "somethingWrong": "Une erreur s'est produite !",
     "tryAgain": "Réessayer",
     "returnHome": "Retour à l'accueil",
+    "returnCourses": "Retour aux cours",
     "notFound": "Introuvable",
     "notFoundDesc": "Ressource demandée introuvable"
   }

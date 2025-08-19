@@ -9,8 +9,7 @@ import { CourseCard } from "@blog/components/course";
 import { ChevronDown, Search as SearchIcon } from "react-feather";
 import { useTranslation } from "react-i18next";
 
-import { ChevronDown, Search as SearchIcon, X as ClearIcon } from "react-feather";
-import Link from "next/link";
+import { X as ClearIcon } from "react-feather";
 
 export default function SearchPage() {
   const { t } = useTranslation();
