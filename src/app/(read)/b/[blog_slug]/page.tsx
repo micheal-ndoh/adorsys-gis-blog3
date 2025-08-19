@@ -4,6 +4,7 @@ import {loadBlog} from "@blog/converters";
 import {getAllBlogs} from "@blog/server/blog/api";
 import {Suspense} from "react";
 import Display from "@blog/components/display";
+import { Skeleton } from "@blog/components/loading/skeleton";
 
 export const dynamic = 'force-dynamic';
 
@@ -43,7 +44,7 @@ export default async function SingleBlogPage({params}: Props) {
         <Container>
             {/* language badge intentionally omitted on blog page per requirements */}
             {slides && (
-                <Suspense>
+                <Suspense fallback={<Skeleton className="h-64 w-full mb-8" />}>
                     <Display data={slides.content}/>
                 </Suspense>
             )}
