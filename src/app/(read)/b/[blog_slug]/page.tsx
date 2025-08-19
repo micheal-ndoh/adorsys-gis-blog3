@@ -4,6 +4,7 @@ import {loadBlog} from "@blog/converters";
 import {getAllBlogs} from "@blog/server/blog/api";
 import {Suspense} from "react";
 import Display from "@blog/components/display";
+import { Skeleton } from "@blog/components/loading/skeleton";
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +43,23 @@ export default async function SingleBlogPage({params}: Props) {
         return redirect('/');
     }
 
+    const {course, slides} = await loadBlog(blog_slug);
+    return (
+        <Container>
+            {/* language badge intentionally omitted on blog page per requirements */}
+            {slides && (
+                <Suspense fallback={<Skeleton className="h-64 w-full mb-8" />}>
+                    <Display data={slides.content}/>
+                </Suspense>
+            )}
+
+            {course.content && (
+                <article className='prose prose-neutral lg:prose-xl mx-auto mt-8'>
+                    <div dangerouslySetInnerHTML={{__html: course.content}}/>
+                </article>
+            )}
+        </Container>
+    );
     try {
         const {course, slides} = await loadBlog(blog_slug);
         return (
