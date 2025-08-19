@@ -41,6 +41,7 @@ export default async function SingleBlogPage({params}: Props) {
     const {course, slides} = await loadBlog(blog_slug);
     return (
         <Container>
+            {/* language badge intentionally omitted on blog page per requirements */}
             {slides && (
                 <Suspense>
                     <Display data={slides.content}/>

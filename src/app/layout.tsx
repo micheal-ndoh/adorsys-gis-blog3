@@ -5,6 +5,7 @@ import {TRPCReactProvider} from "@blog/trpc/react";
 import {mainThemes, themeDataKey} from "@blog/components/theme/constants";
 import {HydrateClient} from "@blog/trpc/server";
 import {ThemeProvider} from "next-themes";
+import {LIGHT_THEME} from "@blog/components/theme/types";
 import type {PropsWithChildren} from "react";
 
 export const metadata: Metadata = {
@@ -16,10 +17,17 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<PropsWithChildren>) {
     return (
         <html lang="en" suppressHydrationWarning>
-        <body>
+        <body className="bg-base-100 text-base-content">
         <TRPCReactProvider>
             <HydrateClient>
-                <ThemeProvider storageKey={themeDataKey} themes={mainThemes}>
+                <ThemeProvider
+                    attribute="data-theme"
+                    defaultTheme={LIGHT_THEME}
+                    enableSystem={false}
+                    disableTransitionOnChange
+                    storageKey={themeDataKey}
+                    themes={mainThemes}
+                >
                     {children}
                 </ThemeProvider>
             </HydrateClient>
