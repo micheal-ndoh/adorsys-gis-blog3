@@ -3,16 +3,14 @@ import {getAllBlogs} from '@blog/server/blog';
 import {loadBlog} from '@blog/converters';
 import {Container} from '@blog/components/container';
 import {CourseCard} from '@blog/components/course';
-import {CoursesSearchBar} from './search-bar';
 
 export const dynamic = 'force-dynamic';
 
-type Props = { searchParams?: Promise<{ q?: string; lang?: string }> };
+type Props = { searchParams?: Promise<{ lang?: string }> };
 
 export default async function CoursesPage({ searchParams }: Props) {
 	const params = await searchParams;
 	const selected = (params?.lang ?? 'all').toLowerCase();
-	const q = (params?.q ?? '').toLowerCase();
 
 	const slugs = await getAllBlogs();
 	const courses = await Promise.all(
@@ -27,11 +25,9 @@ export default async function CoursesPage({ searchParams }: Props) {
 		})
 	);
 
-	const filtered = courses.filter(({ title, description, lang }) => {
+	const filtered = courses.filter(({ lang }) => {
 		const matchesLang = selected === 'all' || (lang ?? 'en').toLowerCase() === selected;
-		const hay = `${title} ${description ?? ''}`.toLowerCase();
-		const matchesQuery = q.length === 0 || hay.includes(q);
-		return matchesLang && matchesQuery;
+		return matchesLang;
 	});
 
 	return (
@@ -41,7 +37,14 @@ export default async function CoursesPage({ searchParams }: Props) {
 					<h1 className='text-3xl font-bold'>Courses</h1>
 					<span className='badge badge-primary badge-lg'>{filtered.length} courses available</span>
 				</div>
-				<CoursesSearchBar selectedLang={selected} query={q} />
+				<div className='flex items-center gap-3'>
+					<span className='text-sm opacity-80'>Language:</span>
+					<div className='join'>
+						<Link className={`btn btn-sm join-item ${selected === 'all' ? 'btn-primary' : ''}`} href={'/courses'}>All</Link>
+						<Link className={`btn btn-sm join-item ${selected === 'en' ? 'btn-primary' : ''}`} href={'/courses?lang=en'}>EN</Link>
+						<Link className={`btn btn-sm join-item ${selected === 'fr' ? 'btn-primary' : ''}`} href={'/courses?lang=fr'}>FR</Link>
+					</div>
+				</div>
 			</div>
 
 			<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
