@@ -6,7 +6,7 @@ tags:
   - containerization
   - virtualization
 background-color: 'rgba(157, 91, 205, 1)'
-date: '2025-08-16'
+lang: en
 ---
 
 ## Introduction to Docker

@@ -9,7 +9,7 @@ tags:
 description: >-
   Docker is a platform for developing, shipping, and running applications in
   containers.
-date: '2025-08-16'
+lang: en
 ---
 
 # Introduction to Docker
