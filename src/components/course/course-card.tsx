@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import {BookOpen} from 'react-feather';
+import { BookOpen } from 'react-feather';
 
 interface CourseCardProps {
 	slug: string;
@@ -52,7 +52,7 @@ export function CourseCard({ slug, title, description, lang, slide1Html, slide2H
 						<div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-56 lg:h-64 xl:h-72'>
 							<div className='slide-preview absolute inset-0 transition-opacity duration-500 ease-out group-hover:opacity-0'>
 								<div className='slide-preview-inner p-3 sm:p-4'>
-									<div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html }} />
+									<div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html! }} />
 								</div>
 							</div>
 							{(slide2Html ?? '').trim().length > 0 && (
