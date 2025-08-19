@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { api } from "@blog/trpc/react";
 import { Container } from "@blog/components/container";
 import { CourseCard } from "@blog/components/course";
@@ -10,6 +10,14 @@ import Link from "next/link";
 export default function SearchPage() {
   const [query, setQuery] = useState("");
   const enabled = query.trim().length > 0;
+  const { data: allTags } = api.search.tags.useQuery(undefined, { staleTime: 60_000 });
+  const [showTags, setShowTags] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const filteredTags = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return allTags ?? [];
+    return (allTags ?? []).filter((t) => t.toLowerCase().includes(q));
+  }, [allTags, query]);
   const { data, isFetching } = api.search.cards.useQuery(
     { q: query, limit: 25 },
     { enabled }
@@ -24,6 +32,7 @@ export default function SearchPage() {
           onSubmit={(e) => {
             e.preventDefault();
           }}
+          ref={formRef}
         >
           <div
             className="flex w-full items-center rounded-full px-5 py-2.5 backdrop-blur-xl
@@ -39,15 +48,41 @@ export default function SearchPage() {
               aria-label="Search"
             />
             <div className="mx-3 h-6 w-px bg-white/20" />
-            <button
-              type="button"
-              className="hidden sm:flex items-center gap-1 rounded-full px-3 py-1 text-white/85 hover:bg-white/10"
-              aria-label="Result scope"
-              title="Currently searching in Courses"
-            >
-              <span>Courses</span>
-              <ChevronDown size={16} />
-            </button>
+            <div className="relative">
+              <button
+                type="button"
+                className="hidden sm:flex items-center gap-1 rounded-full px-3 py-1 text-white/85 hover:bg-white/10"
+                aria-label="Show tags"
+                title="Show tags"
+                onClick={() => setShowTags((s) => !s)}
+              >
+                <span>Courses</span>
+                <ChevronDown size={16} />
+              </button>
+              {showTags && (
+                <div className="absolute right-0 z-20 mt-2 w-56 rounded-xl border border-white/15 bg-base-200/90 backdrop-blur-xl shadow-xl">
+                  <div className="max-h-64 overflow-auto p-2">
+                    {(filteredTags ?? []).map((t) => (
+                      <button
+                        key={t}
+                        className="w-full text-left px-3 py-2 rounded-lg hover:bg-white/10"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setQuery(t);
+                          setShowTags(false);
+                          formRef.current?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                        }}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                    {filteredTags && filteredTags.length === 0 && (
+                      <div className="px-3 py-2 text-sm opacity-70">No tags</div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
             <button
               type="submit"
               className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-full btn btn-accent btn-circle min-h-0 border-0 shadow-[0_8px_30px_rgba(23,227,206,0.35)]"

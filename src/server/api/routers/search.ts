@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { createTRPCRouter, publicProcedure } from '@blog/server/api/trpc';
 import { searchContent } from '@blog/server/search';
+import { getAllBlogMeta } from '@blog/server/blog/api';
 import { loadBlog } from '@blog/converters';
 import { getSlidePreviewHtmls } from '@blog/server/blog/slide-preview';
 
@@ -10,6 +11,18 @@ export const searchRouter = createTRPCRouter({
         .query(async ({ input }) => {
             const results = await searchContent(input.q, input.limit ?? 20);
             return results;
+        }),
+    tags: publicProcedure
+        .query(async () => {
+            const metas = await getAllBlogMeta();
+            const all = new Set<string>();
+            for (const m of metas) {
+                for (const t of (m.tags ?? [])) {
+                    const v = String(t).trim();
+                    if (v) all.add(v);
+                }
+            }
+            return Array.from(all).sort((a, b) => a.localeCompare(b));
         }),
     cards: publicProcedure
         .input(z.object({ q: z.string().min(1), limit: z.number().min(1).max(50).optional() }))
