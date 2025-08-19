@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { api } from "@blog/trpc/react";
 import { Container } from "@blog/components/container";
+import { CourseCard } from "@blog/components/course";
 import Link from "next/link";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
   const enabled = query.trim().length > 0;
-  const { data, isFetching } = api.search.query.useQuery(
+  const { data, isFetching } = api.search.cards.useQuery(
     { q: query, limit: 25 },
     { enabled }
   );
@@ -28,27 +29,23 @@ export default function SearchPage() {
         {enabled && (
           <div className="mt-6">
             {isFetching && <div className="text-sm opacity-70">Searching…</div>}
-            {data && data.length === 0 && (
+            {!isFetching && data && data.length === 0 && (
               <div className="text-sm opacity-70">No results</div>
             )}
-            <ul className="space-y-4">
-              {data?.map((r) => (
-                <li key={r.id} className="rounded-box border p-4">
-                  <div className="mb-1 flex items-center gap-2">
-                    <span className="badge badge-sm">{r.type}</span>
-                    <Link
-                      href={r.url}
-                      className="link link-hover text-lg font-semibold"
-                    >
-                      {r.title}
-                    </Link>
-                  </div>
-                  {r.snippet && (
-                    <p className="text-sm opacity-80">{r.snippet}</p>
-                  )}
-                </li>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {data?.map(({ slug, title, description, lang, tags, previews }) => (
+                <CourseCard
+                  key={slug}
+                  slug={slug}
+                  title={title}
+                  description={description}
+                  lang={lang}
+                  tags={tags}
+                  slide1Html={previews?.firstHtml}
+                  slide2Html={previews?.secondHtml}
+                />
               ))}
-            </ul>
+            </div>
           </div>
         )}
       </div>
