@@ -1,8 +1,8 @@
 ---
-title: Privacy
+title: Privacy Policy
 slug: privacy
 ---
 
-## Privacy Policy
+# Privacy Policy
 
-This is the privacy policy page. You can write anything you want here.
+Coming soon.

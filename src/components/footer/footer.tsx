@@ -1,14 +1,17 @@
-import {Container} from "@blog/components/container";
+"use client";
+
+import { Container } from "@blog/components/container";
+import { useTranslation } from "react-i18next";
 
 export default function AppFooter() {
+  const { t } = useTranslation();
   return (
-    <div className='bg-base-200'>
+    <div className="bg-base-200">
       <Container>
-        <footer className='footer footer-center'>
+        <footer className="footer footer-center">
           <aside>
             <p>
-              Copyright © {new Date().getFullYear()} - All right reserved by
-              adorsys GIS
+              {t("footer.copyrightInline", { year: new Date().getFullYear() })}
             </p>
           </aside>
         </footer>
