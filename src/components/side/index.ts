@@ -1,0 +1,1 @@
+export { default as VerticalNav } from './vertical-nav'; 
