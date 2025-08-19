@@ -1,5 +1,6 @@
 ---
 title: CDNs
+lang: en
 slug: cdn
 authors: Micheal Ndoh
 tags: [security, development, network]
