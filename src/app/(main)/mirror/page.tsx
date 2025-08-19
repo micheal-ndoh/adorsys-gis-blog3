@@ -17,15 +17,17 @@ async function fetchExternal(): Promise<{ bodyHtml: string; css: string }> {
 	const html = await res.text();
 
 	// Extract CSS link hrefs
-	const cssHrefs = Array.from(html.matchAll(/<link[^>]+rel=["']stylesheet["'][^>]+href=["']([^"']+)["'][^>]*>/gi)).map(m => m[1]);
-	const absCssHrefs = cssHrefs.map(href => href.startsWith('http') ? href : `${origin}${href.startsWith('/') ? '' : '/'}${href}`);
+	const cssHrefs = Array.from(html.matchAll(/<link[^>]+rel=["']stylesheet["'][^>]+href=["']([^"']+)["'][^>]*>/gi))
+		.map((m) => m[1])
+		.filter((v): v is string => typeof v === 'string' && v.length > 0);
+	const absCssHrefs = cssHrefs.map((href) => href.startsWith('http') ? href : `${origin}${href.startsWith('/') ? '' : '/'}${href}`);
 	const cssContents = await Promise.allSettled(absCssHrefs.map(async (u) => (await fetch(u, { cache: 'no-store' })).text()));
-	const joinedCss = cssContents.map(r => r.status === 'fulfilled' ? r.value : '').join('\n');
+	const joinedCss = cssContents.map((r) => r.status === 'fulfilled' ? r.value : '').join('\n');
 	const absCss = absolutizeCss(joinedCss, origin);
 
 	// Extract body content
 	const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-	const bodyHtmlRaw = bodyMatch ? bodyMatch[1] : html;
+	const bodyHtmlRaw = bodyMatch?.[1] ?? html;
 	const bodyHtml = absolutizeHtml(bodyHtmlRaw, origin);
 	return { bodyHtml, css: absCss };
 }

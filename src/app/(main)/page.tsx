@@ -13,45 +13,42 @@ export default async function Home() {
         />
       </div>
 
-      {/* Foreground wrapper */}
-      <div className="relative z-10 ml-0 md:ml-24">
-        <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
-          <div className="grid md:grid-cols-2 items-start gap-10">
+      {/* Foreground wrapper - restructured to match console layout */}
+      <div className="relative overflow-hidden">
+        <div className="container mx-auto p-4 relative z-10 ml-0 md:ml-24">
+          <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-120px)] gap-16">
             {/* Left: Heading and CTA */}
-            <div>
-              <h1 className="font-extrabold tracking-tight text-white/90 leading-tight text-5xl sm:text-6xl lg:text-7xl">
-                Knowledge Hub
-                <br />
-                <span className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
-                  Your Gateway
-                </span>
-                <br />
-                to Excellence
-              </h1>
+            <div className="flex-1 text-center lg:text-left md:ml-8 lg:ml-12">
+              <div className="mb-12">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white/90 leading-tight tracking-tight">
+                  <span className="block bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">Knowledge Hub</span>
+                </h1>
+                <div className="w-32 h-1.5 bg-gradient-to-r from-[#0ea5e9] to-[#8b5cf6] rounded-full mx-auto lg:mx-0 mb-10"></div>
+                <h2 className="text-2xl md:text-3xl text-white/90 mb-6 font-semibold leading-relaxed">Your Gateway to Professional Excellence</h2>
+                <p className="text-lg md:text-xl text-white/70 mb-8 max-w-3xl leading-relaxed font-light mx-auto lg:mx-0">
+                  Embark on a transformative learning journey with our curated courses and resources designed to elevate your skills.
+                </p>
+              </div>
 
-              <p className="mt-6 text-white/70 max-w-prose">
-                Embark on a transformative learning journey with our curated courses and resources designed to elevate your skills.
-              </p>
-
-              <div className="mt-8 flex items-center gap-4">
-                <Link
-                  href="/courses"
-                  className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-[#10b981] border border-[#10b981]/30 hover:scale-105 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/50"
-                >
-                  Get Started
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </Link>
-                <div className="hidden sm:flex items-center gap-3">
-                  <span className="px-4 py-2 rounded-full bg-white/15 text-white/75 text-xs border border-white/20 hover:bg-primary/25 hover:text-primary hover:border-primary/30 transition">Expert-Led Content</span>
-                  <span className="px-4 py-2 rounded-full bg-white/15 text-white/75 text-xs border border-white/20 hover:bg-primary/25 hover:text-primary hover:border-primary/30 transition">Interactive Learning</span>
-                  <span className="px-4 py-2 rounded-full bg-white/15 text-white/75 text-xs border border-white/20 hover:bg-primary/25 hover:text-primary hover:border-primary/30 transition">Practical Skills</span>
-                  <span className="px-4 py-2 rounded-full bg-white/15 text-white/75 text-xs border border-white/20" />
+              {/* Feature bullets */}
+              <div className="flex flex-wrap gap-6 mb-12 text-white/80">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#0ea5e9] rounded-full" />
+                  <span className="text-sm font-medium">Expert-Led Content</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#8b5cf6] rounded-full" />
+                  <span className="text-sm font-medium">Interactive Learning</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#10b981] rounded-full" />
+                  <span className="text-sm font-medium">Practical Skills</span>
                 </div>
               </div>
             </div>
 
-            {/* Right: Image card, overlay info card, and bottom image card */}
-            <div className="hidden md:flex flex-col">
+            {/* Right: Image card, overlay info card, and bottom image card (unchanged) */}
+            <div className="flex-1 max-w-lg hidden md:flex flex-col">
               {/* Top image-like glass card */}
               <div className="relative rounded-2xl overflow-hidden border border-white/20 bg-white/10 backdrop-blur-xl p-3 md:p-4 shadow-xl">
                 <div
