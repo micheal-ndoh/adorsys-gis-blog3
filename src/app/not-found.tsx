@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FileMinus, Search, Home, ArrowLeft } from "react-feather";
+import { FileMinus, Search, Home } from "react-feather";
 import { useTranslation } from "react-i18next";
 import "@blog/i18n/boot";
 
@@ -22,14 +22,11 @@ export default function NotFound() {
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button className="btn btn-outline" onClick={() => history.back()}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
-            </button>
             <Link className="btn btn-primary" href="/">
               <Home className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
             </Link>
-            <Link className="btn" href="/search">
-              <Search className="mr-2 h-4 w-4" /> {t("search.title")}
+            <Link className="btn" href="/courses">
+              <Search className="mr-2 h-4 w-4" /> {t("errors.returnCourses")}
             </Link>
           </div>
         </div>
