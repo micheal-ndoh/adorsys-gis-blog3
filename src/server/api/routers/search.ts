@@ -31,25 +31,31 @@ export const searchRouter = createTRPCRouter({
             const blogResults = results.filter((r) => r.type === 'blog');
             const slugs = blogResults.map((r) => r.url.replace(/^\/?b\//, ''));
 
-            const items = await Promise.all(
+            const itemsRaw = await Promise.all(
                 slugs.map(async (slug) => {
-                    const { course } = await loadBlog(slug);
-                    const plain = course?.content
-                        ?.replace(/<[^>]+>/g, ' ')
-                        .replace(/\s+/g, ' ')
-                        .trim();
-                    const lang = typeof (course as any)?.lang === 'string' ? (course as any).lang : undefined;
-                    const tagsRaw = (course as any)?.tags as unknown;
-                    const tags = Array.isArray(tagsRaw)
-                        ? tagsRaw.map((t) => String(t))
-                        : typeof tagsRaw === 'string'
-                            ? tagsRaw.split(',').map((t) => t.trim()).filter(Boolean)
-                            : undefined;
-                    const previews = await getSlidePreviewHtmls(slug);
-                    return { slug, title: course?.title ?? slug, description: plain, lang, tags, previews };
+                    try {
+                        const { course } = await loadBlog(slug);
+                        const plain = course?.content
+                            ?.replace(/<[^>]+>/g, ' ')
+                            .replace(/\s+/g, ' ')
+                            .trim();
+                        const lang = typeof (course as any)?.lang === 'string' ? (course as any).lang : undefined;
+                        const tagsRaw = (course as any)?.tags as unknown;
+                        const tags = Array.isArray(tagsRaw)
+                            ? tagsRaw.map((t) => String(t))
+                            : typeof tagsRaw === 'string'
+                                ? tagsRaw.split(',').map((t) => t.trim()).filter(Boolean)
+                                : undefined;
+                        const previews = await getSlidePreviewHtmls(slug);
+                        return { slug, title: course?.title ?? slug, description: plain, lang, tags, previews };
+                    } catch {
+                        // Ignore missing or unreadable blogs (e.g., ENOENT)
+                        return null;
+                    }
                 })
             );
 
+            const items = itemsRaw.filter((v): v is Exclude<typeof v, null> => v !== null);
             return items;
         }),
 });
