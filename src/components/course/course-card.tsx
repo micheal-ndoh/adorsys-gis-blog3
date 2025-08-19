@@ -65,11 +65,9 @@ export function CourseCard({ slug, title, description, lang, slide1Html, slide2H
 						</div>
 					</div>
 				) : (
-					<div className='relative p-6 sm:p-7 md:p-8'>
-						<div className='flex items-center gap-3'>
-							<div className='mx-auto -mt-10 mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/20 text-primary shadow-[0_0_35px_rgba(59,130,246,0.25)]'>
-								<BookOpen size={28} />
-							</div>
+					<div className='relative w-full overflow-hidden bg-base-200/80'>
+						<div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-56 lg:h-64 xl:h-72'>
+							<div className='absolute inset-0 bg-gradient-to-br from-primary/10 via-base-200 to-accent/10' />
 						</div>
 					</div>
 				)}
