@@ -7,10 +7,16 @@ import { getSlidePreviewHtmls } from '@blog/server/blog/slide-preview';
 
 export const searchRouter = createTRPCRouter({
     query: publicProcedure
-        .input(z.object({ q: z.string().min(1), limit: z.number().min(1).max(50).optional() }))
+        .input(z.object({ q: z.string().min(1), limit: z.number().min(1).max(50).optional(), lang: z.enum(["en","fr"]).optional() }))
         .query(async ({ input }) => {
             const results = await searchContent(input.q, input.limit ?? 20);
-            return results;
+            const lang = (input.lang ?? 'en').toLowerCase();
+            const filtered = results.filter((r) => {
+                // Only blog results matter for lang filtering; others are not returned anyway
+                // We will re-check language at the cards endpoint; here keep all and let client decide if needed
+                return true;
+            });
+            return filtered;
         }),
     tags: publicProcedure
         .query(async () => {
@@ -25,7 +31,7 @@ export const searchRouter = createTRPCRouter({
             return Array.from(all).sort((a, b) => a.localeCompare(b));
         }),
     cards: publicProcedure
-        .input(z.object({ q: z.string().min(1), limit: z.number().min(1).max(50).optional() }))
+        .input(z.object({ q: z.string().min(1), limit: z.number().min(1).max(50).optional(), lang: z.enum(["en","fr"]).optional() }))
         .query(async ({ input }) => {
             const results = await searchContent(input.q, input.limit ?? 20);
             const blogResults = results.filter((r) => r.type === 'blog');
@@ -55,7 +61,14 @@ export const searchRouter = createTRPCRouter({
                 })
             );
 
-            const items = itemsRaw.filter((v): v is Exclude<typeof v, null> => v !== null);
+            const desired = (input.lang ?? 'en').toLowerCase();
+            const items = itemsRaw
+                .filter((v): v is Exclude<typeof v, null> => v !== null)
+                .filter((v) => {
+                    if (desired === 'fr') return (v.lang ?? '').toLowerCase() === 'fr';
+                    // default 'en': include english or missing lang
+                    return (v.lang?.toLowerCase() ?? 'en') === 'en';
+                });
             return items;
         }),
 });

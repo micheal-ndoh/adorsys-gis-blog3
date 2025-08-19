@@ -28,7 +28,8 @@ export function AppNavBar() {
         const qs = params.toString();
         return qs ? `${pathname}?${qs}` : pathname;
       }
-      return lng === "en" ? "/courses" : `/courses?lang=${lng}`;
+      // When not on courses, do not redirect anywhere; just stay on the same page
+      return null;
     },
     [pathname, searchParams]
   );
@@ -37,7 +38,9 @@ export function AppNavBar() {
     (lng: "en" | "fr") => {
       void i18n.changeLanguage(lng);
       const url = buildCoursesUrl(lng);
-      router.push(url);
+      if (url) {
+        router.push(url);
+      }
       setOpen(false);
     },
     [i18n, buildCoursesUrl, router]
@@ -80,7 +83,6 @@ export function AppNavBar() {
           </div>
 
           <div className="navbar-end flex items-center gap-2">
-
             <div ref={dropdownRef} className="relative dropdown">
               <button
                 type="button"
@@ -105,15 +107,18 @@ export function AppNavBar() {
               {open && (
                 <ul
                   role="menu"
-                  className="menu dropdown-content mt-2 p-2 shadow bg-base-200 rounded-box w-28 z-[1]"
+                  className="menu dropdown-content mt-2 p-2 shadow bg-base-200 text-base-content rounded-box w-28 z-[100]"
                 >
                   <li>
                     <button
                       role="menuitemradio"
                       aria-checked={current === "en"}
                       onClick={() => setLang("en")}
-                      className={current === "en" ? "active" : ""}
+                      className={`${
+                        current === "en" ? "bg-base-300 text-base-content" : ""
+                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2`}
                     >
+                      <span role="img" aria-label="English" className="text-lg">🇬🇧</span>
                       en
                     </button>
                   </li>
@@ -122,8 +127,11 @@ export function AppNavBar() {
                       role="menuitemradio"
                       aria-checked={current === "fr"}
                       onClick={() => setLang("fr")}
-                      className={current === "fr" ? "active" : ""}
+                      className={`${
+                        current === "fr" ? "bg-base-300 text-base-content" : ""
+                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2`}
                     >
+                      <span role="img" aria-label="Français" className="text-lg">🇫🇷</span>
                       fr
                     </button>
                   </li>

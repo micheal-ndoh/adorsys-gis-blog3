@@ -1,8 +1,8 @@
 ---
-title: TOS
+title: Terms of Service
 slug: tos
 ---
 
-## Terms of Service
+# Terms of Service
 
-This is the terms of service page. You can write anything you want here.
+Coming soon.

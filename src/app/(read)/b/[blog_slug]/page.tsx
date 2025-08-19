@@ -5,6 +5,8 @@ import {getAllBlogs} from "@blog/server/blog/api";
 import {Suspense} from "react";
 import Display from "@blog/components/display";
 import { Skeleton } from "@blog/components/loading/skeleton";
+import Link from "next/link";
+import { BookOpen } from "react-feather";
 
 export const dynamic = 'force-dynamic';
 
@@ -43,29 +45,20 @@ export default async function SingleBlogPage({params}: Props) {
         return redirect('/');
     }
 
-    const {course, slides} = await loadBlog(blog_slug);
-    return (
-        <Container>
-            {/* language badge intentionally omitted on blog page per requirements */}
-            {slides && (
-                <Suspense fallback={<Skeleton className="h-64 w-full mb-8" />}>
-                    <Display data={slides.content}/>
-                </Suspense>
-            )}
-
-            {course.content && (
-                <article className='prose prose-neutral lg:prose-xl mx-auto mt-8'>
-                    <div dangerouslySetInnerHTML={{__html: course.content}}/>
-                </article>
-            )}
-        </Container>
-    );
     try {
         const {course, slides} = await loadBlog(blog_slug);
         return (
             <Container>
+                <div className="mb-4 flex justify-end">
+                    <Link href="/courses" className="group inline-flex items-center gap-2 rounded-xl border border-base-300 bg-base-200 px-4 py-2 hover:border-primary/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition">
+                        <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15 text-primary shadow-[0_0_20px_rgba(59,130,246,0.25)]">
+                          <BookOpen size={18} />
+                        </span>
+                        <span className="font-medium">Courses</span>
+                    </Link>
+                </div>
                 {slides && (
-                    <Suspense>
+                    <Suspense fallback={<Skeleton className="h-64 w-full mb-8" />}>
                         <Display data={slides.content}/>
                     </Suspense>
                 )}

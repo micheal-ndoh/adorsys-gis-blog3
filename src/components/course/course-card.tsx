@@ -1,11 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen } from "react-feather";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-
-import Link from 'next/link';
-import { motion } from 'framer-motion';
 
 interface CourseCardProps {
   slug: string;
@@ -49,57 +46,33 @@ export function CourseCard({
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.35, ease: 'easeOut' }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
       >
-        {lang && (
-          <span className='absolute right-4 top-4 z-10 badge badge-primary uppercase'>
-            {lang}
-          </span>
-        )}
-        <div className='pointer-events-none absolute inset-0 rounded-2xl p-px opacity-0 transition-opacity duration-300 group-hover:opacity-100 [mask:linear-gradient(#000,#000)_content-box,linear-gradient(#000,#000)] [mask-composite:exclude] bg-gradient-to-br from-primary/40 via-secondary/30 to-accent/40' />
+        {/* Grid background overlay */}
         <div
-          className='pointer-events-none absolute inset-0 opacity-[0.22]'
+          className="pointer-events-none absolute inset-0 opacity-[0.25]"
           style={{
             backgroundImage:
-              'linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)',
-            backgroundSize: '32px 32px',
+              "linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)",
+            backgroundSize: "32px 32px",
           }}
         />
-        <div className='pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-primary/20 blur-2xl' />
-        <div className='pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-accent/20 blur-2xl' />
-      {/* Removed language badge per requirements */}
+        {/* Glow */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-primary/10 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-secondary/10 blur-2xl" />
 
-      {lang && (
-        <span className="absolute right-4 top-4 z-10 badge badge-outline uppercase">
-          {lang}
-        </span>
-      )}
-
-      {/* Grid background overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.25]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-      {/* Glow */}
-      <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-primary/10 blur-2xl" />
-      <div className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-secondary/10 blur-2xl" />
-
-        {slide1Html ? (
+        {hasSlides ? (
           <div className='relative w-full overflow-hidden bg-base-200/80'>
             <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-56 lg:h-64 xl:h-72'>
               <div className='slide-preview absolute inset-0 transition-opacity duration-500 ease-out group-hover:opacity-0'>
                 <div className='slide-preview-inner p-3 sm:p-4'>
-                  <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html }} />
+                  <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html as string }} />
                 </div>
               </div>
-              {(slide2Html ?? '').trim().length > 0 && (
+              {(slide2Html ?? "").trim().length > 0 && (
                 <div className='slide-preview absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100'>
                   <div className='slide-preview-inner p-3 sm:p-4'>
-                    <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide2Html! }} />
+                    <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide2Html as string }} />
                   </div>
                 </div>
               )}
@@ -113,50 +86,24 @@ export function CourseCard({
           </div>
         )}
 
-        <div className='relative p-6 sm:p-7 md:p-8 pb-16 pr-20'>
-          <h3 className='mb-2 text-xl font-semibold transition-colors group-hover:text-primary'>{title}</h3>
-          {description && (
-            <p className='mb-4 line-clamp-3 text-sm opacity-80'>{description}</p>
+        <div className='relative p-6 sm:p-7 md:p-8'>
+          <h3 className='mb-2 text-xl font-semibold'>{title}</h3>
+          {computedDescription && (
+            <p className='mb-4 line-clamp-3 text-sm opacity-80'>{computedDescription}</p>
           )}
           {tags && tags.length > 0 && (
             <div className='mb-4 flex flex-wrap gap-2'>
-              {tags.map((t) => (
-                <span key={t} className='badge badge-outline badge-sm'>
-                  {t}
+              {tags.map((tag) => (
+                <span key={tag} className='badge badge-outline badge-sm'>
+                  {tag}
                 </span>
               ))}
             </div>
           )}
-                <span className="badge badge-sm">
-                  {t("courseCard.noSlides")}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="relative p-6 sm:p-7 md:p-8">
-        <h3 className="mb-2 text-xl font-semibold">{title}</h3>
-        <p className="mb-4 line-clamp-3 text-sm opacity-80">
-          {computedDescription}
-        </p>
-        {tags && tags.length > 0 && (
-          <div className="mb-4 flex flex-wrap gap-2">
-            {tags.map((t) => (
-              <span key={t} className="badge badge-outline badge-sm">
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
-        <div className="flex items-center justify-end">
-          <span className="btn btn-accent btn-sm rounded-full">
+          <span className='absolute bottom-4 right-4 z-10 btn btn-primary btn-sm rounded-full shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>
             {t("common.open")}
           </span>
         </div>
-
-        <span className='absolute bottom-4 right-4 z-10 btn btn-primary btn-sm rounded-full shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>Open</span>
       </motion.div>
     </Link>
   );

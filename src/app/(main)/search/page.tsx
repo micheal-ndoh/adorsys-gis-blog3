@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { X as ClearIcon } from "react-feather";
 
 export default function SearchPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [query, setQuery] = useState("");
   const enabled = query.trim().length > 0;
   const { data: allTags } = api.search.tags.useQuery(undefined, {
@@ -27,7 +27,7 @@ export default function SearchPage() {
     return (allTags ?? []).filter((t) => t.toLowerCase().includes(q));
   }, [allTags, query]);
   const { data, isFetching } = api.search.cards.useQuery(
-    { q: query, limit: 25 },
+    { q: query, limit: 25, lang: i18n.language?.startsWith("fr") ? "fr" : "en" },
     { enabled }
   );
 

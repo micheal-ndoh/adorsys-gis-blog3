@@ -55,7 +55,7 @@ export default async function CoursesPage({ searchParams }: Props) {
 
   const filtered = courses.filter((c) => {
     if (selected === "fr") return (c.lang ?? "").toLowerCase() === "fr";
-    // Default 'en': include courses with lang 'en' or no lang
+    // Default 'en': include english or missing lang
     return (c.lang?.toLowerCase() ?? "en") === "en";
   });
 

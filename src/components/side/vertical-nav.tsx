@@ -8,10 +8,15 @@ import { useTranslation } from "react-i18next";
 
 export default function VerticalNav() {
   const pathname = usePathname();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isFr = i18n.language?.startsWith("fr");
   const items = [
     { href: "/", label: t("nav.home"), icon: Home },
-    { href: "/courses", label: t("nav.courses"), icon: BookOpen },
+    {
+      href: isFr ? "/courses?lang=fr" : "/courses",
+      label: t("nav.courses"),
+      icon: BookOpen,
+    },
     { href: "/search", label: t("nav.search"), icon: Search },
   ];
 
@@ -20,7 +25,8 @@ export default function VerticalNav() {
       <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 shadow-xl border border-white/20">
         <div className="flex flex-col items-center gap-5">
           {items.map(({ href, label, icon: Icon }) => {
-            const active = pathname === href;
+            const hrefPath = href.replace(/\?.*$/, "");
+            const active = pathname === hrefPath;
             return (
               <Link
                 key={href}

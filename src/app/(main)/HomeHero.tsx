@@ -8,8 +8,8 @@ export function HomeHero() {
   return (
     <div className="flex-1 text-center lg:text-left md:ml-8 lg:ml-12">
       <div className="mb-12">
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white/90 leading-tight tracking-tight">
-          <span className="block bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight">
+          <span className="block">
             {t("home.title")}
           </span>
         </h1>
