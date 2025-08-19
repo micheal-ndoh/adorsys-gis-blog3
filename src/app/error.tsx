@@ -77,7 +77,7 @@ export default function ErrorPage({
 
           <h1 className="text-3xl font-extrabold md:text-5xl">{meta.title}</h1>
           <p className="mx-auto mt-3 max-w-xl opacity-80">
-            {meta.message || t("errors.somethingWrong")}
+            {t("errors.somethingWrong")}
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -95,21 +95,7 @@ export default function ErrorPage({
             </Link>
           </div>
 
-          <details className="collapse collapse-arrow mt-8 border border-base-300 bg-base-100">
-            <summary className="collapse-title text-left text-sm font-medium">
-              Technical details
-            </summary>
-            <div className="collapse-content text-left">
-              <pre className="max-h-64 overflow-auto whitespace-pre-wrap break-words text-xs opacity-80">
-                {error?.stack ?? String(error)}
-              </pre>
-              {error?.digest ? (
-                <div className="mt-2 text-xs opacity-70">
-                  Digest: {error.digest}
-                </div>
-              ) : null}
-            </div>
-          </details>
+          {/* Technical details intentionally hidden for end-users */}
         </div>
       </div>
     </div>

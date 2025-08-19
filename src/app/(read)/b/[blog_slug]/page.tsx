@@ -22,14 +22,18 @@ export async function generateMetadata({params}: Props) {
         return null;
     }
 
-    const {course} = await loadBlog(blog_slug);
-    if (!course) {
-        return null;
+    try {
+        const {course} = await loadBlog(blog_slug);
+        if (!course || !course.title) {
+            return { title: `${blog_slug} | adorsys GIS` };
+        }
+        return {
+            title: `${course.title} | adorsys GIS`,
+        };
+    } catch {
+        // Gracefully fall back when course metadata cannot be loaded
+        return { title: `${blog_slug} | adorsys GIS` };
     }
-
-    return {
-        title: `${course.title} | adorsys GIS`,
-    };
 }
 
 export default async function SingleBlogPage({params}: Props) {

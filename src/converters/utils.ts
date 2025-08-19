@@ -7,7 +7,15 @@ export async function loadDocMd(
     ...slug: string[]
 ) {
     const fullPath = path.join(process.cwd(), 'docs', `${slug.join('/')}.md`);
-    const fileContents = readFileSync(fullPath, 'utf8');
+    let fileContents: string;
+    try {
+        fileContents = readFileSync(fullPath, 'utf8');
+    } catch (err) {
+        // Propagate a controlled error to allow route to render a friendly UI
+        const notFoundError = new Error('NotFound');
+        notFoundError.name = 'NotFound';
+        throw notFoundError;
+    }
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
