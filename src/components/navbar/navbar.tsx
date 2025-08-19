@@ -1,17 +1,78 @@
+"use client";
+import "@blog/i18n/boot";
 import { Container } from "@blog/components/container";
 import icon from "@blog/components/icon.svg";
 import { ThemeToggle } from "@blog/components/theme";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function AppNavBar() {
+  const { i18n } = useTranslation();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const current = i18n.language?.startsWith("fr") ? "fr" : "en";
+
+  const buildCoursesUrl = useCallback(
+    (lng: "en" | "fr") => {
+      if (pathname?.startsWith("/courses")) {
+        const params = new URLSearchParams(searchParams?.toString() ?? "");
+        if (lng === "en") params.delete("lang");
+        else params.set("lang", lng);
+        params.delete("page");
+        const qs = params.toString();
+        return qs ? `${pathname}?${qs}` : pathname;
+      }
+      return lng === "en" ? "/courses" : `/courses?lang=${lng}`;
+    },
+    [pathname, searchParams]
+  );
+
+  const setLang = useCallback(
+    (lng: "en" | "fr") => {
+      void i18n.changeLanguage(lng);
+      const url = buildCoursesUrl(lng);
+      router.push(url);
+      setOpen(false);
+    },
+    [i18n, buildCoursesUrl, router]
+  );
+
+  useEffect(() => {
+    function onDocClick(ev: MouseEvent) {
+      if (!open) return;
+      const target = ev.target as Node | null;
+      if (
+        dropdownRef.current &&
+        target &&
+        !dropdownRef.current.contains(target)
+      ) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [open]);
   return (
     <div className="sticky top-0 z-40 bg-white/10 backdrop-blur-xl border-b border-white/20">
       <Container className="py-0">
         <nav className="navbar">
           <div className="navbar-start flex gap-4">
-            <Link href="/" className="group flex flex-row items-center gap-2" aria-label="Go to home">
-              <Image src={icon} className="w-8 transition-transform duration-200 group-hover:scale-110" alt="logo" />
+            <Link
+              href="/"
+              className="group flex flex-row items-center gap-2"
+              aria-label="Go to home"
+            >
+              <Image
+                src={icon}
+                className="w-8 transition-transform duration-200 group-hover:scale-110"
+                alt="logo"
+              />
               <span className="text-xl font-extrabold uppercase text-white/90 transition-colors duration-200 group-hover:text-primary">
                 Learn
               </span>
@@ -19,34 +80,55 @@ export function AppNavBar() {
           </div>
 
           <div className="navbar-end flex items-center gap-2">
-            {/* Language dropdown with flags */}
-            <div className="dropdown dropdown-end">
+
+            <div ref={dropdownRef} className="relative dropdown">
               <button
-                tabIndex={0}
-                aria-label="Language switcher"
-                className="px-3 py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                className="btn btn-ghost px-3 py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-2"
+                aria-haspopup="menu"
+                aria-expanded={open}
               >
-                <span className="text-base">🇬🇧</span>
-                <span className="hidden sm:inline">EN</span>
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <span className="uppercase">{current}</span>
+                <svg
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu p-2 mt-2 shadow-xl bg-base-200/80 backdrop-blur-xl rounded-xl border border-white/20 w-44"
-              >
-                <li>
-                  <Link href="/courses?lang=en" aria-label="Switch to English">
-                    <span className="mr-2">🇬🇧</span>
-                    English
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/courses?lang=fr" aria-label="Basculer en français">
-                    <span className="mr-2">🇫🇷</span>
-                    Français
-                  </Link>
-                </li>
-              </ul>
+              {open && (
+                <ul
+                  role="menu"
+                  className="menu dropdown-content mt-2 p-2 shadow bg-base-200 rounded-box w-28 z-[1]"
+                >
+                  <li>
+                    <button
+                      role="menuitemradio"
+                      aria-checked={current === "en"}
+                      onClick={() => setLang("en")}
+                      className={current === "en" ? "active" : ""}
+                    >
+                      en
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitemradio"
+                      aria-checked={current === "fr"}
+                      onClick={() => setLang("fr")}
+                      className={current === "fr" ? "active" : ""}
+                    >
+                      fr
+                    </button>
+                  </li>
+                </ul>
+              )}
             </div>
             <ThemeToggle />
           </div>

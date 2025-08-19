@@ -2,7 +2,7 @@
 title: Contact
 slug: contact
 authors: stephane-segning
-lang: fr
+lang: en
 tags:
   - security
 ---

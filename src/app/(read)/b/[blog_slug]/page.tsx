@@ -23,14 +23,18 @@ export async function generateMetadata({params}: Props) {
         return null;
     }
 
-    const {course} = await loadBlog(blog_slug);
-    if (!course) {
-        return null;
+    try {
+        const {course} = await loadBlog(blog_slug);
+        if (!course || !course.title) {
+            return { title: `${blog_slug} | adorsys GIS` };
+        }
+        return {
+            title: `${course.title} | adorsys GIS`,
+        };
+    } catch {
+        // Gracefully fall back when course metadata cannot be loaded
+        return { title: `${blog_slug} | adorsys GIS` };
     }
-
-    return {
-        title: `${course.title} | adorsys GIS`,
-    };
 }
 
 export default async function SingleBlogPage({params}: Props) {
@@ -56,4 +60,43 @@ export default async function SingleBlogPage({params}: Props) {
             )}
         </Container>
     );
+    try {
+        const {course, slides} = await loadBlog(blog_slug);
+        return (
+            <Container>
+                {slides && (
+                    <Suspense>
+                        <Display data={slides.content}/>
+                    </Suspense>
+                )}
+
+                {course.content && (
+                    <article className='prose prose-neutral lg:prose-xl mx-auto mt-8'>
+                        <div dangerouslySetInnerHTML={{__html: course.content}}/>
+                    </article>
+                )}
+            </Container>
+        );
+    } catch {
+        return (
+            <Container>
+                <div className="hero min-h-[60vh] bg-base-200 rounded-2xl mt-6">
+                    <div className="hero-content text-center">
+                        <div className="max-w-2xl">
+                            <h1 className="text-3xl font-extrabold md:text-5xl">This course does not exist yet</h1>
+                            <p className="mx-auto mt-3 max-w-xl opacity-80">Please check the link or try again later.</p>
+                            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                                <a className="btn btn-outline" href={`/b/${blog_slug}`}>
+                                    Reload
+                                </a>
+                                <a className="btn btn-primary" href="/">
+                                    Return Home
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Container>
+        );
+    }
 }

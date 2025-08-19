@@ -1,38 +1,46 @@
-import icon from '@blog/components/icon.svg';
-import Image from 'next/image';
-import Link from 'next/link';
-import {Container} from "@blog/components/container";
+"use client";
+
+import icon from "@blog/components/icon.svg";
+import Image from "next/image";
+import Link from "next/link";
+import { Container } from "@blog/components/container";
+import { useTranslation } from "react-i18next";
 
 export default function LargeFooter() {
+  const { t } = useTranslation();
   return (
-    <div className='bg-base-300'>
+    <div className="bg-base-300">
       <Container>
-        <footer className='footer sm:footer-horizontal sm:p-10'>
+        <footer className="footer sm:footer-horizontal sm:p-10">
           <aside>
-            <Image src={icon} className='fill-current w-24 h-24' alt='logo' />
+            <Image
+              src={icon}
+              className="fill-current w-24 h-24"
+              alt={t("footer.logo") ?? "logo"}
+            />
 
             <p>
-              Copyright © {new Date().getFullYear()}
+              {t("footer.copyright", { year: new Date().getFullYear() })}
               <br />
-              All right reserved by adorsys GIS
+              {t("footer.rights")}
             </p>
           </aside>
           <nav>
-            <h6 className='footer-title'>Company</h6>
-            <Link href='/res/faq' className='link link-hover'>
-              FAQ
+            <h6 className="footer-title">{t("footer.company")}</h6>
+            <Link href="/res/faq" className="link link-hover">
+              {t("footer.faq")}
             </Link>
-            <Link href='/res/contact' className='link link-hover'>
-              Contact
+            <Link href="/res/contact" className="link link-hover">
+              {t("footer.contact")}
             </Link>
           </nav>
           <nav>
-            <h6 className='footer-title'>Legal</h6>
-            <Link href='/res/tos' className='link link-hover'>
-              Terms of use
+            <h6 className="footer-title">{t("footer.legal")}</h6>
+            <Link href="/res/tos" className="link link-hover">
+              {t("footer.terms")}
             </Link>
-            <Link href='/res/privacy' className='link link-hover'>
-              Privacy policy
+            <Link href="/res/privacy" className="link link-hover">
+              {t("footer.privacy")}
             </Link>
           </nav>
         </footer>

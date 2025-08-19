@@ -1,0 +1,71 @@
+{
+  "bag": "Sac",
+  "profile": "Profil",
+  "Previous": "Précédent",
+  "Next": "Suivant",
+  "Previous Page": "Page précédente",
+  "Next Page": "Page suivante",
+  "Current Page {{page}}": "Page actuelle {{page}}",
+  "Go to Page {{page}}": "Aller à la page {{page}}",
+  "common": {
+    "open": "Ouvrir"
+  },
+  "nav": {
+    "home": "Accueil",
+    "courses": "Cours",
+    "search": "Recherche"
+  },
+  "search": {
+    "title": "Recherche",
+    "placeholder": "Rechercher des cours, sujets ou mots-clés...",
+    "showTags": "Afficher les tags",
+    "filterLabel": "Cours",
+    "noTags": "Aucun tag",
+    "searching": "Recherche…",
+    "noResults": "Aucun résultat"
+  },
+  "courseCard": {
+    "slidesSoon": "Diapositives disponibles. Notes de cours à venir.",
+    "contentSoon": "Contenu à venir.",
+    "noSlides": "Pas encore de diapositives"
+  },
+  "courses": {
+    "available": "{{count}} cours disponibles"
+  },
+  "home": {
+    "title": "Pôle de Connaissances",
+    "subtitle": "Votre passerelle vers l'excellence professionnelle",
+    "description": "Embarquez pour un parcours d'apprentissage transformateur avec nos cours et ressources sélectionnés pour élever vos compétences.",
+    "bullets": {
+      "expert": "Contenu dirigé par des experts",
+      "interactive": "Apprentissage interactif",
+      "practical": "Compétences pratiques"
+    },
+    "stats": {
+      "liveSession": "Session en direct",
+      "count": "2,5k+",
+      "activeLearners": "Apprenants actifs",
+      "globalCommunity": "Communauté mondiale"
+    }
+  },
+  "footer": {
+    "logo": "logo",
+    "copyright": "Droits d'auteur © {{year}}",
+    "rights": "Tous droits réservés par adorsys GIS",
+    "company": "Entreprise",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "legal": "Légal",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "copyrightInline": "Droits d'auteur © {{year}} - Tous droits réservés par adorsys GIS"
+  },
+  "errors": {
+    "somethingWrong": "Une erreur s'est produite !",
+    "tryAgain": "Réessayer",
+    "returnHome": "Retour à l'accueil",
+    "returnCourses": "Retour aux cours",
+    "notFound": "Introuvable",
+    "notFoundDesc": "Ressource demandée introuvable"
+  }
+}

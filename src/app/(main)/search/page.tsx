@@ -1,16 +1,23 @@
 "use client";
+import "@blog/i18n/boot";
 
 import { useMemo, useRef, useState } from "react";
 import { api } from "@blog/trpc/react";
 import { Container } from "@blog/components/container";
 import { CourseCard } from "@blog/components/course";
-import { ChevronDown, Search as SearchIcon, X as ClearIcon } from "react-feather";
-import Link from "next/link";
+
+import { ChevronDown, Search as SearchIcon } from "react-feather";
+import { useTranslation } from "react-i18next";
+
+import { X as ClearIcon } from "react-feather";
 
 export default function SearchPage() {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const enabled = query.trim().length > 0;
-  const { data: allTags } = api.search.tags.useQuery(undefined, { staleTime: 60_000 });
+  const { data: allTags } = api.search.tags.useQuery(undefined, {
+    staleTime: 60_000,
+  });
   const [showTags, setShowTags] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -27,7 +34,7 @@ export default function SearchPage() {
   return (
     <Container>
       <div className="mb-6 space-y-4">
-        <h1 className="mb-4 text-3xl font-bold">Search</h1>
+        <h1 className="mb-4 text-3xl font-bold">{t("search.title")}</h1>
         <form
           className="flex items-center gap-2"
           onSubmit={(e) => {
@@ -44,7 +51,7 @@ export default function SearchPage() {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search courses, topics, or keywords..."
+              placeholder={t("search.placeholder")}
               className="flex-1 bg-transparent text-white placeholder-white/70 outline-none"
               aria-label="Search"
               ref={inputRef}
@@ -54,11 +61,11 @@ export default function SearchPage() {
               <button
                 type="button"
                 className="hidden sm:flex items-center gap-1 rounded-full px-3 py-1 text-white/85 hover:bg-white/10"
-                aria-label="Show tags"
-                title="Show tags"
+                aria-label={t("search.showTags")}
+                title={t("search.showTags")}
                 onClick={() => setShowTags((s) => !s)}
               >
-                <span>Courses</span>
+                <span>{t("search.filterLabel")}</span>
                 <ChevronDown size={16} />
               </button>
               {showTags && (
@@ -72,14 +79,21 @@ export default function SearchPage() {
                           e.preventDefault();
                           setQuery(t);
                           setShowTags(false);
-                          formRef.current?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                          formRef.current?.dispatchEvent(
+                            new Event("submit", {
+                              cancelable: true,
+                              bubbles: true,
+                            })
+                          );
                         }}
                       >
                         {t}
                       </button>
                     ))}
                     {filteredTags && filteredTags.length === 0 && (
-                      <div className="px-3 py-2 text-sm opacity-70">No tags</div>
+                      <div className="px-3 py-2 text-sm opacity-70">
+                        {t("search.noTags")}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -113,23 +127,27 @@ export default function SearchPage() {
 
         {enabled && (
           <div className="mt-6">
-            {isFetching && <div className="text-sm opacity-70">Searching…</div>}
+            {isFetching && (
+              <div className="text-sm opacity-70">{t("search.searching")}</div>
+            )}
             {!isFetching && data && data.length === 0 && (
-              <div className="text-sm opacity-70">No results</div>
+              <div className="text-sm opacity-70">{t("search.noResults")}</div>
             )}
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {data?.map(({ slug, title, description, lang, tags, previews }) => (
-                <CourseCard
-                  key={slug}
-                  slug={slug}
-                  title={title}
-                  description={description}
-                  lang={lang}
-                  tags={tags}
-                  slide1Html={previews?.firstHtml}
-                  slide2Html={previews?.secondHtml}
-                />
-              ))}
+              {data?.map(
+                ({ slug, title, description, lang, tags, previews }) => (
+                  <CourseCard
+                    key={slug}
+                    slug={slug}
+                    title={title}
+                    description={description}
+                    lang={lang}
+                    tags={tags}
+                    slide1Html={previews?.firstHtml}
+                    slide2Html={previews?.secondHtml}
+                  />
+                )
+              )}
             </div>
           </div>
         )}

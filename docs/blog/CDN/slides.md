@@ -9,8 +9,7 @@ date: 2025-08-16
 
 ## Introduction to CDNs
 
-![what is cdn](/images/what-is-cdn.jpg)
-
+![what is cdn](https://www.shutterstock.com/image-vector/cdn-content-delivery-network-information-260nw-2250320215.jpg)
 ---
 
 A Content Delivery Network (CDN) is a geographically distributed group of servers that caches content close to end users. This allows for quick transfer of assets needed for loading Internet content, such as HTML pages, JavaScript files, stylesheets, images, and videos.
