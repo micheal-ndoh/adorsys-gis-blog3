@@ -3,6 +3,8 @@ title: Contact
 slug: contact
 authors: stephane-segning
 lang: en
+tags:
+  - security
 ---
 
 # Secure Software Development Lifecycle (SSDLC)

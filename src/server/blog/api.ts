@@ -24,6 +24,7 @@ export type BlogMeta = {
     title?: string;
     description?: string;
     lang?: string;
+    tags?: string[];
 };
 
 export async function getAllBlogMeta(): Promise<BlogMeta[]> {
@@ -35,11 +36,18 @@ export async function getAllBlogMeta(): Promise<BlogMeta[]> {
             const file = await fs.readFile(coursePath, 'utf8');
             const parsed = matter(file);
             const data = parsed.data as Record<string, any>;
+            const rawTags = data.tags as unknown;
+            const tags = Array.isArray(rawTags)
+                ? rawTags.map((t) => String(t))
+                : typeof rawTags === 'string'
+                    ? rawTags.split(',').map((t) => t.trim()).filter(Boolean)
+                    : undefined;
             metas.push({
                 slug: blogSlug,
                 title: typeof data.title === 'string' ? data.title : undefined,
                 description: typeof data.description === 'string' ? data.description : undefined,
                 lang: typeof data.lang === 'string' ? data.lang : undefined,
+                tags,
             });
         } else {
             metas.push({ slug: blogSlug });

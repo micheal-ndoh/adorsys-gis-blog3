@@ -9,6 +9,7 @@ export interface SearchDocument {
     url: string;
     type: 'blog' | 'res' | 'doc';
     content: string;
+    tags?: string[];
 }
 
 export interface SearchResultItem {
@@ -75,12 +76,21 @@ async function buildIndex(): Promise<SearchDocument[]> {
         let type: SearchDocument['type'];
         let url = '';
         let slug = '';
+        let tags: string[] | undefined;
 
         if (isBlog) {
             type = 'blog';
             const blogSlug = pathParts[1]!;
             slug = blogSlug;
             url = `/b/${blogSlug}`;
+            if (rel.endsWith('/course.md')) {
+                const raw = (parsed.data as Record<string, unknown>)?.tags as unknown;
+                if (Array.isArray(raw)) {
+                    tags = raw.map((t) => String(t));
+                } else if (typeof raw === 'string') {
+                    tags = raw.split(',').map((t) => t.trim()).filter(Boolean);
+                }
+            }
         } else if (isRes) {
             type = 'res';
             const resSlug = pathParts[1]!.replace(/\.md$/i, '');
@@ -104,6 +114,7 @@ async function buildIndex(): Promise<SearchDocument[]> {
             url,
             type,
             content: contentPlain,
+            tags,
         });
     }
 
@@ -127,6 +138,7 @@ function scoreDocument(query: string, doc: SearchDocument): number {
     let score = 0;
     const titleLower = doc.title.toLowerCase();
     const contentLower = doc.content.toLowerCase();
+    const tagsLower = (doc.tags ?? []).map((t) => t.toLowerCase());
 
     for (const w of words) {
         if (titleLower.includes(w)) score += 5;
@@ -136,6 +148,15 @@ function scoreDocument(query: string, doc: SearchDocument): number {
         if (contentLower.includes(w)) score += 1;
         const contentMatches = contentLower.split(w).length - 1;
         score += contentMatches * 2;
+
+        // Boost for tag matches
+        for (const t of tagsLower) {
+            if (t === w) {
+                score += 120; // exact tag match: very strong
+            } else if (t.includes(w)) {
+                score += 40; // partial tag match
+            }
+        }
     }
 
     // Slight boost by type if desired
@@ -159,19 +180,54 @@ function makeSnippet(content: string, query: string, size = 180): string {
 
 export async function searchContent(query: string, limit = 20): Promise<SearchResultItem[]> {
     const index = await ensureIndex();
-    const scored = index
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+
+    // 1) If the query matches any tag exactly, return only blog posts with that tag
+    const tagMatchedDocs = index.filter((doc) =>
+        doc.type === 'blog' && (doc.tags ?? []).some((t) => words.includes(t.toLowerCase()))
+    );
+
+    if (tagMatchedDocs.length > 0) {
+        const results = tagMatchedDocs
+            .map((doc) => ({
+                id: doc.id,
+                title: doc.title,
+                url: doc.url,
+                type: doc.type,
+                snippet: makeSnippet(doc.content, query),
+                score: 1000, // strong, deterministic ordering later by dedupe/map
+            }))
+            // Deduplicate by URL in case both course/slides exist with same URL; prefer first
+            .reduce((acc, item) => {
+                const existing = acc.get(item.url);
+                if (!existing || item.score > existing.score) acc.set(item.url, item);
+                return acc;
+            }, new Map<string, SearchResultItem>())
+            ;
+        return Array.from(results.values()).slice(0, limit);
+    }
+
+    // 2) Otherwise do full-text scoring but only for blog posts, and dedupe by URL
+    const byScore = index
+        .filter((doc) => doc.type === 'blog')
         .map((doc) => ({ doc, score: scoreDocument(query, doc) }))
         .filter((x) => x.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, limit)
-        .map(({ doc, score }) => ({
+        .sort((a, b) => b.score - a.score);
+
+    const deduped = new Map<string, SearchResultItem>();
+    for (const { doc, score } of byScore) {
+        const item: SearchResultItem = {
             id: doc.id,
             title: doc.title,
             url: doc.url,
             type: doc.type,
             snippet: makeSnippet(doc.content, query),
             score,
-        }));
-    return scored;
+        };
+        const prev = deduped.get(item.url);
+        if (!prev || item.score > prev.score) deduped.set(item.url, item);
+        if (deduped.size >= limit) break;
+    }
+    return Array.from(deduped.values());
 }
 

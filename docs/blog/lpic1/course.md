@@ -2,6 +2,10 @@
 title: LPIC-1 – Administration Linux
 lang: fr
 description: Préparez-vous à la certification LPIC-1 en maîtrisant l'administration Linux de base, le système, les réseaux et la sécurité.
+tags:
+  - linux
+  - certification
+  - administration
 ---
 
 # LPIC-1

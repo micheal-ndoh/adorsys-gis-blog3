@@ -2,6 +2,10 @@
 title: Terraform – Infrastructure as Code
 lang: en
 description: Provision reproducible cloud infrastructure using Terraform, modules, and CI workflows.
+tags:
+  - devops
+  - iac
+  - cloud
 ---
 
 # Terraform

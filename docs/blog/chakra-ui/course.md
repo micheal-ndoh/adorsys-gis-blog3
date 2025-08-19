@@ -2,6 +2,10 @@
 title: Chakra UI – Building Accessible React UIs
 lang: en
 description: Build accessible, themeable interfaces quickly with Chakra UI components and theming system.
+tags:
+  - frontend
+  - accessibility
+  - react
 ---
 
 # Chakra UI
