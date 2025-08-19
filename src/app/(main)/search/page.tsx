@@ -16,7 +16,7 @@ export default function SearchPage() {
 
   return (
     <Container>
-      <div className="mx-auto max-w-3xl">
+      <div className="mb-6 space-y-4">
         <h1 className="mb-4 text-3xl font-bold">Search</h1>
         <input
           value={query}
