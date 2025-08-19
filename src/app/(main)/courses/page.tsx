@@ -95,7 +95,7 @@ export default async function CoursesPage({ searchParams }: Props) {
             {/* Centered page heading and meta */}
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Courses</span>
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Blogs</span>
               </h1>
               <div className="mx-auto mt-3 h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-accent" />
               <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg opacity-80">

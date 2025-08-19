@@ -19,13 +19,35 @@ export function AppNavBar() {
           </div>
 
           <div className="navbar-end flex items-center gap-2">
-            <button
-              aria-label="Language switcher"
-              className="px-3 py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            >
-              <span>English</span>
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
+            {/* Language dropdown with flags */}
+            <div className="dropdown dropdown-end">
+              <button
+                tabIndex={0}
+                aria-label="Language switcher"
+                className="px-3 py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              >
+                <span className="text-base">🇬🇧</span>
+                <span className="hidden sm:inline">EN</span>
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 mt-2 shadow-xl bg-base-200/80 backdrop-blur-xl rounded-xl border border-white/20 w-44"
+              >
+                <li>
+                  <Link href="/courses?lang=en" aria-label="Switch to English">
+                    <span className="mr-2">🇬🇧</span>
+                    English
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/courses?lang=fr" aria-label="Basculer en français">
+                    <span className="mr-2">🇫🇷</span>
+                    Français
+                  </Link>
+                </li>
+              </ul>
+            </div>
             <ThemeToggle />
           </div>
         </nav>
