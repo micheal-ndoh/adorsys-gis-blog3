@@ -74,7 +74,7 @@ export function CourseCard({ slug, title, description, lang, slide1Html, slide2H
 					<div className='mb-4 flex flex-wrap gap-2'>
 						{tags.map((t) => (
 							<span key={t} className='badge badge-outline badge-sm'>
-								#{t}
+								{t}
 							</span>
 						))}
 					</div>

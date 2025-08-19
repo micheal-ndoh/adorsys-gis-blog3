@@ -2,6 +2,10 @@
 title: Docker – Container Fundamentals
 lang: en
 description: Build, ship, and run applications in containers. Learn images, containers, networking, and compose.
+tags:
+  - devops
+  - containers
+  - networking
 ---
 
 # Docker

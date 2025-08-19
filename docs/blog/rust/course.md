@@ -2,6 +2,10 @@
 title: Rust – Système et Performance
 lang: fr
 description: Apprenez les bases de Rust, l'ownership, le borrowing, et la sécurité mémoire pour écrire des programmes performants.
+tags:
+  - programming
+  - rust
+  - systems
 ---
 
 # Rust

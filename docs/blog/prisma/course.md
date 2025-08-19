@@ -2,6 +2,10 @@
 title: Prisma – Type-Safe Database Access
 lang: en
 description: Learn how to model data with Prisma Schema, run migrations, and build fast, type-safe queries in Node.js apps.
+tags:
+  - database
+  - orm
+  - typescript
 ---
 
 # Prisma
