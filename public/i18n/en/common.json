@@ -6,5 +6,65 @@
   "Previous Page": "Previous Page",
   "Next Page": "Next Page",
   "Current Page {{page}}": "Current Page {{page}}",
-  "Go to Page {{page}}": "Go to Page {{page}}"
+  "Go to Page {{page}}": "Go to Page {{page}}",
+  "common": {
+    "open": "Open"
+  },
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "search": "Search"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search courses, topics, or keywords...",
+    "showTags": "Show tags",
+    "filterLabel": "Courses",
+    "noTags": "No tags",
+    "searching": "Searching…",
+    "noResults": "No results"
+  },
+  "courseCard": {
+    "slidesSoon": "Slides available. Course notes coming soon.",
+    "contentSoon": "Content coming soon.",
+    "noSlides": "No slides yet"
+  },
+  "courses": {
+    "available": "{{count}} courses available"
+  },
+  "home": {
+    "title": "Knowledge Hub",
+    "subtitle": "Your Gateway to Professional Excellence",
+    "description": "Embark on a transformative learning journey with our curated courses and resources designed to elevate your skills.",
+    "bullets": {
+      "expert": "Expert-Led Content",
+      "interactive": "Interactive Learning",
+      "practical": "Practical Skills"
+    },
+    "stats": {
+      "liveSession": "Live Session",
+      "count": "2.5k+",
+      "activeLearners": "Active Learners",
+      "globalCommunity": "Global Community"
+    }
+  },
+  "footer": {
+    "logo": "logo",
+    "copyright": "Copyright © {{year}}",
+    "rights": "All right reserved by adorsys GIS",
+    "company": "Company",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "legal": "Legal",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy",
+    "copyrightInline": "Copyright © {{year}} - All right reserved by adorsys GIS"
+  },
+  "errors": {
+    "somethingWrong": "Something went wrong!",
+    "tryAgain": "Try again",
+    "returnHome": "Return Home",
+    "notFound": "Not Found",
+    "notFoundDesc": "Could not find requested resource"
+  }
 }

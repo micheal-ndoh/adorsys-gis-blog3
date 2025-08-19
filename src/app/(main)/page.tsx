@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { HomeHero } from "./HomeHero";
+import { HomeRightCards } from "./HomeRightCards";
 
 export default async function Home() {
   return (
@@ -18,74 +20,10 @@ export default async function Home() {
         <div className="container mx-auto p-4 relative z-10 ml-0 md:ml-24">
           <div className="flex flex-col lg:flex-row items-center min-h-[calc(100vh-120px)] gap-16">
             {/* Left: Heading and CTA */}
-            <div className="flex-1 text-center lg:text-left md:ml-8 lg:ml-12">
-              <div className="mb-12">
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white/90 leading-tight tracking-tight">
-                  <span className="block bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">Knowledge Hub</span>
-                </h1>
-                <div className="w-32 h-1.5 bg-gradient-to-r from-[#0ea5e9] to-[#8b5cf6] rounded-full mx-auto lg:mx-0 mb-10"></div>
-                <h2 className="text-2xl md:text-3xl text-white/90 mb-6 font-semibold leading-relaxed">Your Gateway to Professional Excellence</h2>
-                <p className="text-lg md:text-xl text-white/70 mb-8 max-w-3xl leading-relaxed font-light mx-auto lg:mx-0">
-                  Embark on a transformative learning journey with our curated courses and resources designed to elevate your skills.
-                </p>
-              </div>
+            <HomeHero />
 
-              {/* Feature bullets */}
-              <div className="flex flex-wrap gap-6 mb-12 text-white/80">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#0ea5e9] rounded-full" />
-                  <span className="text-sm font-medium">Expert-Led Content</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#8b5cf6] rounded-full" />
-                  <span className="text-sm font-medium">Interactive Learning</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#10b981] rounded-full" />
-                  <span className="text-sm font-medium">Practical Skills</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Image card, overlay info card, and bottom image card (unchanged) */}
-            <div className="flex-1 max-w-lg hidden md:flex flex-col">
-              {/* Top image-like glass card */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/20 bg-white/10 backdrop-blur-xl p-3 md:p-4 shadow-xl">
-                <div
-                  className="aspect-video rounded-xl bg-cover bg-center shadow-inner"
-                  style={{
-                    backgroundImage: "url('https://st2.depositphotos.com/3591429/6301/i/950/depositphotos_63016959-stock-photo-man-working-on-a-computer.jpg')",
-                  }}
-                  aria-label="illustrative image"
-                />
-              </div>
-
-              {/* Transparent info card overlapping below the first */}
-              <div className="-mt-8 self-end w-full max-w-md rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl p-5 shadow-xl">
-                <div className="flex items-center gap-3 text-white/90">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#10b981]" />
-                  <span className="text-sm">Live Session</span>
-                </div>
-                <div className="mt-2 text-3xl font-semibold text-white/90">2.5k+</div>
-                <div className="text-xs text-white/70">Active Learners</div>
-                <div className="mt-3 flex items-center gap-2 text-white/70 text-sm">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#0ea5e9]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#8b5cf6]" />
-                  <span>Global Community</span>
-                </div>
-              </div>
-
-              {/* Bottom image-like glass card */}
-              <div className="mt-6 rounded-2xl overflow-hidden border border-white/20 bg-white/10 backdrop-blur-xl p-3 md:p-4 shadow-xl">
-                <div
-                  className="aspect-video rounded-xl bg-cover bg-center shadow-inner"
-                  style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-                  }}
-                  aria-label="illustrative image"
-                />
-              </div>
-            </div>
+            {/* Right: Cards */}
+            <HomeRightCards />
           </div>
         </div>
       </div>

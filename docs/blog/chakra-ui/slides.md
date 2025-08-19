@@ -19,4 +19,3 @@ import { Box, Flex, Stack } from '@chakra-ui/react';
 ```tsx
 extendTheme({ colors: { brand: { 500: '#7c3aed' }}})
 ```
--
