@@ -3,8 +3,7 @@ import { redirect } from "next/navigation";
 import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
-import Link from "next/link";
-import { BookOpen } from "react-feather";
+import { CoursesLink } from "./CoursesLink";
 
 export const dynamic = "force-dynamic";
 
@@ -48,15 +47,7 @@ export default async function SingleBlogPage({ params }: Props) {
     return (
       <Container>
         <div className="mb-4 flex justify-end">
-          <Link
-            href="/courses"
-            className="group inline-flex items-center gap-2 rounded-xl border border-base-300 bg-base-200 px-4 py-2 hover:border-primary/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] transition"
-          >
-            <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15 text-primary shadow-[0_0_20px_rgba(59,130,246,0.25)]">
-              <BookOpen size={18} />
-            </span>
-            <span className="font-medium">Courses</span>
-          </Link>
+          <CoursesLink />
         </div>
         {slides && <Display data={slides.content} />}
 
