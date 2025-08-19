@@ -8,6 +8,7 @@ interface CourseCardProps {
   slide2Html?: string;
   description?: string;
   lang?: string;
+  tags?: string[];
 }
 
 export function CourseCard({
@@ -17,6 +18,7 @@ export function CourseCard({
   lang,
   slide1Html,
   slide2Html,
+  tags,
 }: CourseCardProps) {
   const hasSlides =
     typeof (slide1Html ?? "") === "string" &&
@@ -91,7 +93,15 @@ export function CourseCard({
         <p className="mb-4 line-clamp-3 text-sm opacity-80">
           {computedDescription}
         </p>
-
+        {tags && tags.length > 0 && (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {tags.map((t) => (
+              <span key={t} className="badge badge-outline badge-sm">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
         <div className="flex items-center justify-end">
           <span className="btn btn-accent btn-sm rounded-full">Open</span>
         </div>
