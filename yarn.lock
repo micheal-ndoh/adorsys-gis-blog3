@@ -1610,6 +1610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
+
 "@tolgee/core@npm:6.2.7, @tolgee/core@npm:^6.2.7":
   version: 6.2.7
   resolution: "@tolgee/core@npm:6.2.7"
@@ -1636,7 +1637,6 @@ __metadata:
   checksum: 10c0/e692a2e621c9db02508e1e625657b254a6b3c3d295fa2b2ed7a621ce987a665d3c35fd9dac344ee7aaa29f9a5a0646bff8191c95efde80347f79101be322faee
   languageName: node
   linkType: hard
-
 "@trpc/client@npm:^11.0.0":
   version: 11.4.4
   resolution: "@trpc/client@npm:11.4.4"
@@ -2191,9 +2191,7 @@ __metadata:
     "@tanstack/react-query": "npm:^5.62.10"
     "@tanstack/react-query-devtools": "npm:^5.62.8"
     "@tanstack/react-query-persist-client": "npm:^5.62.8"
-    "@tolgee/core": "npm:^6.2.7"
-    "@tolgee/react": "npm:^6.2.7"
-    "@tolgee/web": "npm:^6.2.7"
+
     "@trpc/client": "npm:^11.0.0"
     "@trpc/react-query": "npm:^11.0.0"
     "@trpc/server": "npm:^11.0.0"

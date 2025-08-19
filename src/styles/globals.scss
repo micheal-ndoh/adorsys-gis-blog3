@@ -45,6 +45,30 @@ code.mermaid {
   @apply aspect-[16/9] bg-base-200;
 }
 
+/* Rich slide preview inside cards */
+.slide-preview {
+  @apply h-full w-full bg-base-200;
+
+  .slide-preview-inner {
+    @apply h-full w-full overflow-hidden rounded-none;
+  }
+
+  img, svg, canvas, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  pre, code {
+    @apply text-xs leading-snug;
+  }
+
+  .prose {
+    @apply max-w-none text-sm;
+  }
+}
+
 article {
   h1, h2, h3, h4, h5, h6 {
     @apply font-nunito;
