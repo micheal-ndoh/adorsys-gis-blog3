@@ -10,6 +10,7 @@ import { initReactI18next } from 'react-i18next';
 const filterWell = <T>(list: T[]) => filter(list, isObject) as T[];
 
 export async function i18nFn() {
+    if (i18n.isInitialized) return i18n;
     const isProd = process.env.NODE_ENV === 'production';
     await i18n
         .use(LanguageDetector)

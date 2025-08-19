@@ -1,10 +1,11 @@
-import Link from "next/link";
+// removed unused Link import
 import { getAllBlogs } from "@blog/server/blog";
 import { loadBlog } from "@blog/converters";
 import { Container } from "@blog/components/container";
 import { CourseCard } from "@blog/components/course";
 import { Pagination } from "@blog/components/pagination";
 import { getSlidePreviewHtmls } from "@blog/server/blog/slide-preview";
+import { CoursesHeader } from "./CoursesHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,8 @@ type Props = { searchParams?: Promise<{ lang?: string; page?: string }> };
 
 export default async function CoursesPage({ searchParams }: Props) {
   const params = await searchParams;
-  const selected = (params?.lang ?? "all").toLowerCase();
+  // Default to English; treat missing course lang as 'en'
+  const selected = (params?.lang ?? "en").toLowerCase();
   const pageParam =
     typeof params?.page === "string" ? parseInt(params.page, 10) : 1;
   const page = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1;
@@ -51,10 +53,10 @@ export default async function CoursesPage({ searchParams }: Props) {
     })
   );
 
-  const filtered = courses.filter(({ lang }) => {
-    const matchesLang =
-      selected === "all" || (lang ?? "en").toLowerCase() === selected;
-    return matchesLang;
+  const filtered = courses.filter((c) => {
+    if (selected === "fr") return (c.lang ?? "").toLowerCase() === "fr";
+    // Default 'en': include courses with lang 'en' or no lang
+    return (c.lang?.toLowerCase() ?? "en") === "en";
   });
 
   const total = filtered.length;
@@ -65,13 +67,34 @@ export default async function CoursesPage({ searchParams }: Props) {
 
   function linkFor(targetPage: number) {
     const params = new URLSearchParams();
-    if (selected !== "all") params.set("lang", selected);
+    // Only include 'lang' when not default 'en' to keep URLs clean
+    if (selected !== "en") params.set("lang", selected);
     if (targetPage > 1) params.set("page", String(targetPage));
     const qs = params.toString();
     return qs ? `/courses?${qs}` : "/courses";
   }
 
   return (
+
+    <Container>
+      <div className="mb-6 space-y-4">
+        <CoursesHeader total={total} />
+        {/* Language filter controls removed per requirements; language switches via top navbar */}
+      </div>
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {pageItems.map(({ slug, title, description, lang, tags, previews }) => (
+          <CourseCard
+            key={slug}
+            slug={slug}
+            title={title}
+            description={description}
+            lang={lang}
+            tags={tags}
+            slide1Html={(previews as any)?.firstHtml}
+            slide2Html={(previews as any)?.secondHtml}
+          />
+        ))}
+
     <div className="relative">
       {/* Background layer (dark, transparent, theme-aware, more visible) */}
       <div className="absolute inset-0 z-0">
@@ -86,6 +109,7 @@ export default async function CoursesPage({ searchParams }: Props) {
         {/* Soft theme-colored glows */}
         <div className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-accent/15 blur-3xl" />
+
       </div>
 
       {/* Foreground content */}

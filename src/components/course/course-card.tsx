@@ -1,4 +1,8 @@
-'use client'
+"use client";
+
+import Link from "next/link";
+import { BookOpen } from "react-feather";
+import { useTra
 
 interface CourseCardProps {
   slug: string;
@@ -19,6 +23,20 @@ export function CourseCard({
   slide2Html,
   tags,
 }: CourseCardProps) {
+
+  const { t } = useTranslation();
+  const hasSlides =
+    typeof (slide1Html ?? "") === "string" &&
+    (slide1Html ?? "").trim().length > 0;
+  const hasCourse =
+    typeof (description ?? "") === "string" &&
+    (description ?? "").trim().length > 0;
+  const computedDescription = hasCourse
+    ? description
+    : hasSlides
+    ? t("courseCard.slidesSoon")
+    : t("courseCard.contentSoon");
+
   const hasSlides = typeof (slide1Html ?? "") === "string" && (slide1Html ?? "").trim().length > 0;
   const hasCourse = typeof (description ?? "") === "string" && (description ?? "").trim().length > 0;
   const computedDescription = hasCourse
@@ -27,15 +45,20 @@ export function CourseCard({
     ? "Slides available. Course notes coming soon."
     : "Content coming soon.";
 
+
   return (
     <Link
       href={`/b/${slug}`}
       className="group relative overflow-hidden rounded-2xl border border-base-300/30 bg-base-200/60 ring-1 ring-white/5 transition-all hover:border-primary/40 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
       aria-label={`Open course ${title}`}
     >
+
+      {/* Removed language badge per requirements */}
+
       {lang && (
         <span className="absolute right-4 top-4 z-10 badge badge-outline uppercase">{lang}</span>
       )}
+
       {/* Grid background overlay */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.25]"
@@ -75,7 +98,9 @@ export function CourseCard({
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15 text-primary shadow-[0_0_35px_rgba(59,130,246,0.25)]">
                   <BookOpen size={28} />
                 </div>
-                <span className="badge badge-sm">No slides yet</span>
+                <span className="badge badge-sm">
+                  {t("courseCard.noSlides")}
+                </span>
               </div>
             </div>
           </div>
@@ -95,7 +120,9 @@ export function CourseCard({
           </div>
         )}
         <div className="flex items-center justify-end">
-          <span className="btn btn-accent btn-sm rounded-full">Open</span>
+          <span className="btn btn-accent btn-sm rounded-full">
+            {t("common.open")}
+          </span>
         </div>
       </div>
     </Link>
