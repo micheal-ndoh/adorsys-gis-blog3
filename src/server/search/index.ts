@@ -9,6 +9,7 @@ export interface SearchDocument {
     url: string;
     type: 'blog' | 'res' | 'doc';
     content: string;
+    tags?: string[];
 }
 
 export interface SearchResultItem {
@@ -75,12 +76,21 @@ async function buildIndex(): Promise<SearchDocument[]> {
         let type: SearchDocument['type'];
         let url = '';
         let slug = '';
+        let tags: string[] | undefined;
 
         if (isBlog) {
             type = 'blog';
             const blogSlug = pathParts[1]!;
             slug = blogSlug;
             url = `/b/${blogSlug}`;
+            if (rel.endsWith('/course.md')) {
+                const raw = (parsed.data as Record<string, unknown>)?.tags as unknown;
+                if (Array.isArray(raw)) {
+                    tags = raw.map((t) => String(t));
+                } else if (typeof raw === 'string') {
+                    tags = raw.split(',').map((t) => t.trim()).filter(Boolean);
+                }
+            }
         } else if (isRes) {
             type = 'res';
             const resSlug = pathParts[1]!.replace(/\.md$/i, '');
@@ -104,6 +114,7 @@ async function buildIndex(): Promise<SearchDocument[]> {
             url,
             type,
             content: contentPlain,
+            tags,
         });
     }
 
@@ -127,6 +138,7 @@ function scoreDocument(query: string, doc: SearchDocument): number {
     let score = 0;
     const titleLower = doc.title.toLowerCase();
     const contentLower = doc.content.toLowerCase();
+    const tagsLower = (doc.tags ?? []).map((t) => t.toLowerCase());
 
     for (const w of words) {
         if (titleLower.includes(w)) score += 5;
@@ -136,6 +148,15 @@ function scoreDocument(query: string, doc: SearchDocument): number {
         if (contentLower.includes(w)) score += 1;
         const contentMatches = contentLower.split(w).length - 1;
         score += contentMatches * 2;
+
+        // Boost for tag matches
+        for (const t of tagsLower) {
+            if (t === w) {
+                score += 120; // exact tag match: very strong
+            } else if (t.includes(w)) {
+                score += 40; // partial tag match
+            }
+        }
     }
 
     // Slight boost by type if desired

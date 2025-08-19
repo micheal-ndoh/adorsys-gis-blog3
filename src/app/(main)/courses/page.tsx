@@ -25,8 +25,14 @@ export default async function CoursesPage({ searchParams }: Props) {
 				.replace(/\s+/g, ' ')
 				.trim();
 			const lang = typeof (course as any)?.lang === 'string' ? (course as any).lang : undefined;
+			const tagsRaw = (course as any)?.tags;
+			const tags = Array.isArray(tagsRaw)
+				? tagsRaw.map((t: unknown) => String(t))
+				: typeof tagsRaw === 'string'
+					? tagsRaw.split(',').map((t: string) => t.trim()).filter(Boolean)
+					: undefined;
 			const previews = await getSlidePreviewHtmls(slug);
-			return { slug, title: course?.title ?? slug, description: plain, lang, previews };
+			return { slug, title: course?.title ?? slug, description: plain, lang, tags, previews };
 		})
 	);
 
@@ -67,13 +73,14 @@ export default async function CoursesPage({ searchParams }: Props) {
 			</div>
 
 			<div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
-				{pageItems.map(({ slug, title, description, lang, previews }) => (
+				{pageItems.map(({ slug, title, description, lang, tags, previews }) => (
 					<CourseCard
 						key={slug}
 						slug={slug}
 						title={title}
 						description={description}
 						lang={lang}
+						tags={tags}
 						slide1Html={previews?.firstHtml}
 						slide2Html={previews?.secondHtml}
 					/>

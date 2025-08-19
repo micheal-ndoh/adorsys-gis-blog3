@@ -8,9 +8,10 @@ interface CourseCardProps {
 	slide2Html?: string;
 	description?: string;
 	lang?: string;
+	tags?: string[];
 }
 
-export function CourseCard({ slug, title, description, lang, slide1Html, slide2Html }: CourseCardProps) {
+export function CourseCard({ slug, title, description, lang, slide1Html, slide2Html, tags }: CourseCardProps) {
 	return (
 		<Link
 			href={`/b/${slug}`}
@@ -67,6 +68,16 @@ export function CourseCard({ slug, title, description, lang, slide1Html, slide2H
 				<h3 className='mb-2 text-xl font-semibold'>{title}</h3>
 				{description && (
 					<p className='mb-4 line-clamp-3 text-sm opacity-80'>{description}</p>
+				)}
+
+				{tags && tags.length > 0 && (
+					<div className='mb-4 flex flex-wrap gap-2'>
+						{tags.map((t) => (
+							<span key={t} className='badge badge-outline badge-sm'>
+								#{t}
+							</span>
+						))}
+					</div>
 				)}
 
 				<div className='flex items-center justify-end'>
