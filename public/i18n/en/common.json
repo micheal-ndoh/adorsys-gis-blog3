@@ -1,4 +1,10 @@
 {
   "bag": "Bag",
-  "profile": "Profile"
+  "profile": "Profile",
+  "Previous": "Previous",
+  "Next": "Next",
+  "Previous Page": "Previous Page",
+  "Next Page": "Next Page",
+  "Current Page {{page}}": "Current Page {{page}}",
+  "Go to Page {{page}}": "Go to Page {{page}}"
 }
