@@ -4,6 +4,7 @@ import { useState } from "react";
 import { api } from "@blog/trpc/react";
 import { Container } from "@blog/components/container";
 import { CourseCard } from "@blog/components/course";
+import { ChevronDown, Search as SearchIcon } from "react-feather";
 import Link from "next/link";
 
 export default function SearchPage() {
@@ -18,13 +19,39 @@ export default function SearchPage() {
     <Container>
       <div className="mb-6 space-y-4">
         <h1 className="mb-4 text-3xl font-bold">Search</h1>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search courses, slides, resources..."
-          className="input input-bordered input-lg w-full"
-          aria-label="Search"
-        />
+        <form
+          className="flex items-center gap-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <div className="flex w-full items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-xl">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search courses, topics, or keywords..."
+              className="flex-1 bg-transparent text-white placeholder-white/60 outline-none"
+              aria-label="Search"
+            />
+            <div className="mx-3 h-6 w-px bg-white/20" />
+            <button
+              type="button"
+              className="flex items-center gap-1 rounded-full px-3 py-1 text-white/80 hover:bg-white/10"
+              aria-label="Result scope"
+              title="Currently searching in Courses"
+            >
+              <span>Courses</span>
+              <ChevronDown size={16} />
+            </button>
+            <button
+              type="submit"
+              className="ml-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-black hover:opacity-90"
+              aria-label="Submit search"
+            >
+              <SearchIcon size={18} />
+            </button>
+          </div>
+        </form>
 
         {enabled && (
           <div className="mt-6">
