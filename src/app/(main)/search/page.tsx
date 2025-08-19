@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import { api } from "@blog/trpc/react";
 import { Container } from "@blog/components/container";
 import { CourseCard } from "@blog/components/course";
-import { ChevronDown, Search as SearchIcon } from "react-feather";
+import { ChevronDown, Search as SearchIcon, X as ClearIcon } from "react-feather";
 import Link from "next/link";
 
 export default function SearchPage() {
@@ -13,6 +13,7 @@ export default function SearchPage() {
   const { data: allTags } = api.search.tags.useQuery(undefined, { staleTime: 60_000 });
   const [showTags, setShowTags] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const filteredTags = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return allTags ?? [];
@@ -46,6 +47,7 @@ export default function SearchPage() {
               placeholder="Search courses, topics, or keywords..."
               className="flex-1 bg-transparent text-white placeholder-white/70 outline-none"
               aria-label="Search"
+              ref={inputRef}
             />
             <div className="mx-3 h-6 w-px bg-white/20" />
             <div className="relative">
@@ -83,13 +85,29 @@ export default function SearchPage() {
                 </div>
               )}
             </div>
-            <button
-              type="submit"
-              className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-full btn btn-accent btn-circle min-h-0 border-0 shadow-[0_8px_30px_rgba(23,227,206,0.35)]"
-              aria-label="Submit search"
-            >
-              <SearchIcon size={18} />
-            </button>
+            {enabled ? (
+              <button
+                type="button"
+                className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-full btn btn-accent btn-circle min-h-0 border-0 shadow-[0_8px_30px_rgba(23,227,206,0.35)]"
+                aria-label="Clear search"
+                title="Clear search"
+                onClick={() => {
+                  setQuery("");
+                  inputRef.current?.focus();
+                }}
+              >
+                <ClearIcon size={18} />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="ml-2 inline-flex h-11 w-11 items-center justify-center rounded-full btn btn-accent btn-circle min-h-0 border-0 shadow-[0_8px_30px_rgba(23,227,206,0.35)]"
+                aria-label="Submit search"
+                title="Search"
+              >
+                <SearchIcon size={18} />
+              </button>
+            )}
           </div>
         </form>
 
