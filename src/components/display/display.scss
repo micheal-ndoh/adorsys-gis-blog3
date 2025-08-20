@@ -3,9 +3,9 @@
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
 
-// Left-align all slide content
+// Center-align all slide content
 .reveal .slides section {
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .reveal .slides section h1,
@@ -16,28 +16,28 @@
 .reveal .slides section h6,
 .reveal .slides section p,
 .reveal .slides section blockquote {
-  text-align: left !important;
+  text-align: center !important;
 }
 
-// Left-align lists
+// Center-align lists
 .reveal .slides section ul,
 .reveal .slides section ol {
-  text-align: left !important;
+  text-align: center !important;
   list-style-position: outside !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .reveal .slides section li {
-  text-align: left !important;
+  text-align: center !important;
   margin: 0.1em 0 !important;
   padding: 0 !important;
   text-indent: 0 !important;
 }
 
-// Left-align code blocks
+// Center-align code blocks
 .reveal .slides section pre,
 .reveal .slides section code {
-  text-align: left !important;
-  margin: 0;
+  text-align: center !important;
+  margin: 0 auto;
 }
