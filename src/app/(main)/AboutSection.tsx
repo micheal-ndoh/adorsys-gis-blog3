@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useRef } from "react";
 
 export function AboutSection() {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const inView = useInView(sectionRef, { amount: 0.3 });
   return (
@@ -17,7 +19,7 @@ export function AboutSection() {
           className="mb-2"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 tracking-tight">
-            About Us
+            {t("about.title")}
           </h2>
           <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-10 w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-1.5 sm:h-2 bg-gradient-to-r from-[#0ea5e9] via-[#8b5cf6] to-[#10b981] rounded-full shadow-lg shadow-blue-500/25" />
         </motion.div>
@@ -31,7 +33,7 @@ export function AboutSection() {
               transition={{ delay: 0.1, duration: 0.7 }}
             >
               <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
-                Learn Smarter. Build Faster.
+                {t("about.tagline")}
               </span>
             </motion.h3>
 
@@ -41,9 +43,7 @@ export function AboutSection() {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2, duration: 0.7 }}
             >
-              Knowledge Hub is your space to learn clearly and quickly. We turn
-              complex ideas into simple, practical lessons with examples you can
-              use right away.
+              {t("about.p1")}
             </motion.p>
 
             <motion.p
@@ -52,9 +52,7 @@ export function AboutSection() {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.3, duration: 0.7 }}
             >
-              Browse concise articles, hands‑on courses, and clean slide decks.
-              Explore at your pace and find exactly what you need with fast,
-              accurate search.
+              {t("about.p2")}
             </motion.p>
           </div>
 
@@ -71,7 +69,7 @@ export function AboutSection() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
                   src="/about.png"
-                  alt="People collaborating happily around a laptop"
+                  alt={t("about.imageAlt")}
                   fill
                   sizes="(min-width:1280px) 520px, (min-width:1024px) 440px, 90vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

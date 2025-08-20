@@ -48,6 +48,13 @@
       "globalCommunity": "Global Community"
     }
   },
+  "about": {
+    "title": "About Us",
+    "tagline": "Learn Smarter. Build Faster.",
+    "p1": "Knowledge Hub is your space to learn clearly and quickly. We turn complex ideas into simple, practical lessons with examples you can use right away.",
+    "p2": "Browse concise articles, hands‑on courses, and clean slide decks. Explore at your pace and find exactly what you need with fast, accurate search.",
+    "imageAlt": "People collaborating happily around a laptop"
+  },
   "footer": {
     "logo": "logo",
     "copyright": "Copyright © {{year}}",
