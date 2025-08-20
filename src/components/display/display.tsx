@@ -78,7 +78,7 @@ export default function Display({ data }: DisplayProps) {
         
         .reveal .slides section ul li::marker,
         .reveal .slides section ol li::marker {
-          margin-right: 0.1em !important;
+          margin-right: 0 !important;
         }
       `}</style>
       <div className='display'>
