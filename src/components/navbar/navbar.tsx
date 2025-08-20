@@ -67,7 +67,7 @@ export function AppNavBar() {
         <nav className="navbar min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
-              href="/"
+              href="/courses"
               className="group flex flex-row items-center gap-1.5 sm:gap-2"
               aria-label="Go to home"
             >
