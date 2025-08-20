@@ -2,10 +2,8 @@ import "@blog/styles/globals.scss";
 
 import { type Metadata } from "next";
 import { TRPCReactProvider } from "@blog/trpc/react";
-import { mainThemes, themeDataKey } from "@blog/components/theme/constants";
 import { HydrateClient } from "@blog/trpc/server";
-import { ThemeProvider } from "next-themes";
-import { LIGHT_THEME } from "@blog/components/theme/types";
+import { DARK_THEME } from "@blog/components/theme/types";
 import type { PropsWithChildren } from "react";
 import { I18nInit } from "@blog/i18n/ClientInit";
 
@@ -17,21 +15,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme={DARK_THEME}>
       <body className="bg-base-100 text-base-content">
         <TRPCReactProvider>
           <HydrateClient>
             <I18nInit>
-              <ThemeProvider
-                attribute="data-theme"
-                defaultTheme={LIGHT_THEME}
-                enableSystem={false}
-                disableTransitionOnChange
-                storageKey={themeDataKey}
-                themes={mainThemes}
-              >
-                {children}
-              </ThemeProvider>
+              {children}
             </I18nInit>
           </HydrateClient>
         </TRPCReactProvider>
