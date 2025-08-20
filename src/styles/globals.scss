@@ -222,3 +222,116 @@ article {
   word-spacing: normal !important;
   letter-spacing: normal !important;
 }
+
+// Aggressive spacing fix for all text content
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose *,
+.prose.prose-neutral,
+.prose.prose-neutral *,
+.prose.prose-invert,
+.prose.prose-invert * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+}
+
+// Force remove any excessive spacing between words
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose div,
+.prose span {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+}
+
+// Specific fix for the "Secure Software" spacing issue - target all text nodes
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+}
+
+// Override any potential flexbox or grid spacing issues
+.reveal .slides section,
+.prose {
+  display: block !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+}
+
+// Force override any CSS that might be causing spacing issues
+.reveal .slides section *,
+.prose * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-feature-settings: "kern" 1 !important;
+  -moz-font-feature-settings: "kern" 1 !important;
+}
+
+// Additional fix for any potential spacing issues
+.reveal .slides section,
+.prose {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-feature-settings: "kern" 1 !important;
+  -moz-font-feature-settings: "kern" 1 !important;
+}
+
+// Force remove any potential spacing issues with maximum specificity
+.reveal .slides section *,
+.reveal .slides section * *,
+.prose *,
+.prose * * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-feature-settings: "kern" 1 !important;
+  -moz-font-feature-settings: "kern" 1 !important;
+}

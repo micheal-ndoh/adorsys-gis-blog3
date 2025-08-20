@@ -85,6 +85,34 @@ export default function Display({ data }: DisplayProps) {
           margin: 0 !important;
           padding: 0 !important;
         }
+        
+        /* Force justify all text content in slides */
+        .reveal .slides section,
+        .reveal .slides section * {
+          text-align: justify !important;
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          white-space: normal !important;
+          font-kerning: normal !important;
+          font-feature-settings: "kern" 1 !important;
+          text-rendering: optimizeLegibility !important;
+        }
+        
+        /* Specific targeting for headings and paragraphs */
+        .reveal .slides section h1,
+        .reveal .slides section h2,
+        .reveal .slides section h3,
+        .reveal .slides section h4,
+        .reveal .slides section h5,
+        .reveal .slides section h6,
+        .reveal .slides section p,
+        .reveal .slides section div,
+        .reveal .slides section span {
+          text-align: justify !important;
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          white-space: normal !important;
+        }
       `}</style>
       <div className='display'>
         <div className='reveal' ref={deckDivRef}>

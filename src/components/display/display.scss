@@ -92,6 +92,19 @@
   margin: 0 2rem !important;
 }
 
+// Force normal spacing for all text content in slides
+.reveal .slides section,
+.reveal .slides section * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+  text-rendering: optimizeLegibility !important;
+}
+
 // Apply same styling to course.md content (prose content)
 .prose,
 .prose.prose-neutral,
