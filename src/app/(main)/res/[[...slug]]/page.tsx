@@ -49,7 +49,7 @@ export default async function ResourcePage({ params }: Props) {
       <Container>
         <div className='mx-auto mt-8 sm:mt-10 max-w-6xl pb-24 sm:pb-28'>
           {/* Title */}
-          <header className='text-center mb-10 sm:mb-12'>
+          <header className='text-center mb-14 sm:mb-16'>
             <h1 className='text-4xl sm:text-5xl font-extrabold'>About Adorsys GIS Blog</h1>
             <div className='mt-3 h-1 w-24 sm:w-28 bg-primary mx-auto rounded-full' />
           </header>
