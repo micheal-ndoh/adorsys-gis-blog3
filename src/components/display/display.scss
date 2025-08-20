@@ -15,9 +15,21 @@
 .reveal .slides section h5,
 .reveal .slides section h6,
 .reveal .slides section p,
-.reveal .slides section li,
 .reveal .slides section blockquote {
   text-align: center !important;
+}
+
+// Center lists with bullets
+.reveal .slides section ul,
+.reveal .slides section ol {
+  text-align: center !important;
+  list-style-position: inside !important;
+  display: inline-block !important;
+  text-align: left !important;
+}
+
+.reveal .slides section li {
+  text-align: left !important;
 }
 
 // Center code blocks and other elements
