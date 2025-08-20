@@ -119,15 +119,6 @@ function FramedImage() {
       <div className='absolute inset-0 rounded-3xl overflow-hidden border border-white/20 bg-base-200/60'>
         <Image src='/about.png' alt='About visual' width={1200} height={800} className='w-full h-full object-cover' />
       </div>
-
-      {/* bottom glass overlay bar */}
-      <div className='absolute left-6 right-6 bottom-4 rounded-2xl border border-white/15 bg-black/60 shadow-xl p-4'>
-        <div className='flex items-center gap-2 text-white/90'>
-          <span className='inline-block w-2.5 h-2.5 rounded-full bg-emerald-400' />
-          <span className='text-sm font-semibold tracking-wide'>Live Session</span>
-        </div>
-        <div className='mt-2 h-2 w-2/3 rounded bg-white/20' />
-      </div>
     </div>
   );
 }
