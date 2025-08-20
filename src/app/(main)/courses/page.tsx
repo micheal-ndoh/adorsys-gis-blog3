@@ -9,15 +9,8 @@ import { CoursesHeader } from "./CoursesHeader";
 import { CoursesSearch } from "./CoursesSearch";
 import * as fs from "fs-extra";
 import * as path from "node:path";
-import { Metadata } from "next";
-import { i18n } from "@/i18n";
 
 export const dynamic = "force-dynamic";
-
-export const metadata: Metadata = {
-  title: "Blogs | Adorsys GIS Blog",
-  description: "Explore our collection of blogs and tutorials",
-};
 
 type Props = { searchParams?: Promise<{ lang?: string; page?: string }> };
 
@@ -119,9 +112,6 @@ export default async function CoursesPage({ searchParams }: Props) {
   return (
     <div className="bg-black">
       <Container>
-        <h1 className="text-4xl font-bold text-center mb-8">
-          {i18n.language?.startsWith("fr") ? "Blogs" : "Blogs"}
-        </h1>
         <div className="mb-6 space-y-4">
           <CoursesHeader total={total} />
         </div>

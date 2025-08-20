@@ -46,25 +46,27 @@ export default async function SingleBlogPage({ params }: Props) {
     const { course, slides } = await loadBlog(blog_slug);
     return (
       <Container>
-        <Link
-          href="/courses"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 hover:font-bold transition-all duration-200 mb-6"
-        >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
+          <Link
+            href="/b"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+            aria-label="Back to blogs"
           >
-            <path
+            <svg
+              className="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Blogs
-        </Link>
+              aria-hidden
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to blogs
+          </Link>
+        </div>
         {slides && <Display data={slides.content} />}
 
         {course.content && (
