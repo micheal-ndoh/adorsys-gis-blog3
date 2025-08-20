@@ -62,16 +62,24 @@ export function AboutSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-xl lg:ml-6 xl:ml-12"
+            className="group relative w-full max-w-md md:max-w-lg justify-self-center lg:justify-self-end lg:ml-8 xl:ml-12"
           >
-            <Image
-              src="/about.png"
-              alt="People collaborating happily around a laptop"
-              width={1280}
-              height={960}
-              className="w-full h-auto object-cover"
-              priority={false}
-            />
+            <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-slate-600/30 to-slate-800/40 rounded-3xl transform rotate-3 scale-110 shadow-2xl"></div>
+            <div className="absolute -bottom-2 -right-2 w-full h-full bg-gradient-to-br from-indigo-500/25 to-purple-600/35 rounded-3xl transform -rotate-2 scale-108 shadow-xl border border-indigo-400/20"></div>
+
+            <div className="relative rounded-3xl overflow-hidden border-2 border-white/30 bg-white/15 backdrop-blur-xl p-3 sm:p-4 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.9)] z-10">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <Image
+                  src="/about.png"
+                  alt="People collaborating happily around a laptop"
+                  fill
+                  sizes="(min-width:1280px) 520px, (min-width:1024px) 440px, 90vw"
+                  className="object-cover"
+                  priority={false}
+                  quality={85}
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
