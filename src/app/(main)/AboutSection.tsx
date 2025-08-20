@@ -23,13 +23,15 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <motion.h3
-              className="text-3xl md:text-4xl font-semibold text-white/90"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white/95 mb-3 sm:mb-4 md:mb-5 lg:mb-6 font-bold leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              Learn Smarter. Build Faster.
+              <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
+                Learn Smarter. Build Faster.
+              </span>
             </motion.h3>
 
             <motion.p
@@ -39,10 +41,9 @@ export function AboutSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              Knowledge Hub is a curated learning space where high‑quality articles,
-              hands‑on courses, and beautiful slide decks meet a blazing‑fast search.
-              We distill complex topics into practical, bite‑size lessons you can
-              apply immediately—without the noise.
+              Knowledge Hub is your space to learn clearly and quickly. We turn
+              complex ideas into simple, practical lessons with examples you can
+              use right away.
             </motion.p>
 
             <motion.p
@@ -52,10 +53,9 @@ export function AboutSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              From Docker and Terraform to JavaScript, Rust, and beyond, explore
-              focused content with clear examples and real‑world context. Save what
-              matters, track your progress, and return anytime—your learning journey
-              continues exactly where you left off.
+              Browse concise articles, hands‑on courses, and clean slide decks.
+              Save your favorites, continue where you left off, and find exactly
+              what you need with fast, accurate search.
             </motion.p>
           </div>
 
