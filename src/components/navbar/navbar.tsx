@@ -84,9 +84,10 @@ export function AppNavBar() {
           <div className="navbar-end flex items-center gap-3 sm:gap-4">
             <Link
               href="/courses"
-              className="text-primary hover:font-extrabold transition-colors px-1"
+              className="text-2xl font-bold text-primary"
+              aria-label="Go to blogs"
             >
-              {i18n.language?.startsWith("fr") ? "Cours" : "Courses"}
+              Blogs
             </Link>
             <Link
               href="/res/about"
