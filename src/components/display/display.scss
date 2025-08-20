@@ -10,6 +10,11 @@
   margin-right: 2rem !important;
 }
 
+// Justify ALL text elements in slides
+.reveal .slides section * {
+  text-align: justify !important;
+}
+
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -17,7 +22,9 @@
 .reveal .slides section h5,
 .reveal .slides section h6,
 .reveal .slides section p,
-.reveal .slides section blockquote {
+.reveal .slides section blockquote,
+.reveal .slides section div,
+.reveal .slides section span {
   text-align: justify !important;
   margin-left: 2rem !important;
   margin-right: 2rem !important;
@@ -54,6 +61,11 @@
   margin-right: 3rem !important;
 }
 
+// Justify ALL text elements in prose content
+.prose * {
+  text-align: justify !important;
+}
+
 .prose h1,
 .prose h2,
 .prose h3,
@@ -61,7 +73,9 @@
 .prose h5,
 .prose h6,
 .prose p,
-.prose blockquote {
+.prose blockquote,
+.prose div,
+.prose span {
   text-align: justify !important;
   margin-left: 3rem !important;
   margin-right: 3rem !important;
