@@ -59,33 +59,6 @@ export default function Display({ data }: DisplayProps) {
   
   return (
     <>
-      <style jsx global>{`
-        .reveal .slides section ul,
-        .reveal .slides section ol {
-          text-align: justify !important;
-          list-style-position: inside !important;
-          display: inline-block !important;
-          margin: 0 2rem !important;
-          padding: 0 !important;
-          word-spacing: normal !important;
-          letter-spacing: normal !important;
-        }
-        
-        .reveal .slides section li {
-          text-align: justify !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          text-indent: 0 !important;
-          word-spacing: normal !important;
-          letter-spacing: normal !important;
-        }
-        
-        .reveal .slides section ul li::marker,
-        .reveal .slides section ol li::marker {
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-      `}</style>
       <div className='display'>
         <div className='reveal' ref={deckDivRef}>
           <div

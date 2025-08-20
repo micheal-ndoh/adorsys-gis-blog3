@@ -134,7 +134,9 @@ article {
   }
 }
 
-// Global text justification override with higher specificity
+// ===== GLOBAL TEXT JUSTIFICATION AND SPACING FIXES =====
+
+// Force justified text with proper word spacing for all content
 .reveal .slides section,
 .reveal .slides section *,
 .prose,
@@ -144,20 +146,24 @@ article {
 .prose.prose-invert,
 .prose.prose-invert * {
   text-align: justify !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
+  line-height: 1.6 !important;
 }
 
-// Ensure slide preview content is also justified
+// Ensure slide preview content is also properly justified
 .slide-preview .prose,
 .slide-preview .prose *,
 .slide-preview .prose.prose-invert,
 .slide-preview .prose.prose-invert * {
   text-align: justify !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
+  line-height: 1.4 !important;
 }
 
 // Override any Tailwind prose text alignment with maximum specificity
@@ -166,29 +172,17 @@ article {
 .prose.prose-neutral.text-justify,
 .prose.prose-neutral.text-justify *,
 .prose.prose-invert.text-justify,
-.prose.prose-invert.text-justify * {
+.prose.prose-invert.text-justify *,
+.reveal .slides section.text-justify,
+.reveal .slides section.text-justify * {
   text-align: justify !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
 }
 
-// Force normal word spacing for all text content
-.reveal .slides section,
-.reveal .slides section *,
-.prose,
-.prose *,
-.prose.prose-neutral,
-.prose.prose-neutral *,
-.prose.prose-invert,
-.prose.prose-invert * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-justify: auto !important;
-  text-align-last: auto !important;
-}
-
-// Specific fix for the "Secure Software" spacing issue
+// Critical fixes for word spacing and text flow
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -197,12 +191,24 @@ article {
 .reveal .slides section h6,
 .reveal .slides section p,
 .reveal .slides section div,
-.reveal .slides section span {
+.reveal .slides section span,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose div,
+.prose span {
   white-space: normal !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-align: justify !important;
   text-justify: inter-word !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  line-height: 1.6 !important;
 }
 
 // Force text to flow naturally without excessive spacing
@@ -211,6 +217,7 @@ article {
   text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  line-height: 1.6 !important;
 }
 
 // Ensure prose content is properly justified
@@ -221,4 +228,6 @@ article {
   text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  line-height: 1.6 !important;
+  max-width: none !important;
 }

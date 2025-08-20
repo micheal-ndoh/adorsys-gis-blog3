@@ -3,23 +3,28 @@
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
 
-// Force justify all slide content with aggressive overrides
+// ===== SLIDE CONTENT STYLING =====
+
+// Force justify all slide content with proper word spacing
 .reveal .slides section {
   text-align: justify !important;
-  margin-left: 2rem !important;
-  margin-right: 2rem !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
 }
 
-// Justify ALL text elements in slides with aggressive overrides
+// Target all text elements in slides
 .reveal .slides section * {
   text-align: justify !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  white-space: normal !important;
 }
 
-// Target specific Reveal.js generated elements
+// Specific targeting for slide headings and text
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -31,24 +36,15 @@
 .reveal .slides section div,
 .reveal .slides section span {
   text-align: justify !important;
-  margin-left: 2rem !important;
-  margin-right: 2rem !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
+  line-height: 1.6 !important;
+  margin: 0.5rem 0 !important;
 }
 
-// Force justify text in any container elements
-.reveal .slides section .text-container,
-.reveal .slides section .content,
-.reveal .slides section .slide-content {
-  text-align: justify !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  white-space: normal !important;
-}
-
-// Target the actual text content more specifically
+// Force text to flow naturally without line breaks
 .reveal .slides section h1 *,
 .reveal .slides section h2 *,
 .reveal .slides section h3 *,
@@ -59,59 +55,70 @@
 .reveal .slides section div *,
 .reveal .slides section span * {
   text-align: justify !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
+  display: inline !important;
 }
 
-// Justify lists with bullets close to text and uniform margins
+// Fix for lists in slides
 .reveal .slides section ul,
 .reveal .slides section ol {
   text-align: justify !important;
-  list-style-position: inside !important;
-  display: inline-block !important;
-  margin: 0 2rem !important;
-  padding: 0 !important;
+  text-justify: inter-word !important;
+  list-style-position: outside !important;
+  margin: 0.5rem 0 !important;
+  padding-left: 1.5rem !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
 }
 
 .reveal .slides section li {
   text-align: justify !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-indent: 0 !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  margin: 0.25rem 0 !important;
+  line-height: 1.6 !important;
+}
+
+// Code blocks should remain left-aligned
+.reveal .slides section pre,
+.reveal .slides section code {
+  text-align: left !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
 }
 
-// Justify code blocks with uniform margins
-.reveal .slides section pre,
-.reveal .slides section code {
-  text-align: left !important;
-  margin: 0 2rem !important;
-}
+// ===== BLOG CONTENT (PROSE) STYLING =====
 
-// Apply same styling to course.md content (prose content)
+// Apply justified text to all prose content
 .prose,
 .prose.prose-neutral,
 .prose.prose-invert {
   text-align: justify !important;
-  margin-left: 3rem !important;
-  margin-right: 3rem !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+  max-width: none !important;
 }
 
-// Justify ALL text elements in prose content with aggressive overrides
+// Force justify ALL text elements in prose content
 .prose *,
 .prose.prose-neutral *,
 .prose.prose-invert * {
   text-align: justify !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  white-space: normal !important;
 }
 
+// Specific targeting for prose headings and text
 .prose h1,
 .prose h2,
 .prose h3,
@@ -143,13 +150,15 @@
 .prose.prose-invert div,
 .prose.prose-invert span {
   text-align: justify !important;
-  margin-left: 3rem !important;
-  margin-right: 3rem !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
+  line-height: 1.6 !important;
+  margin: 0.5rem 0 !important;
 }
 
+// Fix for lists in prose content
 .prose ul,
 .prose ol,
 .prose.prose-neutral ul,
@@ -157,9 +166,10 @@
 .prose.prose-invert ul,
 .prose.prose-invert ol {
   text-align: justify !important;
-  list-style-position: inside !important;
-  margin: 0 3rem !important;
-  padding: 0 !important;
+  text-justify: inter-word !important;
+  list-style-position: outside !important;
+  margin: 0.5rem 0 !important;
+  padding-left: 1.5rem !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
 }
@@ -168,9 +178,103 @@
 .prose.prose-neutral li,
 .prose.prose-invert li {
   text-align: justify !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-indent: 0 !important;
+  text-justify: inter-word !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
+  white-space: normal !important;
+  margin: 0.25rem 0 !important;
+  line-height: 1.6 !important;
+}
+
+// ===== SLIDE PREVIEW STYLING =====
+
+// Ensure slide preview content is also properly justified
+.slide-preview .prose,
+.slide-preview .prose *,
+.slide-preview .prose.prose-invert,
+.slide-preview .prose.prose-invert * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.4 !important;
+}
+
+// ===== OVERRIDE ANY TAILWIND CLASSES =====
+
+// Override any Tailwind text alignment classes with maximum specificity
+.prose.text-justify,
+.prose.text-justify *,
+.prose.prose-neutral.text-justify,
+.prose.prose-neutral.text-justify *,
+.prose.prose-invert.text-justify,
+.prose.prose-invert.text-justify *,
+.reveal .slides section.text-justify,
+.reveal .slides section.text-justify * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// ===== CRITICAL FIXES FOR WORD SPACING =====
+
+// Force normal word spacing for all text content
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose *,
+.prose.prose-neutral,
+.prose.prose-neutral *,
+.prose.prose-invert,
+.prose.prose-invert * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-justify: inter-word !important;
+  text-align-last: auto !important;
+}
+
+// Prevent text from breaking unnaturally
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose div,
+.prose span {
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+// ===== RESPONSIVE ADJUSTMENTS =====
+
+@media (max-width: 768px) {
+  .reveal .slides section,
+  .prose,
+  .prose.prose-neutral,
+  .prose.prose-invert {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.5 !important;
+  }
 }
