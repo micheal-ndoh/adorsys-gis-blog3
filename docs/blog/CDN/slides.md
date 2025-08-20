@@ -2,12 +2,7 @@
 title: CDNs
 slug: cdn
 tags: [security, development, network]
-background-color: rgb(107, 164, 165)
-date: 2025-08-16
 ---
-
-
-## Introduction to CDNs
 
 ![what is cdn](https://www.shutterstock.com/image-vector/cdn-content-delivery-network-information-260nw-2250320215.jpg)
 ---
