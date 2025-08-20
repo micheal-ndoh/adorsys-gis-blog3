@@ -84,7 +84,7 @@ export function AppNavBar() {
           <div className="navbar-end flex items-center gap-3 sm:gap-4">
             <Link
               href="/courses"
-              className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+              className="text-primary hover:font-extrabold transition-colors px-1"
             >
               {i18n.language?.startsWith("fr") ? "Cours" : "Courses"}
             </Link>
@@ -94,11 +94,11 @@ export function AppNavBar() {
             >
               {i18n.language?.startsWith("fr") ? "À propos" : "About"}
             </Link>
-            <div ref={dropdownRef} className="relative dropdown">
-              <button
-                type="button"
+            <div ref={dropdownRef} className="relative">
+              <div
+                role="button"
                 onClick={() => setOpen((v) => !v)}
-                className="btn btn-ghost px-2 sm:px-3 py-1.5 sm:py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base"
+                className="inline-flex items-center gap-1.5 sm:gap-2 text-white/80 hover:text-white hover:font-extrabold px-1 select-none cursor-pointer"
                 aria-haspopup="menu"
                 aria-expanded={open}
                 aria-label={`Current language: ${current === "en" ? "English" : "Français"}`}
@@ -117,7 +117,7 @@ export function AppNavBar() {
                 >
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-              </button>
+              </div>
               {open && (
                 <ul
                   role="menu"
