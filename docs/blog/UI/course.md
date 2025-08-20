@@ -9,7 +9,7 @@ description: La conception UI/UX est l'art et la science de créer des interface
 
 # Introduction à la conception UI/UX
 
-![Conception UI/UX](https://www.shutterstock.com/image-vector/ui-ux-design-concept-flat-260nw-2281234565.jpg)
+![UI/UX Design](https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149051557.jpg?semt=ais_hybrid&w=740&q=80)
 
 La conception UI/UX combine l'**interface utilisateur (UI)**, qui se concentre sur l'aspect visuel et l'interactivité, et l'**expérience utilisateur (UX)**, qui vise à optimiser la convivialité et la satisfaction. Elle est essentielle pour créer des applications web et mobiles intuitives, utilisées par des entreprises comme Apple ou Airbnb pour améliorer l'engagement des utilisateurs.
 

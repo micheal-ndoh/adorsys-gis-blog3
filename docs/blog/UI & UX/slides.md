@@ -7,13 +7,15 @@ tags: [design, user interface, user experience]
 description: UI/UX design is the art and science of creating intuitive user interfaces (UI) and engaging user experiences (UX) for digital applications.
 ---
 
+![UI/UX Design](https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149051557.jpg?semt=ais_hybrid&w=740&q=80)
+
+
+---
 # Introduction to UI/UX Design
-
-![UI/UX Design](https://www.shutterstock.com/image-vector/ui-ux-design-concept-flat-260nw-2281234565.jpg)
-
 UI/UX design combines **User Interface (UI)**, focusing on visual aesthetics and interactivity, and **User Experience (UX)**, aiming to optimize usability and satisfaction. It’s essential for creating intuitive web and mobile applications, used by companies like Apple and Airbnb to boost user engagement.
 
 ---
+
 ## Benefits of UI/UX Design
 
 1. **Enhanced Engagement**: Intuitive interfaces reduce frustration and increase user retention.
