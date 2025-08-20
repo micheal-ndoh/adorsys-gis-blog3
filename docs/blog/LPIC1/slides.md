@@ -7,6 +7,10 @@ tags: [linux, certification, sysadmin]
 description: LPIC-1 is a professional certification for Linux system administrators, validating foundational skills in Linux system management.
 ---
 
+![LPIC-1](https://www.lpi.org/wp-content/uploads/2023/05/LPIC-1-1.jpg)
+
+---
+
 # Introduction to LPIC-1 Certification
 
 LPIC-1, offered by the Linux Professional Institute (LPI), is the first level of Linux certification, designed for system administrators. It validates skills in managing Linux systems, including command-line operations, file systems, and basic networking. LPIC-1 consists of two exams: 101 and 102.

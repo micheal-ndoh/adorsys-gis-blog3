@@ -26,6 +26,7 @@ LPIC-1, offered by the Linux Professional Institute (LPI), is the first level of
 4. **Foundation for Advanced Certifications**: Prepares for LPIC-2 and beyond.
 
 ---
+
 ## LPIC-1 Exam Structure
 
 LPIC-1 includes two exams:
@@ -35,6 +36,7 @@ LPIC-1 includes two exams:
 Each exam has 60 questions, requiring a score of 500/800 to pass. Topics align with practical Linux administration.
 
 ---
+
 ## How to Prepare for LPIC-1
 
 1. **Study Resources**: Use LPI’s official objectives, books (e.g., "LPIC-1 Linux Professional Institute Certification Study Guide"), and online courses.
@@ -43,6 +45,7 @@ Each exam has 60 questions, requiring a score of 500/800 to pass. Topics align w
 4. **Community**: Join forums like LPI’s community or Reddit for tips.
 
 ---
+
 ## Diagram: LPIC-1 Learning Path
 
 This diagram shows the LPIC-1 preparation flow: Study Resources → Hands-On Practice → Practice Exams → Certification Exams.
@@ -59,6 +62,7 @@ graph TD
 </xaiArtifact>
 
 ---
+
 ## Conclusion
 
 LPIC-1 certification equips sysadmins with essential Linux skills, boosting career prospects. With focused study and practice, candidates can master the exams and build a strong foundation for advanced Linux certifications.

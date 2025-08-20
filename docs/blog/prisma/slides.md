@@ -6,9 +6,8 @@ authors: Micheal Ndoh
 tags: [database, orm, development]
 description: Prisma is an open-source ORM (Object-Relational Mapping) tool that simplifies database interactions for developers by providing a type-safe, intuitive API.
 ---
-# Introduction to Prisma ORM
-![Prisma ORM](https://camo.githubusercontent.com/c40c71bc04ddc73535f5fcd4763d1d07a86fe0d0fb5e3b889c028fa42e239923/68747470733a2f2f692e696d6775722e636f6d2f5167774469654f2e706e67)
 
+![Prisma ORM](https://camo.githubusercontent.com/c40c71bc04ddc73535f5fcd4763d1d07a86fe0d0fb5e3b889c028fa42e239923/68747470733a2f2f692e696d6775722e636f6d2f5167774469654f2e706e67)
 
 ---
 

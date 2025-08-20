@@ -4,9 +4,6 @@ slug: cdn
 tags: [security, development, network]
 ---
 
-
-## Introduction to CDNs
-
 ![what is cdn](https://www.shutterstock.com/image-vector/cdn-content-delivery-network-information-260nw-2250320215.jpg)
 ---
 
