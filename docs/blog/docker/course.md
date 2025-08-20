@@ -19,6 +19,8 @@ lang: en
 
 Docker is an open-source platform that automates the deployment, scaling, and management of applications using containerization. Containers are lightweight, portable, and self-sufficient units that package an application and all its dependencies, ensuring it runs consistently across different environments.
 
+---
+
 ## Why Use Docker?
 
 1. **Portability**: Containers encapsulate everything an application needs, making it easy to move between development, testing, and production environments without compatibility issues.

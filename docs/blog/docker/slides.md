@@ -5,18 +5,19 @@ tags:
   - devops
   - containerization
   - virtualization
-background-color: 'rgba(157, 91, 205, 1)'
-date: '2025-08-16'
 lang: en
+
 ---
 
 ## Introduction to Docker
 
-Docker is a platform for developing, shipping, and running applications in containers.
+![Docker](https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png)
 
 ---
 
-![Docker](https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png)
+## Docker
+
+Docker is a platform for developing, shipping, and running applications in containers.
 
 ---
 

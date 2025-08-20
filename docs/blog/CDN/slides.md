@@ -2,8 +2,6 @@
 title: CDNs
 slug: cdn
 tags: [security, development, network]
-background-color: rgb(107, 164, 165)
-date: 2025-08-16
 ---
 
 
