@@ -69,13 +69,13 @@ export default async function ResourcePage({ params }: Props) {
                 build, and grow.
               </p>
             </div>
-            <FramedImage />
+            <FramedImage src="/about.png" />
           </section>
 
           {/* Our Mission */}
           <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16'>
             <div className='order-2 md:order-1'>
-              <FramedImage />
+              <FramedImage src="/fast-learner.jpg" />
             </div>
             <div className='order-1 md:order-2'>
               <h2 className='text-3xl font-bold mb-3'>Our Mission</h2>
@@ -108,7 +108,7 @@ export default async function ResourcePage({ params }: Props) {
 }
 
 // Image block with layered rounded frames (no overlapping image), plus a subtle glass card at bottom
-function FramedImage() {
+function FramedImage({ src = '/about.png' }: { src?: string }) {
   return (
     <div className='relative h-72 sm:h-80 lg:h-96'>
       {/* back frames */}
@@ -117,7 +117,7 @@ function FramedImage() {
 
       {/* main image card */}
       <div className='absolute inset-0 rounded-3xl overflow-hidden border border-white/20 bg-base-200/60'>
-        <Image src='/about.png' alt='About visual' width={1200} height={800} className='w-full h-full object-cover object-top' />
+        <Image src={src} alt='About visual' width={1200} height={800} className='w-full h-full object-cover object-top' />
       </div>
     </div>
   );
