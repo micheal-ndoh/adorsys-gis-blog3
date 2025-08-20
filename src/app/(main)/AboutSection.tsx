@@ -54,8 +54,8 @@ export function AboutSection() {
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               Browse concise articles, hands‑on courses, and clean slide decks.
-              Save your favorites, continue where you left off, and find exactly
-              what you need with fast, accurate search.
+              Explore at your pace and find exactly what you need with fast,
+              accurate search.
             </motion.p>
           </div>
 
