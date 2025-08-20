@@ -50,20 +50,20 @@ export default async function ResourcePage({ params }: Props) {
         <div className='mx-auto mt-8 sm:mt-10 max-w-6xl'>
           {/* Title */}
           <header className='text-center mb-10 sm:mb-12'>
-            <h1 className='text-3xl sm:text-4xl font-extrabold'>About Adorsys GIS Blog</h1>
+            <h1 className='text-4xl sm:text-5xl font-extrabold'>About Adorsys GIS Blog</h1>
             <div className='mt-3 h-1 w-24 sm:w-28 bg-primary mx-auto rounded-full' />
           </header>
 
           {/* Our Story */}
           <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16'>
             <div>
-              <h2 className='text-2xl font-bold mb-3'>Our Story</h2>
-              <p className='opacity-80 mb-3'>
+              <h2 className='text-3xl font-bold mb-3'>Our Story</h2>
+              <p className='text-base sm:text-lg opacity-80 mb-3'>
                 Adorsys GIS Blog is more than a knowledge site — it is a community of
                 curious learners and practitioners who love clear, practical content.
                 We turn complex topics into approachable lessons you can apply right away.
               </p>
-              <p className='opacity-80'>
+              <p className='text-base sm:text-lg opacity-80'>
                 Born from the idea that sharing knowledge elevates everyone, we craft
                 articles, courses, and slide decks that bring people together to learn,
                 build, and grow.
@@ -80,13 +80,13 @@ export default async function ResourcePage({ params }: Props) {
               <Image src='/about.png' alt='Mission illustration' width={900} height={600} className='w-full h-auto object-cover' />
             </div>
             <div className='order-1 md:order-2'>
-              <h2 className='text-2xl font-bold mb-3'>Our Mission</h2>
-              <p className='opacity-80 mb-3'>
+              <h2 className='text-3xl font-bold mb-3'>Our Mission</h2>
+              <p className='text-base sm:text-lg opacity-80 mb-3'>
                 Our mission is to make learning fast, enjoyable, and effective.
                 We emphasise clarity, hands‑on examples, and reliable resources
                 so you can move from understanding to execution with confidence.
               </p>
-              <p className='opacity-80'>
+              <p className='text-base sm:text-lg opacity-80'>
                 Whether you are just getting started or sharpening advanced skills,
                 this space is designed to help you learn smarter and build faster.
               </p>
