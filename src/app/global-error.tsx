@@ -30,7 +30,7 @@ export default function GlobalError({
                   <RefreshCw className="mr-2 h-4 w-4" /> Try again
                 </button>
                 <a className="btn btn-ghost" href="/courses">
-                  <Home className="mr-2 h-4 w-4" /> Home
+                  Go to blogs
                 </a>
               </div>
               {/* Technical details intentionally hidden for end-users */}

@@ -93,7 +93,7 @@ export default async function SingleBlogPage({ params }: Props) {
                   Reload
                 </a>
                 <a className="btn btn-primary" href="/courses">
-                  Return to Courses
+                  Return to Blogs
                 </a>
               </div>
             </div>
