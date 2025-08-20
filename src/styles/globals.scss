@@ -11,6 +11,32 @@
 
 @use "tailwindcss";
 
+// Global responsive improvements
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Ensure proper touch targets on mobile
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  
+  @media (min-width: 640px) {
+    min-height: auto;
+    min-width: auto;
+  }
+}
+
+// Improve focus visibility
+*:focus-visible {
+  outline: 2px solid hsl(var(--p));
+  outline-offset: 2px;
+}
 
 code.mermaid {
   svg {
@@ -75,10 +101,35 @@ article {
   }
   
   h1:first-child {
-    @apply md:font-extrabold xl:text-8xl;
+    @apply text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold;
 
     span {
       @apply bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent;
     }
+  }
+}
+
+// Responsive improvements for prose content
+.prose {
+  @apply max-w-none;
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply scroll-mt-20;
+  }
+  
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  pre {
+    @apply overflow-x-auto;
+  }
+  
+  @media (max-width: 640px) {
+    @apply text-sm;
+    
+    h1 { @apply text-2xl; }
+    h2 { @apply text-xl; }
+    h3 { @apply text-lg; }
   }
 }

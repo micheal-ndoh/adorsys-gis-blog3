@@ -2,7 +2,6 @@
 import "@blog/i18n/boot";
 import { Container } from "@blog/components/container";
 import icon from "@blog/components/icon.svg";
-import { ThemeToggle } from "@blog/components/theme";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
@@ -61,39 +60,43 @@ export function AppNavBar() {
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
   }, [open]);
+  
   return (
     <div className="sticky top-0 z-40 bg-white/10 backdrop-blur-xl border-b border-white/20">
       <Container className="py-0">
-        <nav className="navbar">
-          <div className="navbar-start flex gap-4">
+        <nav className="navbar min-h-16">
+          <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
               href="/"
-              className="group flex flex-row items-center gap-2"
+              className="group flex flex-row items-center gap-1.5 sm:gap-2"
               aria-label="Go to home"
             >
               <Image
                 src={icon}
-                className="w-8 transition-transform duration-200 group-hover:scale-110"
+                className="w-6 sm:w-8 transition-transform duration-200 group-hover:scale-110"
                 alt="logo"
               />
-              <span className="text-xl font-extrabold uppercase text-white/90 transition-colors duration-200 group-hover:text-primary">
+              <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90 transition-colors duration-200 group-hover:text-primary">
                 Learn
               </span>
             </Link>
           </div>
 
-          <div className="navbar-end flex items-center gap-2">
+          <div className="navbar-end flex items-center gap-1.5 sm:gap-2">
             <div ref={dropdownRef} className="relative dropdown">
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}
-                className="btn btn-ghost px-3 py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-2"
+                className="btn btn-ghost px-2 sm:px-3 py-1.5 sm:py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base"
                 aria-haspopup="menu"
                 aria-expanded={open}
+                aria-label={`Current language: ${current === "en" ? "English" : "Français"}`}
               >
-                <span className="uppercase">{current}</span>
+                <span role="img" aria-label={current === "en" ? "English" : "Français"} className="text-lg sm:text-xl">
+                  {current === "en" ? "🇬🇧" : "🇫🇷"}
+                </span>
                 <svg
-                  className="w-4 h-4"
+                  className="w-3.5 sm:w-4 h-3.5 sm:h-4"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -107,7 +110,7 @@ export function AppNavBar() {
               {open && (
                 <ul
                   role="menu"
-                  className="menu dropdown-content mt-2 p-2 shadow bg-base-200 text-base-content rounded-box w-28 z-[100]"
+                  className="menu dropdown-content mt-2 p-2 shadow bg-base-200 text-base-content rounded-box w-24 sm:w-28 z-[100]"
                 >
                   <li>
                     <button
@@ -116,9 +119,9 @@ export function AppNavBar() {
                       onClick={() => setLang("en")}
                       className={`${
                         current === "en" ? "bg-base-300 text-base-content" : ""
-                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2`}
+                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2 text-sm`}
                     >
-                      <span role="img" aria-label="English" className="text-lg">🇬🇧</span>
+                      <span role="img" aria-label="English" className="text-base sm:text-lg">🇬🇧</span>
                       en
                     </button>
                   </li>
@@ -129,16 +132,15 @@ export function AppNavBar() {
                       onClick={() => setLang("fr")}
                       className={`${
                         current === "fr" ? "bg-base-300 text-base-content" : ""
-                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2`}
+                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2 text-sm`}
                     >
-                      <span role="img" aria-label="Français" className="text-lg">🇫🇷</span>
+                      <span role="img" aria-label="Français" className="text-base sm:text-lg">🇫🇷</span>
                       fr
                     </button>
                   </li>
                 </ul>
               )}
             </div>
-            <ThemeToggle />
           </div>
         </nav>
       </Container>

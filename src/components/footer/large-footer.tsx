@@ -11,37 +11,69 @@ export default function LargeFooter() {
   return (
     <div className="bg-base-300">
       <Container>
-        <footer className="footer sm:footer-horizontal sm:p-10">
-          <aside>
+        <footer className="footer py-8 sm:py-10 sm:footer-horizontal">
+          <aside className="text-center sm:text-left">
             <Image
               src={icon}
-              className="fill-current w-24 h-24"
+              className="fill-current w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto sm:mx-0"
               alt={t("footer.logo") ?? "logo"}
             />
 
-            <p>
+            <p className="text-sm sm:text-base mt-2">
               {t("footer.copyright", { year: new Date().getFullYear() })}
               <br />
               {t("footer.rights")}
             </p>
           </aside>
-          <nav>
-            <h6 className="footer-title">{t("footer.company")}</h6>
-            <Link href="/res/faq" className="link link-hover">
-              {t("footer.faq")}
-            </Link>
-            <Link href="/res/contact" className="link link-hover">
-              {t("footer.contact")}
-            </Link>
+          
+          {/* Mobile: COMPANY and LEGAL on same line */}
+          <div className="flex flex-row justify-center md:hidden gap-8">
+            <nav className="text-center">
+              <h6 className="footer-title text-base">{t("footer.company")}</h6>
+              <div className="flex flex-col gap-1">
+                <Link href="/res/faq" className="link link-hover text-sm">
+                  {t("footer.faq")}
+                </Link>
+                <Link href="/res/contact" className="link link-hover text-sm">
+                  {t("footer.contact")}
+                </Link>
+              </div>
+            </nav>
+            <nav className="text-center">
+              <h6 className="footer-title text-base">{t("footer.legal")}</h6>
+              <div className="flex flex-col gap-1">
+                <Link href="/res/tos" className="link link-hover text-sm">
+                  {t("footer.terms")}
+                </Link>
+                <Link href="/res/privacy" className="link link-hover text-sm">
+                  {t("footer.privacy")}
+                </Link>
+              </div>
+            </nav>
+          </div>
+
+          {/* Desktop: Original horizontal layout */}
+          <nav className="hidden md:block text-center sm:text-left">
+            <h6 className="footer-title text-base sm:text-lg">{t("footer.company")}</h6>
+            <div className="flex flex-col gap-1">
+              <Link href="/res/faq" className="link link-hover text-sm sm:text-base">
+                {t("footer.faq")}
+              </Link>
+              <Link href="/res/contact" className="link link-hover text-sm sm:text-base">
+                {t("footer.contact")}
+              </Link>
+            </div>
           </nav>
-          <nav>
-            <h6 className="footer-title">{t("footer.legal")}</h6>
-            <Link href="/res/tos" className="link link-hover">
-              {t("footer.terms")}
-            </Link>
-            <Link href="/res/privacy" className="link link-hover">
-              {t("footer.privacy")}
-            </Link>
+          <nav className="hidden md:block text-center sm:text-left">
+            <h6 className="footer-title text-base sm:text-lg">{t("footer.legal")}</h6>
+            <div className="flex flex-col gap-1">
+              <Link href="/res/tos" className="link link-hover text-sm sm:text-base">
+                {t("footer.terms")}
+              </Link>
+              <Link href="/res/privacy" className="link link-hover text-sm sm:text-base">
+                {t("footer.privacy")}
+              </Link>
+            </div>
           </nav>
         </footer>
       </Container>
