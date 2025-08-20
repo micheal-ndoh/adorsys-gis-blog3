@@ -35,7 +35,7 @@ export function AboutSection() {
             </motion.h3>
 
             <motion.p
-              className="text-lg md:text-xl text-white/70 leading-8"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -47,7 +47,7 @@ export function AboutSection() {
             </motion.p>
 
             <motion.p
-              className="text-lg md:text-xl text-white/70 leading-8"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
