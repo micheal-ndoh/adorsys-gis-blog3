@@ -10,6 +10,9 @@ interface MermaidRendererProps {
 export function MermaidRenderer({ children }: MermaidRendererProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Add immediate console log to verify component is rendered
+  console.log("🚀 MermaidRenderer: Component is being rendered!");
+
   useEffect(() => {
     console.log("🔍 MermaidRenderer: Component mounted, initializing...");
     
@@ -78,7 +81,7 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
               const diagramDiv = document.createElement("div");
               diagramDiv.className = "mermaid-diagram my-6 text-center";
               diagramDiv.id = id;
-              diagramDiv.style.cssText = "display: block !important; visibility: visible !important; border: 2px solid red !important; padding: 1rem !important; margin: 1rem 0 !important;";
+              diagramDiv.style.cssText = "display: block !important; visibility: visible !important; border: 3px solid #00ff00 !important; padding: 1rem !important; margin: 1rem 0 !important; background: #1f2937 !important;";
               
               // Insert the diagram div after the pre element
               if (pre.parentNode) {
@@ -89,10 +92,10 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
                 diagramDiv.innerHTML = svg;
                 
                 // Add some debugging text
-                diagramDiv.innerHTML += `<div style="color: red; font-size: 12px; margin-top: 8px;">Debug: Mermaid diagram ${mermaidCount} rendered successfully</div>`;
+                diagramDiv.innerHTML += `<div style="color: #00ff00; font-size: 14px; margin-top: 8px; font-weight: bold;">✅ Mermaid diagram ${mermaidCount} rendered successfully</div>`;
                 
-                // Hide the original code block
-                pre.classList.add("hidden");
+                // DON'T hide the original code block for now - let's see both
+                // pre.classList.add("hidden");
                 
                 console.log(`✅ MermaidRenderer: Successfully rendered Mermaid diagram ${mermaidCount}`);
                 console.log(`🔍 MermaidRenderer: Diagram div inserted:`, diagramDiv);
@@ -124,6 +127,30 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
     // Use multiple attempts to ensure content is loaded
     const attemptRender = () => {
       console.log("🔄 MermaidRenderer: Attempting to render diagrams...");
+      
+      // Test Mermaid with a simple diagram first
+      const testMermaid = async () => {
+        try {
+          const testId = `test-mermaid-${Date.now()}`;
+          const testDiv = document.createElement("div");
+          testDiv.id = testId;
+          testDiv.style.cssText = "border: 2px solid blue !important; padding: 10px !important; margin: 10px 0 !important; background: yellow !important;";
+          testDiv.innerHTML = "Testing Mermaid...";
+          
+          if (containerRef.current) {
+            containerRef.current.insertBefore(testDiv, containerRef.current.firstChild);
+            
+            const { svg } = await mermaid.render(testId, "graph TD\nA[Test] --> B[Success]");
+            testDiv.innerHTML = svg + "<div style='color: blue; font-weight: bold;'>Mermaid Test Diagram</div>";
+            console.log("✅ MermaidRenderer: Test diagram rendered successfully");
+          }
+        } catch (error) {
+          console.error("❌ MermaidRenderer: Test diagram failed:", error);
+        }
+      };
+      
+      testMermaid();
+      
       setTimeout(renderMermaidDiagrams, 100);
       setTimeout(renderMermaidDiagrams, 500);
       setTimeout(renderMermaidDiagrams, 1000);
@@ -135,6 +162,17 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
 
   return (
     <div ref={containerRef}>
+      {/* Add a visible test element to verify component is rendered */}
+      <div style={{ 
+        background: 'red', 
+        color: 'white', 
+        padding: '10px', 
+        margin: '10px 0', 
+        border: '2px solid yellow',
+        display: 'block !important'
+      }}>
+        🚀 MermaidRenderer Component is Active! Check console for logs.
+      </div>
       {children}
       {/* Debug element to verify component is rendered */}
       <div style={{ display: 'none' }} id="mermaid-renderer-debug">
