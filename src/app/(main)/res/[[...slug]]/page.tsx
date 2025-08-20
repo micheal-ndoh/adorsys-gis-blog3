@@ -47,7 +47,7 @@ export default async function ResourcePage({ params }: Props) {
   if (slugStr === 'about') {
     return (
       <Container>
-        <div className='mx-auto mt-8 sm:mt-10 max-w-6xl'>
+        <div className='mx-auto mt-8 sm:mt-10 max-w-6xl pb-24 sm:pb-28'>
           {/* Title */}
           <header className='text-center mb-10 sm:mb-12'>
             <h1 className='text-4xl sm:text-5xl font-extrabold'>About Adorsys GIS Blog</h1>
@@ -73,7 +73,7 @@ export default async function ResourcePage({ params }: Props) {
           </section>
 
           {/* Our Mission */}
-          <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center'>
+          <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16'>
             <div className='order-2 md:order-1'>
               <FramedImage />
             </div>
