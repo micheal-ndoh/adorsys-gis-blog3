@@ -144,7 +144,6 @@ export default function SearchPage() {
                     lang={lang}
                     tags={tags}
                     slide1Html={previews?.firstHtml}
-                    slide2Html={previews?.secondHtml}
                   />
                 )
               )}
