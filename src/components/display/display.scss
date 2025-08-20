@@ -2,3 +2,82 @@
 @use 'reveal.js/dist/reveal';
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
+
+// Justify all slide content with uniform margins
+.reveal .slides section {
+  text-align: justify !important;
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section blockquote {
+  text-align: justify !important;
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+// Justify lists with bullets close to text and uniform margins
+.reveal .slides section ul,
+.reveal .slides section ol {
+  text-align: justify !important;
+  list-style-position: inside !important;
+  display: inline-block !important;
+  margin: 0 2rem !important;
+  padding: 0 !important;
+}
+
+.reveal .slides section li {
+  text-align: justify !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+// Justify code blocks with uniform margins
+.reveal .slides section pre,
+.reveal .slides section code {
+  text-align: left !important;
+  margin: 0 2rem !important;
+}
+
+// Apply same styling to course.md content (prose content)
+.prose {
+  text-align: justify !important;
+  margin-left: 3rem !important;
+  margin-right: 3rem !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose blockquote {
+  text-align: justify !important;
+  margin-left: 3rem !important;
+  margin-right: 3rem !important;
+}
+
+.prose ul,
+.prose ol {
+  text-align: justify !important;
+  list-style-position: inside !important;
+  margin: 0 3rem !important;
+  padding: 0 !important;
+}
+
+.prose li {
+  text-align: justify !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}

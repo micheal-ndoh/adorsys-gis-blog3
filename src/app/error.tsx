@@ -93,6 +93,7 @@ export default function ErrorPage({
               <ArrowLeft className="mr-2 h-4 w-4" /> {t("errors.back")}
             </button>
             <Link className="btn btn-ghost" href="/courses">
+              Go to blogs
               <Home className="mr-2 h-4 w-4" /> {t("errors.returnCourses")}
             </Link>
           </div>

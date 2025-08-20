@@ -58,13 +58,38 @@ export default function Display({ data }: DisplayProps) {
   }, []);
   
   return (
-    <div className='display'>
-      <div className='reveal' ref={deckDivRef}>
-        <div
-          className='slides'
-          dangerouslySetInnerHTML={{ __html: htmlContent(data) }}
-        />
+    <>
+      <style jsx global>{`
+        .reveal .slides section ul,
+        .reveal .slides section ol {
+          text-align: center !important;
+          list-style-position: inside !important;
+          display: inline-block !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        
+        .reveal .slides section li {
+          text-align: left !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          text-indent: 0 !important;
+        }
+        
+        .reveal .slides section ul li::marker,
+        .reveal .slides section ol li::marker {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+      `}</style>
+      <div className='display'>
+        <div className='reveal' ref={deckDivRef}>
+          <div
+            className='slides'
+            dangerouslySetInnerHTML={{ __html: htmlContent(data) }}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
