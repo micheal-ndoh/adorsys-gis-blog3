@@ -76,7 +76,7 @@ export function AppNavBar() {
                 alt="logo"
               />
               <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90">
-                Knowledge Hub
+                Adorsys GIS Blog
               </span>
             </div>
           </div>
