@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
-import { CoursesLink } from "./CoursesLink";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -46,8 +46,26 @@ export default async function SingleBlogPage({ params }: Props) {
     const { course, slides } = await loadBlog(blog_slug);
     return (
       <Container>
-        <div className="mb-4 flex justify-end">
-          <CoursesLink />
+        <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
+          <Link
+            href="/b"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+            aria-label="Back to blogs"
+          >
+            <svg
+              className="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to blogs
+          </Link>
         </div>
         {slides && <Display data={slides.content} />}
 
