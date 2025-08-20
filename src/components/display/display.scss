@@ -19,25 +19,26 @@
   text-align: center !important;
 }
 
-// Center-align lists
+// Center lists with bullets close to text
 .reveal .slides section ul,
 .reveal .slides section ol {
   text-align: center !important;
-  list-style-position: outside !important;
+  list-style-position: inside !important;
+  display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .reveal .slides section li {
-  text-align: center !important;
-  margin: 0.1em 0 !important;
+  text-align: left !important;
+  margin: 0 !important;
   padding: 0 !important;
   text-indent: 0 !important;
 }
 
-// Center-align code blocks
+// Center code blocks
 .reveal .slides section pre,
 .reveal .slides section code {
-  text-align: center !important;
+  text-align: left !important;
   margin: 0 auto;
 }
