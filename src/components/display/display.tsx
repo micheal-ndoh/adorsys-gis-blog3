@@ -41,7 +41,31 @@ export default function Display({ data }: DisplayProps) {
       .initialize()
       .then(() => {
         console.log('Deck initialized');
-        // good place for event handlers and plugin setups
+        // Force apply our CSS after Reveal.js initializes
+        setTimeout(() => {
+          const slides = document.querySelectorAll('.reveal .slides section[data-markdown] h1, .reveal .slides section[data-markdown] h2, .reveal .slides section[data-markdown] h3');
+          slides.forEach(slide => {
+            if (slide instanceof HTMLElement) {
+              slide.style.wordSpacing = 'normal';
+              slide.style.letterSpacing = 'normal';
+              slide.style.whiteSpace = 'normal';
+              slide.style.textAlign = 'center';
+              slide.style.display = 'block';
+              slide.style.width = '100%';
+              slide.style.maxWidth = '100%';
+              slide.style.lineHeight = '1.4';
+              slide.style.margin = '0.5rem 0';
+              slide.style.padding = '0';
+              slide.style.overflowWrap = 'normal';
+              slide.style.wordBreak = 'normal';
+              slide.style.hyphens = 'none';
+              slide.style.columnSpan = 'all';
+              slide.style.breakInside = 'avoid';
+              slide.style.float = 'none';
+              slide.style.clear = 'both';
+            }
+          });
+        }, 100);
       })
       .catch(console.log);
 
@@ -118,6 +142,49 @@ export default function Display({ data }: DisplayProps) {
           margin: 0 !important;
           padding: 0 !important;
           text-indent: 0 !important;
+        }
+        
+        /* Maximum specificity overrides */
+        html body .reveal .slides section[data-markdown] h1,
+        html body .reveal .slides section[data-markdown] h2,
+        html body .reveal .slides section[data-markdown] h3,
+        html body .reveal .slides section[data-markdown] h4,
+        html body .reveal .slides section[data-markdown] h5,
+        html body .reveal .slides section[data-markdown] h6 {
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          white-space: normal !important;
+          text-align: center !important;
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          line-height: 1.4 !important;
+          margin: 0.5rem 0 !important;
+          padding: 0 !important;
+          overflow-wrap: normal !important;
+          word-break: normal !important;
+          hyphens: none !important;
+          column-span: all !important;
+          break-inside: avoid !important;
+          float: none !important;
+          clear: both !important;
+        }
+        
+        html body .reveal .slides section[data-markdown] h1 *,
+        html body .reveal .slides section[data-markdown] h2 *,
+        html body .reveal .slides section[data-markdown] h3 *,
+        html body .reveal .slides section[data-markdown] h4 *,
+        html body .reveal .slides section[data-markdown] h5 *,
+        html body .reveal .slides section[data-markdown] h6 * {
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          white-space: normal !important;
+          display: inline !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          text-indent: 0 !important;
+          float: none !important;
+          clear: none !important;
         }
         
         .reveal .slides section[data-markdown] h1 br,
