@@ -100,6 +100,26 @@ export default function Display({ data }: DisplayProps) {
           display: block !important;
         }
         
+        /* Ultra-aggressive word spacing fixes */
+        .reveal .slides section[data-markdown] *,
+        .reveal .slides section[data-markdown] h1 *,
+        .reveal .slides section[data-markdown] h2 *,
+        .reveal .slides section[data-markdown] h3 *,
+        .reveal .slides section[data-markdown] h4 *,
+        .reveal .slides section[data-markdown] h5 *,
+        .reveal .slides section[data-markdown] h6 * {
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          white-space: normal !important;
+          text-align: inherit !important;
+          display: inline !important;
+          float: none !important;
+          clear: none !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          text-indent: 0 !important;
+        }
+        
         .reveal .slides section[data-markdown] h1 br,
         .reveal .slides section[data-markdown] h2 br,
         .reveal .slides section[data-markdown] h3 br,

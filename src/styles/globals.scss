@@ -250,6 +250,52 @@ article {
   flex-direction: column !important;
 }
 
+// ===== ULTRA-AGGRESSIVE WORD SPACING FIXES =====
+
+// Force normal word spacing on ALL slide content
+.reveal .slides section *,
+.reveal .slides section[data-markdown] *,
+.reveal .slides section[data-markdown] h1 *,
+.reveal .slides section[data-markdown] h2 *,
+.reveal .slides section[data-markdown] h3 *,
+.reveal .slides section[data-markdown] h4 *,
+.reveal .slides section[data-markdown] h5 *,
+.reveal .slides section[data-markdown] h6 * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: inherit !important;
+  display: inline !important;
+  float: none !important;
+  clear: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+// Specific fix for titles like "Introduction to LPIC-1"
+.reveal .slides section[data-markdown] h1,
+.reveal .slides section[data-markdown] h2,
+.reveal .slides section[data-markdown] h3 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 0.5rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
 // Force text to flow naturally without excessive spacing
 .reveal .slides section {
   text-align: justify !important;
