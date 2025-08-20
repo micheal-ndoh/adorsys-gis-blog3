@@ -10,7 +10,7 @@ import { GitHub, Linkedin, Send, Youtube } from "react-feather";
 export default function LargeFooter() {
   const { t } = useTranslation();
   return (
-    <div className="bg-black/40 border-t border-white/10 backdrop-blur-sm">
+    <div className="bg-black/60 border-t border-white/10">
       <Container>
         <footer className="footer py-8 sm:py-10 sm:footer-horizontal text-white/85">
           <aside className="text-center sm:text-left">
