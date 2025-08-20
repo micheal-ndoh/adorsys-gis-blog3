@@ -19,6 +19,9 @@ export async function generateStaticParams() {
     {
       slug: 'privacy',
     },
+    {
+      slug: 'about',
+    },
   ];
 }
 
@@ -45,7 +48,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function ResourcePage({ params }: Props) {
   const { slug } = await params;
   if (!slug) {
-    return redirect('/');
+    return redirect('/courses');
   }
 
   const content = await loadRes(slug);
