@@ -29,7 +29,7 @@ export function AboutSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              Discover Excellence Together
+              Learn Smarter. Build Faster.
             </motion.h3>
 
             <motion.p
@@ -39,10 +39,10 @@ export function AboutSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              We are a community of passionate learners and builders. Whether you are
-              just getting started or leveling up your craft, our platform brings
-              people together to share knowledge, collaborate on ideas, and create
-              extraordinary results.
+              Knowledge Hub is a curated learning space where high‑quality articles,
+              hands‑on courses, and beautiful slide decks meet a blazing‑fast search.
+              We distill complex topics into practical, bite‑size lessons you can
+              apply immediately—without the noise.
             </motion.p>
 
             <motion.p
@@ -52,8 +52,10 @@ export function AboutSection() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              Join us to discover inspiring stories, learn from experts, and find a
-              supportive network that helps you grow.
+              From Docker and Terraform to JavaScript, Rust, and beyond, explore
+              focused content with clear examples and real‑world context. Save what
+              matters, track your progress, and return anytime—your learning journey
+              continues exactly where you left off.
             </motion.p>
           </div>
 
