@@ -9,13 +9,21 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export function AppNavBar() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const current = i18n.language?.startsWith("fr") ? "fr" : "en";
+
+  // Safety check for i18n initialization
+  const current = i18n?.language?.startsWith("fr") ? "fr" : "en";
+
+  // Safety check for translation function
+  if (!t) {
+    console.warn("Translation function not available");
+    return null;
+  }
 
   const buildCoursesUrl = useCallback(
     (lng: "en" | "fr") => {
@@ -27,8 +35,8 @@ export function AppNavBar() {
         const qs = params.toString();
         return qs ? `${pathname}?${qs}` : pathname;
       }
-      // When not on courses, do not redirect anywhere; just stay on the same page
-      return null;
+      // When not on courses, redirect to courses with appropriate language
+      return lng === "en" ? "/courses" : `/courses?lang=${lng}`;
     },
     [pathname, searchParams]
   );
@@ -60,43 +68,42 @@ export function AppNavBar() {
     document.addEventListener("mousedown", onDocClick);
     return () => document.removeEventListener("mousedown", onDocClick);
   }, [open]);
-  
+
   return (
     <div className="sticky top-0 z-40 bg-white/10 backdrop-blur-xl border-b border-white/20">
       <Container className="py-0">
         <nav className="navbar min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
-            <div
-              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-default"
+            <Link
+              href={buildCoursesUrl(current)}
+              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
-              <Image
-                src={icon}
-                className="w-6 sm:w-8"
-                alt="logo"
-              />
+              <Image src={icon} className="w-6 sm:w-8" alt="logo" />
               <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90">
-                Adorsys GIS Blog
+                {t("nav.brand")}
               </span>
-            </div>
+            </Link>
           </div>
 
           <div className="navbar-end flex items-center gap-3 sm:gap-4">
             <Link
-              href="/courses"
-              className="text-primary hover:font-extrabold transition-colors px-1"
+              href={buildCoursesUrl(current)}
+              className="text-primary hover:font-bold transition-all duration-200"
             >
-              {i18n.language?.startsWith("fr") ? "Cours" : "Courses"}
+              {t("nav.courses")}
             </Link>
             <Link
-              href="/res/about"
-              className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+              href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
+              className="text-white/80 hover:text-white hover:font-bold transition-all duration-200"
             >
-              {i18n.language?.startsWith("fr") ? "À propos" : "About"}
+              {t("nav.about")}
             </Link>
             <div
               ref={dropdownRef}
-              className={`relative dropdown dropdown-end ${open ? "dropdown-open" : ""}`}
+              className={`relative dropdown dropdown-end ${
+                open ? "dropdown-open" : ""
+              }`}
             >
               <div
                 role="button"
@@ -104,9 +111,15 @@ export function AppNavBar() {
                 className="inline-flex items-center gap-1.5 sm:gap-2 text-white/80 hover:text-white hover:font-extrabold px-1 select-none cursor-pointer"
                 aria-haspopup="menu"
                 aria-expanded={open}
-                aria-label={`Current language: ${current === "en" ? "English" : "Français"}`}
+                aria-label={`Current language: ${
+                  current === "en" ? "English" : "Français"
+                }`}
               >
-                <span role="img" aria-label={current === "en" ? "English" : "Français"} className="text-lg sm:text-xl">
+                <span
+                  role="img"
+                  aria-label={current === "en" ? "English" : "Français"}
+                  className="text-lg sm:text-xl"
+                >
                   {current === "en" ? "🇬🇧" : "🇫🇷"}
                 </span>
                 <svg
@@ -135,7 +148,13 @@ export function AppNavBar() {
                         current === "en" ? "bg-base-300 text-base-content" : ""
                       } normal-case text-base-content hover:bg-base-300 flex items-center gap-2 text-sm`}
                     >
-                      <span role="img" aria-label="English" className="text-base sm:text-lg">🇬🇧</span>
+                      <span
+                        role="img"
+                        aria-label="English"
+                        className="text-base sm:text-lg"
+                      >
+                        🇬🇧
+                      </span>
                       en
                     </button>
                   </li>
@@ -148,7 +167,13 @@ export function AppNavBar() {
                         current === "fr" ? "bg-base-300 text-base-content" : ""
                       } normal-case text-base-content hover:bg-base-300 flex items-center gap-2 text-sm`}
                     >
-                      <span role="img" aria-label="Français" className="text-base sm:text-lg">🇫🇷</span>
+                      <span
+                        role="img"
+                        aria-label="Français"
+                        className="text-base sm:text-lg"
+                      >
+                        🇫🇷
+                      </span>
                       fr
                     </button>
                   </li>
