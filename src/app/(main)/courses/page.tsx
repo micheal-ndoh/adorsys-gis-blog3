@@ -5,6 +5,8 @@ import { Container } from "@blog/components/container";
 import { CourseCard } from "@blog/components/course";
 import { Pagination } from "@blog/components/pagination";
 import { getSlidePreviewHtmls } from "@blog/server/blog/slide-preview";
+import { CoursesHeader } from "./CoursesHeader";
+import { CoursesSearch } from "./CoursesSearch";
 import * as fs from "fs-extra";
 import * as path from "node:path";
 
@@ -108,35 +110,41 @@ export default async function CoursesPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="bg-black">
-      <Container>
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {pageItems.map(
-            ({ slug, title, description, lang, previews, tags, date }) => (
-              <CourseCard
-                key={slug}
-                slug={slug}
-                title={title}
-                description={description}
-                lang={lang}
-                slide1Html={(previews as any)?.firstHtml}
-                tags={tags as any}
-                date={date as any}
-              />
-            )
-          )}
-        </div>
-        {pageCount > 1 && (
-          <div className="mt-8 sm:mt-10 flex items-center justify-center">
-            <Pagination
-              currentPage={current}
-              totalPages={pageCount}
-              baseUrl={"/courses"}
-              maxVisiblePages={5}
-            />
+    <div className="relative min-h-screen bg-black">
+      {/* Foreground wrapper */}
+      <div className="relative overflow-hidden">
+        <Container className="pb-24 sm:pb-32 max-w-6xl">
+          <div className="mb-6 space-y-4">
+            <CoursesHeader total={total} />
           </div>
-        )}
-      </Container>
+          <CoursesSearch>
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {pageItems.map(({ slug, title, description, lang, previews, tags, date }) => (
+                <CourseCard
+                  key={slug}
+                  slug={slug}
+                  title={title}
+                  description={description}
+                  lang={lang}
+                  slide1Html={(previews as any)?.firstHtml}
+                  tags={tags}
+                  date={date}
+                />
+              ))}
+            </div>
+            {pageCount > 1 && (
+              <div className="mt-8 sm:mt-10 flex items-center justify-center">
+                <Pagination
+                  currentPage={current}
+                  totalPages={pageCount}
+                  baseUrl={"/courses"}
+                  maxVisiblePages={5}
+                />
+              </div>
+            )}
+          </CoursesSearch>
+        </Container>
+      </div>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export function CourseCard({
   return (
     <Link
       href={`/b/${slug}`}
-      className="relative overflow-hidden rounded-2xl border border-neutral-800 bg-black"
+      className='group relative overflow-hidden rounded-2xl border border-base-300/30 bg-base-200/60 ring-1 ring-white/5 transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transform-gpu hover:-translate-y-0.5'
       aria-label={`Open course ${title}`}
     >
       <motion.div
@@ -55,58 +55,57 @@ export function CourseCard({
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
       >
-        {/* minimal, no overlays */}
+        {/* Grid background overlay */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.25]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+        {/* Glow */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-56 w-56 rounded-full bg-primary/10 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-secondary/10 blur-2xl" />
 
         {hasSlides ? (
-          <div className="relative w-full overflow-hidden bg-black">
-            <div className="relative aspect-[16/9] sm:aspect-[16/8] md:h-48 lg:h-56 xl:h-64">
-              <div className="slide-preview absolute inset-0">
-                <div className="slide-preview-inner p-2 sm:p-3 md:p-4">
-                  <div
-                    className="prose prose-invert"
-                    dangerouslySetInnerHTML={{ __html: slide1Html as string }}
-                  />
+          <div className='relative w-full overflow-hidden bg-base-200/80'>
+            <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-36 lg:h-40 xl:h-44'>
+              <div className='slide-preview absolute inset-0 transition-opacity duration-500 ease-out group-hover:opacity-0'>
+                <div className='slide-preview-inner p-2 sm:p-2.5 md:p-3'>
+                  <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html as string }} />
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="relative w-full overflow-hidden bg-black">
-            <div className="relative aspect-[16/9] sm:aspect-[16/8] md:h-48 lg:h-56 xl:h-64">
-              <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-                <span className="text-neutral-400 text-sm">
-                  Slides not available yet
-                </span>
-              </div>
+          <div className='relative w-full overflow-hidden bg-base-200/80'>
+            <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-36 lg:h-40 xl:h-44'>
+              <div className='absolute inset-0 bg-gradient-to-br from-primary/10 via-base-200 to-accent/10' />
             </div>
           </div>
         )}
 
-        <div className="relative p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
-          <h3 className="mb-2 text-lg sm:text-xl font-semibold text-white">
-            {title}
-          </h3>
+        <div className='relative p-3 sm:p-4 md:p-4 lg:p-5'>
+          <h3 className='mb-1.5 text-base sm:text-lg font-semibold'>{title}</h3>
           {formattedDate && (
-            <div className="text-xs text-neutral-400 mb-2">{formattedDate}</div>
+            <div className="text-xs text-neutral-400 mb-1.5">{formattedDate}</div>
           )}
           {computedDescription && (
-            <p className="mb-3 sm:mb-4 line-clamp-3 text-sm text-neutral-300">
-              {computedDescription}
-            </p>
+            <p className='mb-2 sm:mb-3 line-clamp-3 text-xs sm:text-sm opacity-80'>{computedDescription}</p>
           )}
           {tags && tags.length > 0 && (
-            <div className="mb-3 sm:mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+            <div className='mb-2 sm:mb-3 flex flex-wrap gap-1.5 sm:gap-2'>
               {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-0.5 border border-neutral-700 text-neutral-300 rounded text-xs"
-                >
+                <span key={tag} className='badge badge-outline badge-sm text-[10px]'>
                   {tag}
                 </span>
               ))}
             </div>
           )}
-          {/* No open button */}
+          <span className='absolute bottom-3 right-3 z-10 btn btn-primary btn-xs sm:btn-sm rounded-full shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>
+            {t("common.open")}
+          </span>
         </div>
       </motion.div>
     </Link>
