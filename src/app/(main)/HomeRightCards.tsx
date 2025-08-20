@@ -38,7 +38,7 @@ export function HomeRightCards() {
               <span className="w-3 h-3 rounded-full bg-gradient-to-r from-[#10b981] to-[#34d399] shadow-lg shadow-green-500/50 animate-pulse" />
               <span className="text-sm font-semibold">{t("home.stats.liveSession")}</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
+            <div className="text-2xl sm:text-3xl font-bold text-white mb-2">image.png
               <span className="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
                 {t("home.stats.count")}
               </span>

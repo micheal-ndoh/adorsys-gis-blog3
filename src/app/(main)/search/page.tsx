@@ -60,12 +60,12 @@ export default function SearchPage() {
             <div className="relative">
               <button
                 type="button"
-                className="hidden sm:flex items-center gap-1 rounded-full px-2 sm:px-3 py-1 text-white/85 hover:bg-white/10 text-sm"
+                className="flex items-center gap-1 rounded-full px-2 sm:px-3 py-1 text-white/85 hover:bg-white/10 text-xs sm:text-sm"
                 aria-label={t("search.showTags")}
                 title={t("search.showTags")}
                 onClick={() => setShowTags((s) => !s)}
               >
-                <span>{t("search.filterLabel")}</span>
+                <span className="hidden xs:inline sm:inline">{t("search.filterLabel")}</span>
                 <ChevronDown size={16} />
               </button>
               {showTags && (
