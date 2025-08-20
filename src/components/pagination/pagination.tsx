@@ -120,19 +120,12 @@ export function Pagination({
                 ? t("Current Page {{page}}", { page })
                 : t("Go to Page {{page}}", { page })
             }
-            className={`group particle-deconstruct relative rounded-xl border px-1.5 py-1.5 font-medium text-xs backdrop-blur-md transition-all duration-300 hover:scale-105 sm:px-2 sm:py-2 md:px-3 md:py-2.5 lg:px-4 sm:text-sm ${
+            className={`group particle-deconstruct relative rounded-full border px-1.5 py-1.5 font-medium text-xs transition-all duration-300 sm:px-2 sm:py-2 md:px-3 md:py-2 lg:px-3.5 lg:py-2 ${
               page === currentPage
-                ? "border-primary/40 bg-gradient-to-r from-primary/30 to-secondary/30 text-base-content shadow-lg shadow-primary/20 hover:border-primary/60 hover:from-primary/40 hover:to-secondary/40 hover:shadow-primary/30 hover:shadow-xl"
-                : "border-transparent text-neutral-400 hover:border-white/20 hover:bg-white/10 hover:text-base-content"
+                ? "border-primary/60 bg-primary text-primary-content shadow-lg shadow-primary/30 hover:border-primary/70 hover:bg-primary/90"
+                : "border-white/10 text-white/70 hover:border-primary/40 hover:bg-primary/20 hover:text-white"
             }`}
           >
-            <div
-              className={`absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${
-                page === currentPage
-                  ? "bg-gradient-to-r from-primary/20 to-secondary/20"
-                  : "bg-gradient-to-r from-primary/10 to-secondary/10"
-              }`}
-            />
             <span className="relative z-10">{page}</span>
           </Link>
         ))}
