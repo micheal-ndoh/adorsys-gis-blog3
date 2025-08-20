@@ -67,7 +67,7 @@ export default function Display({ data }: DisplayProps) {
           });
           
           // Also fix prose content titles (general blog content)
-          const proseTitles = document.querySelectorAll('.prose h1, .prose.prose-neutral h1, .prose.prose-invert h1');
+          const proseTitles = document.querySelectorAll('.prose h1, .prose.prose-neutral h1, .prose.prose-invert h1, article.prose h1, article.prose.prose-neutral h1, article.prose.prose-neutral.lg\\:prose-xl h1');
           proseTitles.forEach(title => {
             if (title instanceof HTMLElement) {
               title.style.wordSpacing = 'normal';
@@ -108,7 +108,7 @@ export default function Display({ data }: DisplayProps) {
   // Additional useEffect to fix prose content immediately when component mounts
   useEffect(() => {
     const fixProseContent = () => {
-      const proseTitles = document.querySelectorAll('.prose h1, .prose.prose-neutral h1, .prose.prose-invert h1');
+      const proseTitles = document.querySelectorAll('.prose h1, .prose.prose-neutral h1, .prose.prose-invert h1, article.prose h1, article.prose.prose-neutral h1, article.prose.prose-neutral.lg\\:prose-xl h1');
       proseTitles.forEach(title => {
         if (title instanceof HTMLElement) {
           title.style.wordSpacing = 'normal';

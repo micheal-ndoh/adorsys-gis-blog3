@@ -353,6 +353,58 @@ html body .prose.prose-invert h1 {
   clear: both !important;
 }
 
+// Ultra-specific targeting for the exact classes used in the blog page
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h1,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h2,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h3,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h4,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h5,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h6 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Target the specific article element
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h1,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h2,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h3,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h4,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h5,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h6 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
 // Target prose content child elements
 html body .prose h1 *,
 html body .prose.prose-neutral h1 *,

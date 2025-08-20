@@ -4,6 +4,7 @@ import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
 import Link from "next/link";
+import ProseFixer from "@blog/components/display/ProseFixer";
 
 export const dynamic = "force-dynamic";
 
@@ -46,6 +47,7 @@ export default async function SingleBlogPage({ params }: Props) {
     const { course, slides } = await loadBlog(blog_slug);
     return (
       <Container>
+        <ProseFixer />
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
           <Link
             href="/b"
