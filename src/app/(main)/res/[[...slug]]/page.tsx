@@ -110,14 +110,14 @@ export default async function ResourcePage({ params }: Props) {
 // Image block with layered rounded frames (no overlapping image), plus a subtle glass card at bottom
 function FramedImage() {
   return (
-    <div className='relative h-64 sm:h-72 lg:h-80'>
+    <div className='relative h-72 sm:h-80 lg:h-96'>
       {/* back frames */}
       <div className='absolute inset-0 -translate-x-2 -translate-y-2 rounded-3xl bg-purple-600/20 ring-2 ring-purple-400/40 shadow-[0_10px_30px_rgba(168,85,247,0.25)]' />
       <div className='absolute inset-0 translate-x-2 translate-y-2 rounded-3xl bg-teal-500/20 ring-2 ring-teal-300/40 shadow-[0_10px_30px_rgba(45,212,191,0.25)]' />
 
       {/* main image card */}
       <div className='absolute inset-0 rounded-3xl overflow-hidden border border-white/20 bg-base-200/60'>
-        <Image src='/about.png' alt='About visual' width={1200} height={800} className='w-full h-full object-cover' />
+        <Image src='/about.png' alt='About visual' width={1200} height={800} className='w-full h-full object-cover object-top' />
       </div>
     </div>
   );
