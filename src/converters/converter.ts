@@ -63,16 +63,23 @@ const rehypeMermaidCustom = () => {
         for (const child of node.children) {
           if (
               child.tagName === 'code' &&
-              child.properties.className?.includes('language-mermaid')
+              (child.properties.className?.includes('language-mermaid') ||
+               child.children?.[0]?.value?.includes('graph'))
           ) {
+            // Add mermaid class to the code element
             child.properties.className = twMerge(
                 'mermaid',
                 child.properties.className as string,
             );
+            // Make the pre element transparent
             node.properties.className = twMerge(
                 'bg-transparent',
                 node.properties.className as string,
             );
+            // Add a data attribute to help identify mermaid blocks
+            node.properties['data-mermaid'] = 'true';
+            
+            console.log('Processed Mermaid block:', child.children?.[0]?.value?.substring(0, 100));
           }
         }
       }

@@ -4,6 +4,7 @@ import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
 import { CoursesLink } from "./CoursesLink";
+import { MermaidRenderer } from "@blog/components/mermaid/mermaid-renderer";
 
 export const dynamic = "force-dynamic";
 
@@ -53,7 +54,9 @@ export default async function SingleBlogPage({ params }: Props) {
 
         {course.content && (
           <article className="prose prose-neutral lg:prose-xl mx-auto mt-8">
-            <div dangerouslySetInnerHTML={{ __html: course.content }} />
+            <MermaidRenderer>
+              <div dangerouslySetInnerHTML={{ __html: course.content }} />
+            </MermaidRenderer>
           </article>
         )}
       </Container>

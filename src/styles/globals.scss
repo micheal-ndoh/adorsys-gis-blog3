@@ -44,6 +44,28 @@ code.mermaid {
   }
 }
 
+// Mermaid diagram styles
+.mermaid-diagram {
+  @apply my-6 text-center;
+  
+  svg {
+    @apply max-w-full h-auto mx-auto;
+    max-height: 600px;
+  }
+  
+  // Ensure diagrams are responsive
+  @media (max-width: 768px) {
+    svg {
+      max-height: 400px;
+    }
+  }
+}
+
+// Hide original mermaid code blocks after rendering
+pre.hidden {
+  @apply hidden;
+}
+
 .display {
   section {
     section {
