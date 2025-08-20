@@ -59,7 +59,7 @@ export function CourseCard({
 
         {hasSlides ? (
           <div className="relative w-full overflow-hidden bg-black">
-            <div className="relative aspect-[16/9] sm:aspect-[16/8] md:h-48 lg:h-56 xl:h-64">
+            <div className="relative aspect-square md:h-64 lg:h-72 xl:h-80">
               <div className="slide-preview absolute inset-0">
                 <div className="slide-preview-inner p-2 sm:p-3 md:p-4">
                   <div
@@ -72,7 +72,7 @@ export function CourseCard({
           </div>
         ) : (
           <div className="relative w-full overflow-hidden bg-black">
-            <div className="relative aspect-[16/9] sm:aspect-[16/8] md:h-48 lg:h-56 xl:h-64">
+            <div className="relative aspect-square md:h-64 lg:h-72 xl:h-80">
               <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
                 <span className="text-neutral-400 text-sm">
                   Slides not available yet
