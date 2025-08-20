@@ -17,7 +17,7 @@ export function AboutSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 tracking-tight">
             About Us
           </h2>
-          <div className="mt-2 h-1 w-24 bg-orange-400/80 rounded-full" />
+          <div className="mt-2 w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-1.5 sm:h-2 bg-gradient-to-r from-[#0ea5e9] via-[#8b5cf6] to-[#10b981] rounded-full shadow-lg shadow-blue-500/25" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
