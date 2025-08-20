@@ -66,17 +66,17 @@ export function AboutSection() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="group relative w-full max-w-md md:max-w-lg justify-self-center lg:justify-self-end lg:ml-8 xl:ml-12"
           >
-            <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-slate-600/30 to-slate-800/40 rounded-3xl transform rotate-3 scale-110 shadow-2xl"></div>
-            <div className="absolute -bottom-2 -right-2 w-full h-full bg-gradient-to-br from-indigo-500/25 to-purple-600/35 rounded-3xl transform -rotate-2 scale-108 shadow-xl border border-indigo-400/20"></div>
+            <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-slate-600/30 to-slate-800/40 rounded-3xl transform rotate-3 scale-110 transition-all duration-500 group-hover:rotate-4 group-hover:scale-115 shadow-2xl"></div>
+            <div className="absolute -bottom-2 -right-2 w-full h-full bg-gradient-to-br from-indigo-500/25 to-purple-600/35 rounded-3xl transform -rotate-2 scale-108 transition-all duration-500 group-hover:-rotate-3 group-hover:scale-112 shadow-xl border border-indigo-400/20"></div>
 
-            <div className="relative rounded-3xl overflow-hidden border-2 border-white/30 bg-white/15 backdrop-blur-xl p-3 sm:p-4 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.9)] z-10">
+            <div className="relative rounded-3xl overflow-hidden border-2 border-white/30 bg-white/15 backdrop-blur-xl p-3 sm:p-4 shadow-[0_20px_40px_-12px_rgba(0,0,0,0.9)] transition-all duration-500 transform group-hover:-translate-y-3 hover:-translate-y-3 hover:shadow-[0_30px_60px_-12px_rgba(0,0,0,0.95)] z-10">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
                   src="/about.png"
                   alt="People collaborating happily around a laptop"
                   fill
                   sizes="(min-width:1280px) 520px, (min-width:1024px) 440px, 90vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   priority={false}
                   quality={85}
                 />
