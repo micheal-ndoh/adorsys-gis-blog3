@@ -134,11 +134,15 @@ article {
   }
 }
 
-// Global text justification override
+// Global text justification override with higher specificity
 .reveal .slides section,
 .reveal .slides section *,
 .prose,
-.prose * {
+.prose *,
+.prose.prose-neutral,
+.prose.prose-neutral *,
+.prose.prose-invert,
+.prose.prose-invert * {
   text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
@@ -147,9 +151,74 @@ article {
 
 // Ensure slide preview content is also justified
 .slide-preview .prose,
-.slide-preview .prose * {
+.slide-preview .prose *,
+.slide-preview .prose.prose-invert,
+.slide-preview .prose.prose-invert * {
   text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   white-space: normal !important;
+}
+
+// Override any Tailwind prose text alignment with maximum specificity
+.prose.text-justify,
+.prose.text-justify *,
+.prose.prose-neutral.text-justify,
+.prose.prose-neutral.text-justify *,
+.prose.prose-invert.text-justify,
+.prose.prose-invert.text-justify * {
+  text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Force normal word spacing for all text content
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose *,
+.prose.prose-neutral,
+.prose.prose-neutral *,
+.prose.prose-invert,
+.prose.prose-invert * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-justify: auto !important;
+  text-align-last: auto !important;
+}
+
+// Specific fix for the "Secure Software" spacing issue
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span {
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+
+// Force text to flow naturally without excessive spacing
+.reveal .slides section {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+}
+
+// Ensure prose content is properly justified
+.prose,
+.prose.prose-neutral,
+.prose.prose-invert {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }

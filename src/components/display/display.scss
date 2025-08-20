@@ -93,7 +93,9 @@
 }
 
 // Apply same styling to course.md content (prose content)
-.prose {
+.prose,
+.prose.prose-neutral,
+.prose.prose-invert {
   text-align: justify !important;
   margin-left: 3rem !important;
   margin-right: 3rem !important;
@@ -102,7 +104,9 @@
 }
 
 // Justify ALL text elements in prose content with aggressive overrides
-.prose * {
+.prose *,
+.prose.prose-neutral *,
+.prose.prose-invert * {
   text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
@@ -117,7 +121,27 @@
 .prose p,
 .prose blockquote,
 .prose div,
-.prose span {
+.prose span,
+.prose.prose-neutral h1,
+.prose.prose-neutral h2,
+.prose.prose-neutral h3,
+.prose.prose-neutral h4,
+.prose.prose-neutral h5,
+.prose.prose-neutral h6,
+.prose.prose-neutral p,
+.prose.prose-neutral blockquote,
+.prose.prose-neutral div,
+.prose.prose-neutral span,
+.prose.prose-invert h1,
+.prose.prose-invert h2,
+.prose.prose-invert h3,
+.prose.prose-invert h4,
+.prose.prose-invert h5,
+.prose.prose-invert h6,
+.prose.prose-invert p,
+.prose.prose-invert blockquote,
+.prose.prose-invert div,
+.prose.prose-invert span {
   text-align: justify !important;
   margin-left: 3rem !important;
   margin-right: 3rem !important;
@@ -127,7 +151,11 @@
 }
 
 .prose ul,
-.prose ol {
+.prose ol,
+.prose.prose-neutral ul,
+.prose.prose-neutral ol,
+.prose.prose-invert ul,
+.prose.prose-invert ol {
   text-align: justify !important;
   list-style-position: inside !important;
   margin: 0 3rem !important;
@@ -136,7 +164,9 @@
   letter-spacing: normal !important;
 }
 
-.prose li {
+.prose li,
+.prose.prose-neutral li,
+.prose.prose-invert li {
   text-align: justify !important;
   margin: 0 !important;
   padding: 0 !important;
