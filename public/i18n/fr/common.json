@@ -30,6 +30,7 @@
     "noSlides": "Pas encore de diapositives"
   },
   "courses": {
+    "title": "Cours",
     "available": "{{count}} cours disponibles"
   },
   "home": {

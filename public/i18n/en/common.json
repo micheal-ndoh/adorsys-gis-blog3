@@ -30,6 +30,7 @@
     "noSlides": "No slides yet"
   },
   "courses": {
+    "title": "Courses",
     "available": "{{count}} courses available"
   },
   "home": {
