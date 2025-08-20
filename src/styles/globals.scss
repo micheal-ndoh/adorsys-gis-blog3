@@ -211,6 +211,45 @@ article {
   line-height: 1.6 !important;
 }
 
+// ===== SLIDE TITLE SPECIFIC FIXES =====
+
+// Force slide titles to display properly without column splitting
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+}
+
+// Prevent line breaks in slide titles
+.reveal .slides section h1 br,
+.reveal .slides section h2 br,
+.reveal .slides section h3 br {
+  display: none !important;
+}
+
+// Override any Reveal.js column layouts
+.reveal .slides section {
+  column-count: 1 !important;
+  column-gap: normal !important;
+  column-fill: auto !important;
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  flex-direction: column !important;
+}
+
 // Force text to flow naturally without excessive spacing
 .reveal .slides section {
   text-align: justify !important;

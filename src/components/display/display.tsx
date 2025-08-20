@@ -59,6 +59,56 @@ export default function Display({ data }: DisplayProps) {
   
   return (
     <>
+      <style jsx global>{`
+        /* Force slide content to display properly */
+        .reveal .slides section[data-markdown] {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: flex-start !important;
+          text-align: center !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          column-count: 1 !important;
+          column-gap: normal !important;
+          column-fill: auto !important;
+        }
+        
+        .reveal .slides section[data-markdown] h1,
+        .reveal .slides section[data-markdown] h2,
+        .reveal .slides section[data-markdown] h3,
+        .reveal .slides section[data-markdown] h4,
+        .reveal .slides section[data-markdown] h5,
+        .reveal .slides section[data-markdown] h6 {
+          flex: 0 0 auto !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          text-align: center !important;
+          white-space: normal !important;
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          line-height: 1.4 !important;
+          margin: 0.5rem 0 !important;
+          padding: 0 !important;
+          overflow-wrap: normal !important;
+          word-break: normal !important;
+          hyphens: none !important;
+          column-span: all !important;
+          break-inside: avoid !important;
+          float: none !important;
+          clear: both !important;
+          display: block !important;
+        }
+        
+        .reveal .slides section[data-markdown] h1 br,
+        .reveal .slides section[data-markdown] h2 br,
+        .reveal .slides section[data-markdown] h3 br,
+        .reveal .slides section[data-markdown] h4 br,
+        .reveal .slides section[data-markdown] h5 br,
+        .reveal .slides section[data-markdown] h6 br {
+          display: none !important;
+        }
+      `}</style>
       <div className='display'>
         <div className='reveal' ref={deckDivRef}>
           <div
