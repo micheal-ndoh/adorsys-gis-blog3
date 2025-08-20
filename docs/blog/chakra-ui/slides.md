@@ -5,20 +5,21 @@ tags:
   - react
   - ui
   - accessibility
-background-color: 'rgba(124, 58, 237, 1)'
-date: '2025-08-16'
+  - theme
 lang: en
+---
+## Chakra UI
+![Chakra UI](https://chakra-ui.com/og-image.png)
+
 ---
 
 ## Why Chakra UI
+
 
 Accessible, themeable, and productive.
 
 ---
 
-![Chakra UI](https://raw.githubusercontent.com/chakra-ui/chakra-ui/main/logo/logo-colored@2x.png)
-
----
 
 ## Layout Primitives
 
