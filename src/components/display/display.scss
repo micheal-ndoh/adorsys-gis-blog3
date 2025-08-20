@@ -2,3 +2,27 @@
 @use 'reveal.js/dist/reveal';
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
+
+// Center-align all slide content
+.reveal .slides section {
+  text-align: center !important;
+}
+
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section li,
+.reveal .slides section blockquote {
+  text-align: center !important;
+}
+
+// Center code blocks and other elements
+.reveal .slides section pre,
+.reveal .slides section code {
+  text-align: left !important;
+  margin: 0 auto;
+}
