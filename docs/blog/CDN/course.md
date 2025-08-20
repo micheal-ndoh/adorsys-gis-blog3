@@ -5,7 +5,6 @@ slug: cdn
 authors: Micheal Ndoh
 tags: [security, development, network]
 description: A Content Delivery Network (CDN) is a geographically distributed group of servers that caches content close to end users.
-date: 2025-08-16
 ---
 
 # Introduction to CDNs
