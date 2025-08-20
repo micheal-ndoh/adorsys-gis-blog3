@@ -223,25 +223,7 @@ article {
   letter-spacing: normal !important;
 }
 
-// Aggressive spacing fix for all text content
-.reveal .slides section,
-.reveal .slides section *,
-.prose,
-.prose *,
-.prose.prose-neutral,
-.prose.prose-neutral *,
-.prose.prose-invert,
-.prose.prose-invert * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-}
-
-// Force remove any excessive spacing between words
+// CRITICAL FIX: Prevent text from being split across multiple lines with gaps
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -259,128 +241,82 @@ article {
 .prose h6,
 .prose p,
 .prose div,
-.prose span {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  white-space: normal !important;
-}
-
-// Specific fix for the "Secure Software" spacing issue - target all text nodes
-.reveal .slides section,
-.reveal .slides section *,
-.prose,
-.prose * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-}
-
-// Override any potential flexbox or grid spacing issues
-.reveal .slides section,
-.prose {
+.prose span,
+.prose.prose-neutral h1,
+.prose.prose-neutral h2,
+.prose.prose-neutral h3,
+.prose.prose-neutral h4,
+.prose.prose-neutral h5,
+.prose.prose-neutral h6,
+.prose.prose-neutral p,
+.prose.prose-neutral div,
+.prose.prose-neutral span,
+.prose.prose-invert h1,
+.prose.prose-invert h2,
+.prose.prose-invert h3,
+.prose.prose-invert h4,
+.prose.prose-invert h5,
+.prose.prose-invert h6,
+.prose.prose-invert p,
+.prose.prose-invert div,
+.prose.prose-invert span {
   display: block !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-}
-
-// Force override any CSS that might be causing spacing issues
-.reveal .slides section *,
-.prose * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
+  width: 100% !important;
   text-align: justify !important;
   text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
   white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
+  line-height: normal !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-// Additional fix for any potential spacing issues
+// Prevent any flexbox or grid layouts from creating gaps
 .reveal .slides section,
-.prose {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
-}
-
-// Force override any potential spacing issues with maximum specificity
-.reveal .slides section *,
-.reveal .slides section * *,
-.reveal .slides section * * *,
-.prose *,
-.prose * *,
-.prose * * * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
-}
-
-// Force remove any potential spacing issues with maximum specificity
-.reveal .slides section *,
-.reveal .slides section * *,
-.prose *,
-.prose * * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
-}
-
-// Nuclear option - override everything with maximum specificity
-.reveal,
-.reveal *,
-.reveal .slides,
-.reveal .slides *,
-.reveal .slides section,
-.reveal .slides section *,
-.reveal .slides section * *,
-.reveal .slides section * * *,
 .prose,
+.prose.prose-neutral,
+.prose.prose-invert {
+  display: block !important;
+  width: 100% !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// ULTIMATE FIX: Force all text to flow naturally without gaps
+.reveal .slides section *,
 .prose *,
-.prose * *,
-.prose * * * {
+.prose.prose-neutral *,
+.prose.prose-invert * {
+  display: inline !important;
+  white-space: normal !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;
   text-align: justify !important;
   text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
+  overflow-wrap: normal !important;
+  word-wrap: normal !important;
+  hyphens: none !important;
+  text-indent: 0 !important;
 }
 
-// Target specific text content that might be causing issues
+// Prevent any text splitting or wrapping that creates gaps
+.reveal .slides section,
+.prose,
+.prose.prose-neutral,
+.prose.prose-invert {
+  overflow-wrap: normal !important;
+  word-wrap: normal !important;
+  hyphens: none !important;
+  text-indent: 0 !important;
+  word-break: normal !important;
+  line-break: normal !important;
+}
+
+// Ensure headings and paragraphs are block elements but with proper text flow
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -388,54 +324,60 @@ article {
 .reveal .slides section h5,
 .reveal .slides section h6,
 .reveal .slides section p,
-.reveal .slides section div,
-.reveal .slides section span,
-.reveal .slides section strong,
-.reveal .slides section em,
-.reveal .slides section b,
-.reveal .slides section i {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose.prose-neutral h1,
+.prose.prose-neutral h2,
+.prose.prose-neutral h3,
+.prose.prose-neutral h4,
+.prose.prose-neutral h5,
+.prose.prose-neutral h6,
+.prose.prose-neutral p,
+.prose.prose-invert h1,
+.prose.prose-invert h2,
+.prose.prose-invert h3,
+.prose.prose-invert h4,
+.prose.prose-invert h5,
+.prose.prose-invert h6,
+.prose.prose-invert p {
+  display: block !important;
+  width: 100% !important;
   text-align: justify !important;
   text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
   white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
+  line-height: normal !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-// Force remove any potential spacing issues with maximum specificity
-.reveal .slides section *,
-.reveal .slides section * *,
-.reveal .slides section * * *,
-.prose *,
-.prose * *,
-.prose * * * {
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
+// SPECIFIC FIX for the "Secure Software Development Lifecycle" heading issue
+.reveal .slides section h3,
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6 {
+  display: block !important;
+  width: 100% !important;
   text-align: justify !important;
   text-justify: inter-word !important;
-  white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
-}
-
-// Additional fix for any potential spacing issues
-.reveal .slides section,
-.prose {
   word-spacing: normal !important;
   letter-spacing: normal !important;
-  text-align: justify !important;
-  text-justify: inter-word !important;
   white-space: normal !important;
-  font-kerning: normal !important;
-  font-feature-settings: "kern" 1 !important;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-feature-settings: "kern" 1 !important;
-  -moz-font-feature-settings: "kern" 1 !important;
+  line-height: normal !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-wrap: normal !important;
+  -webkit-hyphens: none !important;
+  -moz-hyphens: none !important;
+  -ms-hyphens: none !important;
+  hyphens: none !important;
 }

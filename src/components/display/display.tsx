@@ -63,21 +63,28 @@ export default function Display({ data }: DisplayProps) {
         .reveal .slides section ul,
         .reveal .slides section ol {
           text-align: justify !important;
+          text-justify: inter-word !important;
           list-style-position: inside !important;
-          display: inline-block !important;
+          display: block !important;
+          width: 100% !important;
           margin: 0 2rem !important;
           padding: 0 !important;
           word-spacing: normal !important;
           letter-spacing: normal !important;
+          white-space: normal !important;
         }
         
         .reveal .slides section li {
           text-align: justify !important;
+          text-justify: inter-word !important;
           margin: 0 !important;
           padding: 0 !important;
           text-indent: 0 !important;
           word-spacing: normal !important;
           letter-spacing: normal !important;
+          white-space: normal !important;
+          display: block !important;
+          width: 100% !important;
         }
         
         .reveal .slides section ul li::marker,
@@ -86,19 +93,7 @@ export default function Display({ data }: DisplayProps) {
           padding: 0 !important;
         }
         
-        /* Force justify all text content in slides */
-        .reveal .slides section,
-        .reveal .slides section * {
-          text-align: justify !important;
-          word-spacing: normal !important;
-          letter-spacing: normal !important;
-          white-space: normal !important;
-          font-kerning: normal !important;
-          font-feature-settings: "kern" 1 !important;
-          text-rendering: optimizeLegibility !important;
-        }
-        
-        /* Specific targeting for headings and paragraphs */
+        /* CRITICAL: Prevent text splitting with gaps */
         .reveal .slides section h1,
         .reveal .slides section h2,
         .reveal .slides section h3,
@@ -108,47 +103,16 @@ export default function Display({ data }: DisplayProps) {
         .reveal .slides section p,
         .reveal .slides section div,
         .reveal .slides section span {
-          text-align: justify !important;
-          word-spacing: normal !important;
-          letter-spacing: normal !important;
-          white-space: normal !important;
-        }
-        
-        /* Nuclear option - override everything */
-        .reveal,
-        .reveal *,
-        .reveal .slides,
-        .reveal .slides *,
-        .reveal .slides section,
-        .reveal .slides section *,
-        .reveal .slides section * *,
-        .reveal .slides section * * * {
-          word-spacing: normal !important;
-          letter-spacing: normal !important;
+          display: block !important;
+          width: 100% !important;
           text-align: justify !important;
           text-justify: inter-word !important;
-          white-space: normal !important;
-          font-kerning: normal !important;
-          font-feature-settings: "kern" 1 !important;
-          text-rendering: optimizeLegibility !important;
-          -webkit-font-feature-settings: "kern" 1 !important;
-          -moz-font-feature-settings: "kern" 1 !important;
-        }
-        
-        /* Force remove any potential spacing issues */
-        .reveal .slides section *,
-        .reveal .slides section * *,
-        .reveal .slides section * * * {
           word-spacing: normal !important;
           letter-spacing: normal !important;
-          text-align: justify !important;
-          text-justify: inter-word !important;
           white-space: normal !important;
-          font-kerning: normal !important;
-          font-feature-settings: "kern" 1 !important;
-          text-rendering: optimizeLegibility !important;
-          -webkit-font-feature-settings: "kern" 1 !important;
-          -moz-font-feature-settings: "kern" 1 !important;
+          line-height: normal !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
       `}</style>
       <div className='display'>
