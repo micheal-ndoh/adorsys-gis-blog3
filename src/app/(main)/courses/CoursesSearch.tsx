@@ -86,7 +86,6 @@ export function CoursesSearch({ children }: PropsWithChildren) {
                 lang={lang}
                 tags={tags}
                 slide1Html={previews?.firstHtml}
-                slide2Html={previews?.secondHtml}
               />
             ))}
           </div>
