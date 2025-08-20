@@ -54,9 +54,19 @@ export default async function SingleBlogPage({ params }: Props) {
 
         {course.content && (
           <article className="prose prose-neutral lg:prose-xl mx-auto mt-8">
+            {/* Debug: Add a visible test element */}
+            <div className="bg-blue-100 p-4 mb-4 rounded" style={{ display: 'block' }}>
+              <strong>Debug:</strong> MermaidRenderer component should be active below
+            </div>
+            
             <MermaidRenderer>
               <div dangerouslySetInnerHTML={{ __html: course.content }} />
             </MermaidRenderer>
+            
+            {/* Debug: Add another test element */}
+            <div className="bg-green-100 p-4 mt-4 rounded" style={{ display: 'block' }}>
+              <strong>Debug:</strong> Content should be rendered above
+            </div>
           </article>
         )}
       </Container>
