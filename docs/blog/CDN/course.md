@@ -213,3 +213,5 @@ graph TD
 ## Conclusion
 
 CDNs are essential for modern web performance, offering speed, cost savings, reliability, and security. They complement frameworks like Next.js for global scalability. This file synthesizes our entire discussion—feel free to reference or expand on specific sections.
+
+---

@@ -66,3 +66,5 @@ graph TD
 ## Conclusion
 
 LPIC-1 certification equips sysadmins with essential Linux skills, boosting career prospects. With focused study and practice, candidates can master the exams and build a strong foundation for advanced Linux certifications.
+
+---

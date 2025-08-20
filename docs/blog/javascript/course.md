@@ -46,3 +46,5 @@ graph LR
 ## Conclusion
 
 JavaScript’s versatility and reach make it a foundational skill for modern development. 
+
+---

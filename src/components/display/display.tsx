@@ -65,6 +65,30 @@ export default function Display({ data }: DisplayProps) {
               slide.style.clear = 'both';
             }
           });
+          
+          // Also fix prose content titles (general blog content)
+          const proseTitles = document.querySelectorAll('.prose h1, .prose.prose-neutral h1, .prose.prose-invert h1');
+          proseTitles.forEach(title => {
+            if (title instanceof HTMLElement) {
+              title.style.wordSpacing = 'normal';
+              title.style.letterSpacing = 'normal';
+              title.style.whiteSpace = 'normal';
+              title.style.textAlign = 'center';
+              title.style.display = 'block';
+              title.style.width = '100%';
+              title.style.maxWidth = '100%';
+              title.style.lineHeight = '1.4';
+              title.style.margin = '1rem 0';
+              title.style.padding = '0';
+              title.style.overflowWrap = 'normal';
+              title.style.wordBreak = 'normal';
+              title.style.hyphens = 'none';
+              title.style.columnSpan = 'all';
+              title.style.breakInside = 'avoid';
+              title.style.float = 'none';
+              title.style.clear = 'both';
+            }
+          });
         }, 100);
       })
       .catch(console.log);
@@ -79,6 +103,39 @@ export default function Display({ data }: DisplayProps) {
         console.warn('Reveal.js destroy call failed.', e);
       }
     };
+  }, []);
+
+  // Additional useEffect to fix prose content immediately when component mounts
+  useEffect(() => {
+    const fixProseContent = () => {
+      const proseTitles = document.querySelectorAll('.prose h1, .prose.prose-neutral h1, .prose.prose-invert h1');
+      proseTitles.forEach(title => {
+        if (title instanceof HTMLElement) {
+          title.style.wordSpacing = 'normal';
+          title.style.letterSpacing = 'normal';
+          title.style.whiteSpace = 'normal';
+          title.style.textAlign = 'center';
+          title.style.display = 'block';
+          title.style.width = '100%';
+          title.style.maxWidth = '100%';
+          title.style.lineHeight = '1.4';
+          title.style.margin = '1rem 0';
+          title.style.padding = '0';
+          title.style.overflowWrap = 'normal';
+          title.style.wordBreak = 'normal';
+          title.style.hyphens = 'none';
+          title.style.columnSpan = 'all';
+          title.style.breakInside = 'avoid';
+          title.style.float = 'none';
+          title.style.clear = 'both';
+        }
+      });
+    };
+
+    // Fix immediately and also after a short delay
+    fixProseContent();
+    setTimeout(fixProseContent, 50);
+    setTimeout(fixProseContent, 200);
   }, []);
   
   return (
