@@ -75,7 +75,7 @@ export default async function ResourcePage({ params }: Props) {
           {/* Our Mission */}
           <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16'>
             <div className='order-2 md:order-1'>
-              <FramedImage src="/fast-learner.jpg" />
+              <FramedImage src="/ab2.webp" />
             </div>
             <div className='order-1 md:order-2'>
               <h2 className='text-3xl font-bold mb-3'>Our Mission</h2>
