@@ -11,6 +11,8 @@ export default function MainLayout({ children }: Readonly<PropsWithChildren>) {
           <AppNavBar />
         </div>
       </Suspense>
+      <main id="main" className="flex-1">
+        {children}
       <main id="main" className="flex-1 bg-black">
         <div className="mt-4 mb-10 bg-black">{children}</div>
       </main>
