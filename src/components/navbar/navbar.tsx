@@ -89,13 +89,13 @@ export function AppNavBar() {
           <div className="navbar-end flex items-center gap-3 sm:gap-4">
             <Link
               href={buildCoursesUrl(current)}
-              className="text-primary hover:font-extrabold transition-colors px-1"
+              className="text-primary hover:font-bold transition-all duration-200"
             >
               {t("nav.courses")}
             </Link>
             <Link
               href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
-              className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+              className="text-white/80 hover:text-white hover:font-bold transition-all duration-200"
             >
               {t("nav.about")}
             </Link>
