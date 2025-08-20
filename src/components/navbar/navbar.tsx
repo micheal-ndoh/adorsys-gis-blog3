@@ -69,7 +69,7 @@ export function AppNavBar() {
             <Link
               href="/courses"
               className="group flex flex-row items-center gap-1.5 sm:gap-2"
-              aria-label="Go to home"
+              aria-label="Go to courses"
             >
               <Image
                 src={icon}
