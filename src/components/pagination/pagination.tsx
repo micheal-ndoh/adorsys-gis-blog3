@@ -72,7 +72,7 @@ export function Pagination({
   return (
     <nav
       aria-label="Course navigation"
-      className="glass-surface flex flex-wrap items-center justify-center gap-1 rounded-2xl px-2 py-2 backdrop-saturate-150 sm:gap-2 md:gap-3 sm:px-3"
+      className="flex items-center gap-2 rounded-md bg-black text-neutral-300"
     >
       {/* Previous */}
       <Link
@@ -81,11 +81,11 @@ export function Pagination({
         aria-disabled={isPrevDisabled}
         aria-label={t("Previous Page")}
         tabIndex={isPrevDisabled ? -1 : 0}
-        className={`group particle-deconstruct relative rounded-xl border border-transparent px-1.5 py-1 text-[10px] backdrop-blur-md transition-all duration-300 sm:px-2 sm:py-1.5 sm:text-xs md:px-3 md:py-2 md:text-sm lg:px-4 lg:py-2.5 ${
+        className={`${
           isPrevDisabled
-            ? "pointer-events-none cursor-not-allowed text-neutral-400 opacity-50"
-            : "text-neutral-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
-        }`}
+            ? "pointer-events-none cursor-not-allowed text-neutral-600"
+            : "hover:text-white"
+        } px-2 py-1 text-xs`}
       >
         <span className="flex items-center gap-1">
           <svg
@@ -109,7 +109,7 @@ export function Pagination({
       </Link>
 
       {/* Pages */}
-      <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-1.5 md:gap-2">
+      <div className="flex items-center gap-2">
         {visiblePages.map((page) => (
           <Link
             key={page}
@@ -120,13 +120,13 @@ export function Pagination({
                 ? t("Current Page {{page}}", { page })
                 : t("Go to Page {{page}}", { page })
             }
-            className={`group particle-deconstruct relative rounded-full border px-1.5 py-1 font-medium text-[10px] transition-all duration-300 sm:px-2 sm:py-1.5 sm:text-xs md:px-3 md:py-2 md:text-sm lg:px-3.5 lg:py-2 ${
+            className={`${
               page === currentPage
-                ? "border-primary/60 bg-primary text-primary-content shadow-lg shadow-primary/30 hover:border-primary/70 hover:bg-primary/90"
-                : "border-white/10 text-white/70 hover:border-primary/40 hover:bg-primary/20 hover:text-white"
-            }`}
+                ? "bg-neutral-800 text-white"
+                : "bg-black text-neutral-300 hover:text-white"
+            } border border-neutral-800 rounded px-2 py-1 text-xs`}
           >
-            <span className="relative z-10">{page}</span>
+            <span>{page}</span>
           </Link>
         ))}
       </div>
@@ -138,11 +138,11 @@ export function Pagination({
         aria-disabled={isNextDisabled}
         aria-label={t("Next Page")}
         tabIndex={isNextDisabled ? -1 : 0}
-        className={`group particle-deconstruct relative rounded-xl border border-transparent px-1.5 py-1 text-[10px] backdrop-blur-md transition-all duration-300 sm:px-2 sm:py-1.5 sm:text-xs md:px-3 md:py-2 md:text-sm lg:px-4 lg:py-2.5 ${
+        className={`${
           isNextDisabled
-            ? "pointer-events-none cursor-not-allowed text-neutral-400 opacity-50"
-            : "text-neutral-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
-        }`}
+            ? "pointer-events-none cursor-not-allowed text-neutral-600"
+            : "hover:text-white"
+        } px-2 py-1 text-xs`}
       >
         <span className="flex items-center gap-1">
           <span className="hidden sm:inline">{t("Next")}</span>
