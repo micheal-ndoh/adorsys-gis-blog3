@@ -11,7 +11,6 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Add immediate console log to verify component is rendered
-  console.log("🚀 MermaidRenderer: Component is being rendered!");
 
   useEffect(() => {
     console.log("🔍 MermaidRenderer: Component mounted, initializing...");
@@ -163,21 +162,9 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
   return (
     <div ref={containerRef}>
       {/* Add a visible test element to verify component is rendered */}
-      <div style={{ 
-        background: 'red', 
-        color: 'white', 
-        padding: '10px', 
-        margin: '10px 0', 
-        border: '2px solid yellow',
-        display: 'block !important'
-      }}>
-        🚀 MermaidRenderer Component is Active! Check console for logs.
-      </div>
+      
       {children}
       {/* Debug element to verify component is rendered */}
-      <div style={{ display: 'none' }} id="mermaid-renderer-debug">
-        MermaidRenderer component is loaded and rendered
-      </div>
-    </div>
+         </div>
   );
 } 
