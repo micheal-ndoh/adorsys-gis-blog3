@@ -18,6 +18,7 @@ export async function generateStaticParams() {
 
 interface Props {
   params: Promise<{ slug?: string[] }>;
+  searchParams?: Promise<{ lang?: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -37,11 +38,15 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function ResourcePage({ params }: Props) {
+export default async function ResourcePage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const params2 = await searchParams;
   const slugStr = Array.isArray(slug) ? slug[0] : "";
   if (!slugStr) {
-    return redirect("/courses");
+    const lang = params2?.lang;
+    const redirectUrl =
+      lang && lang !== "en" ? `/courses?lang=${lang}` : "/courses";
+    return redirect(redirectUrl);
   }
 
   if (slugStr === "about") {

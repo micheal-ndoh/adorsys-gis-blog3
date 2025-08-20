@@ -15,7 +15,15 @@ export function AppNavBar() {
   const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const current = i18n.language?.startsWith("fr") ? "fr" : "en";
+
+  // Safety check for i18n initialization
+  const current = i18n?.language?.startsWith("fr") ? "fr" : "en";
+
+  // Safety check for translation function
+  if (!t) {
+    console.warn("Translation function not available");
+    return null;
+  }
 
   const buildCoursesUrl = useCallback(
     (lng: "en" | "fr") => {
@@ -27,8 +35,8 @@ export function AppNavBar() {
         const qs = params.toString();
         return qs ? `${pathname}?${qs}` : pathname;
       }
-      // When not on courses, do not redirect anywhere; just stay on the same page
-      return null;
+      // When not on courses, redirect to courses with appropriate language
+      return lng === "en" ? "/courses" : `/courses?lang=${lng}`;
     },
     [pathname, searchParams]
   );
@@ -66,26 +74,27 @@ export function AppNavBar() {
       <Container className="py-0">
         <nav className="navbar min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
-            <div
-              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-default"
+            <Link
+              href={buildCoursesUrl(current)}
+              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
               <Image src={icon} className="w-6 sm:w-8" alt="logo" />
               <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90">
                 {t("nav.brand")}
               </span>
-            </div>
+            </Link>
           </div>
 
           <div className="navbar-end flex items-center gap-3 sm:gap-4">
             <Link
-              href="/courses"
+              href={buildCoursesUrl(current)}
               className="text-primary hover:font-extrabold transition-colors px-1"
             >
               {t("nav.courses")}
             </Link>
             <Link
-              href="/res/about"
+              href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
               className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
             >
               {t("nav.about")}
