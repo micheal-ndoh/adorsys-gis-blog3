@@ -8,7 +8,7 @@ tags:
   - theme
 lang: en
 ---
-## Chakra UI
+
 ![Chakra UI](https://chakra-ui.com/og-image.png)
 
 ---
