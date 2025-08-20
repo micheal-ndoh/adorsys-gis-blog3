@@ -100,7 +100,7 @@ export default async function ResourcePage({ params }: Props) {
   const content = await loadRes(slugStr);
   return (
     <Container>
-      <div className='prose prose-neutral mx-auto mt-6 sm:mt-8'>
+      <div className='prose prose-neutral mx-auto mt-6 sm:mt-8 text-justify'>
         {content.contentHtml && (
           <div dangerouslySetInnerHTML={{ __html: content.contentHtml }} />
         )}

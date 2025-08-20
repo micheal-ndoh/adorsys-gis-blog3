@@ -91,7 +91,7 @@ code.mermaid {
   }
 
   .prose {
-    @apply max-w-none text-sm;
+    @apply max-w-none text-sm text-justify;
   }
 }
 
@@ -139,6 +139,15 @@ article {
 .reveal .slides section *,
 .prose,
 .prose * {
+  text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Ensure slide preview content is also justified
+.slide-preview .prose,
+.slide-preview .prose * {
   text-align: justify !important;
   word-spacing: normal !important;
   letter-spacing: normal !important;

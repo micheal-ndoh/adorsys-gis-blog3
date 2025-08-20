@@ -62,18 +62,22 @@ export default function Display({ data }: DisplayProps) {
       <style jsx global>{`
         .reveal .slides section ul,
         .reveal .slides section ol {
-          text-align: center !important;
+          text-align: justify !important;
           list-style-position: inside !important;
           display: inline-block !important;
-          margin: 0 !important;
+          margin: 0 2rem !important;
           padding: 0 !important;
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
         }
         
         .reveal .slides section li {
-          text-align: left !important;
+          text-align: justify !important;
           margin: 0 !important;
           padding: 0 !important;
           text-indent: 0 !important;
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
         }
         
         .reveal .slides section ul li::marker,

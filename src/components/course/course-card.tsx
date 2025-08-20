@@ -63,7 +63,7 @@ export function CourseCard({
               <div className="slide-preview absolute inset-0">
                 <div className="slide-preview-inner h-full w-full p-2 sm:p-2.5 md:p-3 overflow-hidden">
                   <div
-                    className="prose prose-invert h-full w-full overflow-hidden"
+                    className="prose prose-invert h-full w-full overflow-hidden text-justify"
                     dangerouslySetInnerHTML={{ __html: slide1Html as string }}
                   />
                 </div>
