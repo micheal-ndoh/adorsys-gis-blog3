@@ -113,6 +113,27 @@ export default function Display({ data }: DisplayProps) {
           letter-spacing: normal !important;
           white-space: normal !important;
         }
+        
+        /* Nuclear option - override everything */
+        .reveal,
+        .reveal *,
+        .reveal .slides,
+        .reveal .slides *,
+        .reveal .slides section,
+        .reveal .slides section *,
+        .reveal .slides section * *,
+        .reveal .slides section * * * {
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          text-align: justify !important;
+          text-justify: inter-word !important;
+          white-space: normal !important;
+          font-kerning: normal !important;
+          font-feature-settings: "kern" 1 !important;
+          text-rendering: optimizeLegibility !important;
+          -webkit-font-feature-settings: "kern" 1 !important;
+          -moz-font-feature-settings: "kern" 1 !important;
+        }
       `}</style>
       <div className='display'>
         <div className='reveal' ref={deckDivRef}>

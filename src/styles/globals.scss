@@ -335,3 +335,54 @@ article {
   -webkit-font-feature-settings: "kern" 1 !important;
   -moz-font-feature-settings: "kern" 1 !important;
 }
+
+// Nuclear option - override everything with maximum specificity
+.reveal,
+.reveal *,
+.reveal .slides,
+.reveal .slides *,
+.reveal .slides section,
+.reveal .slides section *,
+.reveal .slides section * *,
+.reveal .slides section * * *,
+.prose,
+.prose *,
+.prose * *,
+.prose * * * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-feature-settings: "kern" 1 !important;
+  -moz-font-feature-settings: "kern" 1 !important;
+}
+
+// Target specific text content that might be causing issues
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span,
+.reveal .slides section strong,
+.reveal .slides section em,
+.reveal .slides section b,
+.reveal .slides section i {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  white-space: normal !important;
+  font-kerning: normal !important;
+  font-feature-settings: "kern" 1 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-feature-settings: "kern" 1 !important;
+  -moz-font-feature-settings: "kern" 1 !important;
+}
