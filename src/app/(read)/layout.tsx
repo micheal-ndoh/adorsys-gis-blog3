@@ -13,7 +13,7 @@ export default function MainLayout({
                 <Container className='py-0'>
                     <nav className='navbar min-h-16'>
                         <div className='navbar-start flex gap-2 sm:gap-4'>
-                            <Link href='/' className='flex flex-row items-center gap-1.5 sm:gap-2'>
+                            <Link href='/courses' className='flex flex-row items-center gap-1.5 sm:gap-2'>
                                 <Image src={icon} className='w-6 sm:w-8' alt='logo'/>
                                 <span className='text-lg sm:text-xl font-extrabold uppercase' color='ghost'>Learn</span>
                             </Link>
