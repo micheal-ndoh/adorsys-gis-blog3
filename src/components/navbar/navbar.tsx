@@ -81,11 +81,17 @@ export function AppNavBar() {
             </div>
           </div>
 
-          <div className="navbar-end flex items-center gap-2 sm:gap-3">
-            <Link href="/courses" className="btn btn-ghost text-white/80 hover:text-primary">
+          <div className="navbar-end flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/courses"
+              className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+            >
               {i18n.language?.startsWith("fr") ? "Cours" : "Courses"}
             </Link>
-            <Link href="/res/about" className="btn btn-ghost text-white/80 hover:text-primary">
+            <Link
+              href="/res/about"
+              className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+            >
               {i18n.language?.startsWith("fr") ? "À propos" : "About"}
             </Link>
             <div ref={dropdownRef} className="relative dropdown">
