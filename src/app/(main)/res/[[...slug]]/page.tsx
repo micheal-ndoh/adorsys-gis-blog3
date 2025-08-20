@@ -71,13 +71,13 @@ export default async function ResourcePage({ params }: Props) {
                 build, and grow.
               </p>
             </div>
-            <FramedImage src="/about.png" />
+            <FramedImage src="/ab3.jpeg" />
           </section>
 
           {/* Our Mission */}
           <section className='grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center'>
             <div className='order-2 md:order-1'>
-              <FramedImage src="/ab2.webp" />
+              <FramedImage src="/ab4.jpg" />
             </div>
             <div className='order-1 md:order-2 md:pl-8 lg:pl-12'>
               <h2 className='text-3xl font-bold mb-3'>Our Mission</h2>
