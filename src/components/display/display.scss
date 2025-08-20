@@ -3,9 +3,9 @@
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
 
-// Center-align all slide content
+// Justify all slide content
 .reveal .slides section {
-  text-align: center !important;
+  text-align: justify !important;
 }
 
 .reveal .slides section h1,
@@ -16,13 +16,13 @@
 .reveal .slides section h6,
 .reveal .slides section p,
 .reveal .slides section blockquote {
-  text-align: center !important;
+  text-align: justify !important;
 }
 
-// Center lists with bullets close to text
+// Justify lists with bullets close to text
 .reveal .slides section ul,
 .reveal .slides section ol {
-  text-align: center !important;
+  text-align: justify !important;
   list-style-position: inside !important;
   display: inline-block !important;
   margin: 0 !important;
@@ -30,13 +30,13 @@
 }
 
 .reveal .slides section li {
-  text-align: left !important;
+  text-align: justify !important;
   margin: 0 !important;
   padding: 0 !important;
   text-indent: 0 !important;
 }
 
-// Center code blocks
+// Justify code blocks
 .reveal .slides section pre,
 .reveal .slides section code {
   text-align: left !important;
