@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HomeHero } from "./HomeHero";
 import { HomeRightCards } from "./HomeRightCards";
+import { AboutSection } from "./AboutSection";
 
 export default async function Home() {
   return (
@@ -27,6 +28,9 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      {/* About section appears on scroll just before the footer */}
+      <AboutSection />
     </div>
   );
 }
