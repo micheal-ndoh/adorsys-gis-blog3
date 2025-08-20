@@ -10,7 +10,7 @@ import { CoursesSearch } from "./CoursesSearch";
 import * as fs from "fs-extra";
 import * as path from "node:path";
 import { Metadata } from "next";
-import { i18n } from "@/lib/i18n";
+import { i18n } from "@/i18n";
 
 export const dynamic = "force-dynamic";
 
