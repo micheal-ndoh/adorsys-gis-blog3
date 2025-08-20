@@ -63,54 +63,25 @@ export default function Display({ data }: DisplayProps) {
         .reveal .slides section ul,
         .reveal .slides section ol {
           text-align: justify !important;
-          text-justify: inter-word !important;
           list-style-position: inside !important;
-          display: block !important;
-          width: 100% !important;
+          display: inline-block !important;
           margin: 0 2rem !important;
           padding: 0 !important;
           word-spacing: normal !important;
           letter-spacing: normal !important;
-          white-space: normal !important;
         }
         
         .reveal .slides section li {
           text-align: justify !important;
-          text-justify: inter-word !important;
           margin: 0 !important;
           padding: 0 !important;
           text-indent: 0 !important;
           word-spacing: normal !important;
           letter-spacing: normal !important;
-          white-space: normal !important;
-          display: block !important;
-          width: 100% !important;
         }
         
         .reveal .slides section ul li::marker,
         .reveal .slides section ol li::marker {
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-        
-        /* CRITICAL: Prevent text splitting with gaps */
-        .reveal .slides section h1,
-        .reveal .slides section h2,
-        .reveal .slides section h3,
-        .reveal .slides section h4,
-        .reveal .slides section h5,
-        .reveal .slides section h6,
-        .reveal .slides section p,
-        .reveal .slides section div,
-        .reveal .slides section span {
-          display: block !important;
-          width: 100% !important;
-          text-align: justify !important;
-          text-justify: inter-word !important;
-          word-spacing: normal !important;
-          letter-spacing: normal !important;
-          white-space: normal !important;
-          line-height: normal !important;
           margin: 0 !important;
           padding: 0 !important;
         }
