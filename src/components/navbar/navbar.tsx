@@ -94,7 +94,7 @@ export function AppNavBar() {
             >
               {i18n.language?.startsWith("fr") ? "À propos" : "About"}
             </Link>
-            <div ref={dropdownRef} className="relative">
+            <div ref={dropdownRef} className="relative dropdown dropdown-end">
               <div
                 role="button"
                 onClick={() => setOpen((v) => !v)}
