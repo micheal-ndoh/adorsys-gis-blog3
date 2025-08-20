@@ -8,35 +8,26 @@ export const dynamic = 'force-dynamic';
 export async function generateStaticParams() {
   return [
     {},
-    {
-      slug: 'faq',
-    },
-    {
-      slug: 'tos',
-    },
-    {
-      slug: 'contact',
-    },
-    {
-      slug: 'privacy',
-    },
-    {
-      slug: 'about',
-    },
+    { slug: ['faq'] },
+    { slug: ['tos'] },
+    { slug: ['contact'] },
+    { slug: ['privacy'] },
+    { slug: ['about'] },
   ];
 }
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug?: string[] }>;
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  if (!slug) {
+  const slugStr = Array.isArray(slug) ? slug.join('/') : '';
+  if (!slugStr) {
     return null;
   }
 
-  const content = await loadRes(slug);
+  const content = await loadRes(slugStr);
   if (!content) {
     return null;
   }
@@ -48,11 +39,12 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ResourcePage({ params }: Props) {
   const { slug } = await params;
-  if (!slug) {
+  const slugStr = Array.isArray(slug) ? slug[0] : '';
+  if (!slugStr) {
     return redirect('/courses');
   }
 
-  if (slug === 'about') {
+  if (slugStr === 'about') {
     return (
       <Container>
         <div className='mx-auto mt-8 sm:mt-10 max-w-6xl'>
@@ -105,7 +97,7 @@ export default async function ResourcePage({ params }: Props) {
     );
   }
 
-  const content = await loadRes(slug);
+  const content = await loadRes(slugStr);
   return (
     <Container>
       <div className='prose prose-neutral mx-auto mt-6 sm:mt-8'>
