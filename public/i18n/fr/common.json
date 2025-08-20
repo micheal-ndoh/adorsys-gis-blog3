@@ -30,6 +30,7 @@
     "noSlides": "Pas encore de diapositives"
   },
   "courses": {
+    "title": "Cours",
     "available": "{{count}} cours disponibles"
   },
   "home": {
@@ -47,6 +48,13 @@
       "activeLearners": "Apprenants actifs",
       "globalCommunity": "Communauté mondiale"
     }
+  },
+  "about": {
+    "title": "À propos de nous",
+    "tagline": "Apprenez plus vite. Construisez mieux.",
+    "p1": "Pôle de Connaissances est votre espace pour apprendre clairement et rapidement. Nous transformons des idées complexes en leçons simples et pratiques, avec des exemples à appliquer immédiatement.",
+    "p2": "Parcourez des articles concis, des cours pratiques et des présentations soignées. Avancez à votre rythme et trouvez exactement ce dont vous avez besoin grâce à une recherche rapide et précise.",
+    "imageAlt": "Personnes collaborant avec le sourire autour d'un ordinateur portable"
   },
   "footer": {
     "logo": "logo",
