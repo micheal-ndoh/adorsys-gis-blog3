@@ -69,15 +69,13 @@ export default async function ResourcePage({ params }: Props) {
                 build, and grow.
               </p>
             </div>
-            <div className='relative rounded-2xl overflow-hidden border border-base-300/40 bg-base-200/60'>
-              <Image src='/about.png' alt='About illustration' width={900} height={600} className='w-full h-auto object-cover' />
-            </div>
+            <FramedImage />
           </section>
 
           {/* Our Mission */}
           <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center'>
-            <div className='order-2 md:order-1 relative rounded-2xl overflow-hidden border border-base-300/40 bg-base-200/60'>
-              <Image src='/about.png' alt='Mission illustration' width={900} height={600} className='w-full h-auto object-cover' />
+            <div className='order-2 md:order-1'>
+              <FramedImage />
             </div>
             <div className='order-1 md:order-2'>
               <h2 className='text-3xl font-bold mb-3'>Our Mission</h2>
@@ -106,5 +104,30 @@ export default async function ResourcePage({ params }: Props) {
         )}
       </div>
     </Container>
+  );
+}
+
+// Image block with layered rounded frames (no overlapping image), plus a subtle glass card at bottom
+function FramedImage() {
+  return (
+    <div className='relative h-64 sm:h-72 lg:h-80'>
+      {/* back frames */}
+      <div className='absolute inset-0 -translate-x-2 -translate-y-2 rounded-3xl bg-purple-600/20 ring-2 ring-purple-400/40 shadow-[0_10px_30px_rgba(168,85,247,0.25)]' />
+      <div className='absolute inset-0 translate-x-2 translate-y-2 rounded-3xl bg-teal-500/20 ring-2 ring-teal-300/40 shadow-[0_10px_30px_rgba(45,212,191,0.25)]' />
+
+      {/* main image card */}
+      <div className='absolute inset-0 rounded-3xl overflow-hidden border border-white/20 bg-base-200/60'>
+        <Image src='/about.png' alt='About visual' width={1200} height={800} className='w-full h-full object-cover' />
+      </div>
+
+      {/* bottom glass overlay bar */}
+      <div className='absolute left-6 right-6 bottom-4 rounded-2xl border border-white/20 bg-gradient-to-b from-base-100/30 to-base-100/10 backdrop-blur-sm shadow-xl p-4'>
+        <div className='flex items-center gap-2 text-white/90'>
+          <span className='inline-block w-2.5 h-2.5 rounded-full bg-emerald-400' />
+          <span className='text-sm font-semibold tracking-wide'>Live Session</span>
+        </div>
+        <div className='mt-2 h-2 w-2/3 rounded bg-white/20' />
+      </div>
+    </div>
   );
 }
