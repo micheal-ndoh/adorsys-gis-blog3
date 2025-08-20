@@ -12,7 +12,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-10"
+          className="mb-6"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 tracking-tight">
             About Us
@@ -23,7 +23,7 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <motion.h3
-              className="text-2xl md:text-3xl font-semibold text-white/90"
+              className="text-3xl md:text-4xl font-semibold text-white/90"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -33,7 +33,7 @@ export function AboutSection() {
             </motion.h3>
 
             <motion.p
-              className="text-base md:text-lg text-white/70 leading-7"
+              className="text-lg md:text-xl text-white/70 leading-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -46,7 +46,7 @@ export function AboutSection() {
             </motion.p>
 
             <motion.p
-              className="text-base md:text-lg text-white/70 leading-7"
+              className="text-lg md:text-xl text-white/70 leading-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -55,27 +55,6 @@ export function AboutSection() {
               Join us to discover inspiring stories, learn from experts, and find a
               supportive network that helps you grow.
             </motion.p>
-
-            <motion.div
-              className="grid grid-cols-3 gap-6 pt-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">5+</div>
-                <div className="text-white/60 text-sm">Years</div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">50+</div>
-                <div className="text-white/60 text-sm">Projects</div>
-              </div>
-              <div>
-                <div className="text-2xl md:text-3xl font-bold text-white">10k+</div>
-                <div className="text-white/60 text-sm">Users</div>
-              </div>
-            </motion.div>
           </div>
 
           <motion.div
@@ -83,7 +62,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-xl"
+            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-xl lg:ml-6 xl:ml-12"
           >
             <Image
               src="/about.png"
