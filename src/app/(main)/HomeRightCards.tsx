@@ -161,7 +161,7 @@ export function HomeRightCards() {
           </div>
         </div>
 
-        <div className="group relative mt-10 mb-6 self-end w-full max-w-md">
+        <div className="group relative -mt-12 self-end w-full max-w-md z-20">
           {/* Layered background cards with enhanced visibility */}
           <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-slate-600/30 to-slate-800/40 rounded-3xl transform rotate-3 scale-110 transition-all duration-500 group-hover:rotate-4 group-hover:scale-115 shadow-2xl"></div>
           <div className="absolute -bottom-2 -right-2 w-full h-full bg-gradient-to-br from-emerald-500/25 to-teal-600/35 rounded-3xl transform -rotate-2 scale-108 transition-all duration-500 group-hover:-rotate-3 group-hover:scale-112 shadow-xl border border-emerald-400/20"></div>
@@ -188,7 +188,7 @@ export function HomeRightCards() {
           </div>
         </div>
 
-        <div className="group relative mt-12">
+        <div className="group relative -mt-10">
           {/* Layered background cards with enhanced visibility */}
           <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-slate-600/30 to-slate-800/40 rounded-3xl transform rotate-3 scale-110 transition-all duration-500 group-hover:rotate-4 group-hover:scale-115 shadow-2xl"></div>
           <div className="absolute -bottom-2 -right-2 w-full h-full bg-gradient-to-br from-rose-500/25 to-pink-600/35 rounded-3xl transform -rotate-2 scale-108 transition-all duration-500 group-hover:-rotate-3 group-hover:scale-112 shadow-xl border border-rose-400/20"></div>
