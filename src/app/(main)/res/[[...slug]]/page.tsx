@@ -57,8 +57,8 @@ export default async function ResourcePage({ params }: Props) {
           </header>
 
           {/* Our Story */}
-          <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16'>
-            <div>
+          <section className='grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center mb-16 sm:mb-24'>
+            <div className='md:pr-8 lg:pr-12'>
               <h2 className='text-3xl font-bold mb-3'>Our Story</h2>
               <p className='text-base sm:text-lg opacity-80 mb-3'>
                 Adorsys GIS Blog is more than a knowledge site — it is a community of
@@ -75,11 +75,11 @@ export default async function ResourcePage({ params }: Props) {
           </section>
 
           {/* Our Mission */}
-          <section className='grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16'>
+          <section className='grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center'>
             <div className='order-2 md:order-1'>
               <FramedImage src="/ab2.webp" />
             </div>
-            <div className='order-1 md:order-2'>
+            <div className='order-1 md:order-2 md:pl-8 lg:pl-12'>
               <h2 className='text-3xl font-bold mb-3'>Our Mission</h2>
               <p className='text-base sm:text-lg opacity-80 mb-3'>
                 Our mission is to make learning fast, enjoyable, and effective.
