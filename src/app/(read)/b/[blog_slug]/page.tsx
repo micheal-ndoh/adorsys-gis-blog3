@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props) {
 export default async function SingleBlogPage({ params }: Props) {
   const { blog_slug } = await params;
   if (!blog_slug) {
-    return redirect("/");
+    return redirect("/courses");
   }
 
   try {
@@ -74,8 +74,8 @@ export default async function SingleBlogPage({ params }: Props) {
                 <a className="btn btn-outline" href={`/b/${blog_slug}`}>
                   Reload
                 </a>
-                <a className="btn btn-primary" href="/">
-                  Return Home
+                <a className="btn btn-primary" href="/courses">
+                  Return to Courses
                 </a>
               </div>
             </div>

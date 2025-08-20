@@ -1,5 +1,1 @@
-import { redirect } from "next/navigation";
-
-
-
-export {default, dynamic} from "./courses/page";
+export { default, dynamic } from "./courses/page";

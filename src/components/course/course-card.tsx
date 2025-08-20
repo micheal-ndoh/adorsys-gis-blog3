@@ -10,8 +10,8 @@ interface CourseCardProps {
   description?: string;
   lang?: string;
   slide1Html?: string;
-  slide2Html?: string;
   tags?: string[];
+  date?: string;
 }
 
 export function CourseCard({
@@ -20,21 +20,28 @@ export function CourseCard({
   description,
   lang,
   slide1Html,
-  slide2Html,
   tags,
-}: CourseCardProps) {
+  date,
+}: Readonly<CourseCardProps>) {
   const { t } = useTranslation();
+  const formattedDate = date
+    ? new Date(date).toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "2-digit",
+      })
+    : undefined;
   const hasSlides =
     typeof (slide1Html ?? "") === "string" &&
     (slide1Html ?? "").trim().length > 0;
   const hasCourse =
     typeof (description ?? "") === "string" &&
     (description ?? "").trim().length > 0;
-  const computedDescription = hasCourse
-    ? description
-    : hasSlides
-    ? t("courseCard.slidesSoon")
-    : t("courseCard.contentSoon");
+  // Description fallback logic
+  let computedDescription: string | undefined = description;
+  if (!hasCourse) {
+    computedDescription = t("courseCard.contentSoon");
+  }
 
   return (
     <Link
@@ -69,13 +76,6 @@ export function CourseCard({
                   <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html as string }} />
                 </div>
               </div>
-              {(slide2Html ?? "").trim().length > 0 && (
-                <div className='slide-preview absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100'>
-                  <div className='slide-preview-inner p-2 sm:p-2.5 md:p-3'>
-                    <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide2Html as string }} />
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         ) : (
@@ -88,6 +88,9 @@ export function CourseCard({
 
         <div className='relative p-3 sm:p-4 md:p-4 lg:p-5'>
           <h3 className='mb-1.5 text-base sm:text-lg font-semibold'>{title}</h3>
+          {formattedDate && (
+            <div className="text-xs text-neutral-400 mb-1.5">{formattedDate}</div>
+          )}
           {computedDescription && (
             <p className='mb-2 sm:mb-3 line-clamp-3 text-xs sm:text-sm opacity-80'>{computedDescription}</p>
           )}
@@ -108,5 +111,3 @@ export function CourseCard({
     </Link>
   );
 }
-
-

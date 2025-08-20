@@ -90,7 +90,7 @@ export default function ErrorPage({
             <button className="btn btn-outline" onClick={() => history.back()}>
               <ArrowLeft className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
             </button>
-            <Link className="btn btn-ghost" href="/">
+            <Link className="btn btn-ghost" href="/courses">
               <Home className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
             </Link>
           </div>

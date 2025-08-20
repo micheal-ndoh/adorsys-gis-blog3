@@ -66,28 +66,42 @@ export function AppNavBar() {
       <Container className="py-0">
         <nav className="navbar min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
-            <Link
-              href="/"
-              className="group flex flex-row items-center gap-1.5 sm:gap-2"
-              aria-label="Go to home"
+            <div
+              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-default"
+              aria-label="Brand"
             >
               <Image
                 src={icon}
-                className="w-6 sm:w-8 transition-transform duration-200 group-hover:scale-110"
+                className="w-6 sm:w-8"
                 alt="logo"
               />
-              <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90 transition-colors duration-200 group-hover:text-primary">
-                Learn
+              <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90">
+                Adorsys GIS Blog
               </span>
-            </Link>
+            </div>
           </div>
 
-          <div className="navbar-end flex items-center gap-1.5 sm:gap-2">
-            <div ref={dropdownRef} className="relative dropdown">
-              <button
-                type="button"
+          <div className="navbar-end flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/courses"
+              className="text-primary hover:font-extrabold transition-colors px-1"
+            >
+              {i18n.language?.startsWith("fr") ? "Cours" : "Courses"}
+            </Link>
+            <Link
+              href="/res/about"
+              className="text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+            >
+              {i18n.language?.startsWith("fr") ? "À propos" : "About"}
+            </Link>
+            <div
+              ref={dropdownRef}
+              className={`relative dropdown dropdown-end ${open ? "dropdown-open" : ""}`}
+            >
+              <div
+                role="button"
                 onClick={() => setOpen((v) => !v)}
-                className="btn btn-ghost px-2 sm:px-3 py-1.5 sm:py-2 bg-white/15 text-white/80 hover:text-primary hover:bg-primary/25 border border-transparent hover:border-primary/30 rounded-xl backdrop-blur-md transition-all flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base"
+                className="inline-flex items-center gap-1.5 sm:gap-2 text-white/80 hover:text-white hover:font-extrabold px-1 select-none cursor-pointer"
                 aria-haspopup="menu"
                 aria-expanded={open}
                 aria-label={`Current language: ${current === "en" ? "English" : "Français"}`}
@@ -106,7 +120,7 @@ export function AppNavBar() {
                 >
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-              </button>
+              </div>
               {open && (
                 <ul
                   role="menu"

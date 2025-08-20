@@ -29,7 +29,7 @@ export default function GlobalError({
                 <button className="btn btn-primary" onClick={() => reset()}>
                   <RefreshCw className="mr-2 h-4 w-4" /> Try again
                 </button>
-                <a className="btn btn-ghost" href="/">
+                <a className="btn btn-ghost" href="/courses">
                   <Home className="mr-2 h-4 w-4" /> Home
                 </a>
               </div>

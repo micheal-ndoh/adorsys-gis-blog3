@@ -7,6 +7,8 @@ import { Pagination } from "@blog/components/pagination";
 import { getSlidePreviewHtmls } from "@blog/server/blog/slide-preview";
 import { CoursesHeader } from "./CoursesHeader";
 import { CoursesSearch } from "./CoursesSearch";
+import * as fs from "fs-extra";
+import * as path from "node:path";
 
 export const dynamic = "force-dynamic";
 
@@ -25,22 +27,54 @@ export default async function CoursesPage({ searchParams }: Props) {
   const courses = await Promise.all(
     slugs.map(async (slug) => {
       try {
-        const { course } = await loadBlog(slug);
+        const { course, slides } = await loadBlog(slug);
         const plain = course?.content
           ?.replace(/<[^>]+>/g, " ")
           .replace(/\s+/g, " ")
           .trim();
-        const lang =
-          typeof (course as any)?.lang === "string"
-            ? (course as any).lang
-            : undefined;
+        let lang: string | undefined = undefined;
+        if (typeof (course as any)?.lang === "string") {
+          lang = (course as any).lang;
+        }
         const previews = await getSlidePreviewHtmls(slug);
+        const rawTags = (course as any)?.tags as unknown;
+        let tags: string[] | undefined = undefined;
+        if (Array.isArray(rawTags)) {
+          tags = (rawTags as any[]).map((t) => String(t));
+        } else if (typeof rawTags === "string") {
+          tags = rawTags
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean);
+        }
+        // Determine created date: prefer course front matter, then slides, then file mtime
+        let created: string | undefined = undefined;
+        if (typeof (course as any)?.date === "string") {
+          created = (course as any).date as string;
+        } else if (typeof (slides as any)?.date === "string") {
+          created = (slides as any).date as string;
+        } else {
+          try {
+            const coursePath = path.join(
+              process.cwd(),
+              "docs",
+              "blog",
+              slug,
+              "course.md"
+            );
+            const stat = await fs.stat(coursePath);
+            created = stat.mtime.toISOString();
+          } catch {}
+        }
+
         return {
           slug,
           title: course?.title ?? slug,
           description: plain,
           lang,
           previews,
+          tags,
+          date: created,
         };
       } catch {
         return {
@@ -85,7 +119,7 @@ export default async function CoursesPage({ searchParams }: Props) {
           </div>
           <CoursesSearch>
             <div className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-3">
-              {pageItems.map(({ slug, title, description, lang, previews }) => (
+              {pageItems.map(({ slug, title, description, lang, previews, tags, date }) => (
                 <CourseCard
                   key={slug}
                   slug={slug}
@@ -93,7 +127,8 @@ export default async function CoursesPage({ searchParams }: Props) {
                   description={description}
                   lang={lang}
                   slide1Html={(previews as any)?.firstHtml}
-                  slide2Html={(previews as any)?.secondHtml}
+                  tags={tags}
+                  date={date}
                 />
               ))}
             </div>
