@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export function AboutSection() {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(sectionRef, { amount: 0.3 });
   return (
     <section id="about" className="relative py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={sectionRef} className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-2"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 tracking-tight">
@@ -25,9 +27,8 @@ export function AboutSection() {
             <motion.h3
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white/95 mb-3 sm:mb-4 md:mb-5 lg:mb-6 font-bold leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.1, duration: 0.7 }}
             >
               <span className="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
                 Learn Smarter. Build Faster.
@@ -37,9 +38,8 @@ export function AboutSection() {
             <motion.p
               className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
             >
               Knowledge Hub is your space to learn clearly and quickly. We turn
               complex ideas into simple, practical lessons with examples you can
@@ -49,9 +49,8 @@ export function AboutSection() {
             <motion.p
               className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/80 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
             >
               Browse concise articles, hands‑on courses, and clean slide decks.
               Explore at your pace and find exactly what you need with fast,
@@ -61,9 +60,8 @@ export function AboutSection() {
 
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
+            transition={{ delay: 0.1, duration: 0.8 }}
             className="group relative w-full max-w-md md:max-w-lg justify-self-center lg:justify-self-end lg:ml-8 xl:ml-12"
           >
             <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-slate-600/30 to-slate-800/40 rounded-3xl transform rotate-3 scale-110 transition-all duration-500 group-hover:rotate-4 group-hover:scale-115 shadow-2xl"></div>
