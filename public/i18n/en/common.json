@@ -13,7 +13,9 @@
   "nav": {
     "home": "Home",
     "courses": "Courses",
-    "search": "Search"
+    "search": "Search",
+    "about": "About",
+    "brand": "Adorsys GIS Blog"
   },
   "search": {
     "title": "Search",
@@ -32,6 +34,10 @@
   "courses": {
     "title": "Courses",
     "available": "{{count}} courses available"
+  },
+  "blogs": {
+    "title": "Blogs",
+    "description": "Insightful articles and updates from the Adorsys GIS team — best practices, real-world geospatial use cases, and deep dives into tools and data workflows."
   },
   "home": {
     "title": "Knowledge Hub",
@@ -56,6 +62,41 @@
     "p2": "Browse concise articles, hands‑on courses, and clean slide decks. Explore at your pace and find exactly what you need with fast, accurate search.",
     "imageAlt": "People collaborating happily around a laptop"
   },
+  "res": {
+    "about": {
+      "title": "About Us",
+      "ourStory": "Our Story",
+      "storyP1": "Adorsys GIS Blog is more than a knowledge site — it is a community of curious learners and practitioners who love clear, practical content. We turn complex topics into approachable lessons you can apply right away.",
+      "storyP2": "Born from the idea that sharing knowledge elevates everyone, we craft articles, courses, and slide decks that bring people together to learn, build, and grow.",
+      "ourMission": "Our Mission",
+      "missionP1": "Our mission is to make learning fast, enjoyable, and effective. We emphasise clarity, hands‑on examples, and reliable resources so you can move from understanding to execution with confidence.",
+      "missionP2": "Whether you are just getting started or sharpening advanced skills, this space is designed to help you learn smarter and build faster.",
+      "imageAlt": "About visual"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with the Adorsys GIS team. We're here to help with your questions, feedback, and collaboration opportunities.",
+      "email": "Email us at",
+      "emailAddress": "contact@adorsys-gis.com",
+      "social": "Follow us on social media",
+      "responseTime": "We typically respond within 24 hours during business days."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about our platform, courses, and services.",
+      "comingSoon": "We're working on compiling the most frequently asked questions. Check back soon for a comprehensive FAQ section."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn how we collect, use, and protect your personal information.",
+      "comingSoon": "Our privacy policy is being updated to reflect current best practices and regulations. We'll have it available soon."
+    },
+    "tos": {
+      "title": "Terms of Service",
+      "description": "Understand the terms and conditions for using our platform and services.",
+      "comingSoon": "Our terms of service are being reviewed and updated. We'll have them available shortly."
+    }
+  },
   "footer": {
     "logo": "logo",
     "copyright": "Copyright © {{year}}",
@@ -73,6 +114,7 @@
     "tryAgain": "Try again",
     "returnHome": "Return Home",
     "returnCourses": "Return to Courses",
+    "back": "Back",
     "notFound": "Not Found",
     "notFoundDesc": "Could not find requested resource"
   }
