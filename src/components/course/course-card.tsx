@@ -59,11 +59,11 @@ export function CourseCard({
 
         {hasSlides ? (
           <div className="relative w-full overflow-hidden bg-black">
-            <div className="relative aspect-square md:h-64 lg:h-72 xl:h-80">
+            <div className="relative h-32 sm:h-36 md:h-40 lg:h-44 xl:h-48">
               <div className="slide-preview absolute inset-0">
-                <div className="slide-preview-inner p-2 sm:p-3 md:p-4">
+                <div className="slide-preview-inner h-full w-full p-2 sm:p-2.5 md:p-3 overflow-hidden">
                   <div
-                    className="prose prose-invert"
+                    className="prose prose-invert h-full w-full overflow-hidden"
                     dangerouslySetInnerHTML={{ __html: slide1Html as string }}
                   />
                 </div>
@@ -72,7 +72,7 @@ export function CourseCard({
           </div>
         ) : (
           <div className="relative w-full overflow-hidden bg-black">
-            <div className="relative aspect-square md:h-64 lg:h-72 xl:h-80">
+            <div className="relative h-32 sm:h-36 md:h-40 lg:h-44 xl:h-48">
               <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
                 <span className="text-neutral-400 text-sm">
                   Slides not available yet
@@ -82,20 +82,22 @@ export function CourseCard({
           </div>
         )}
 
-        <div className="relative p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8">
-          <h3 className="mb-2 text-lg sm:text-xl font-semibold text-white">
+        <div className="relative p-3 sm:p-4 md:p-4 lg:p-5">
+          <h3 className="mb-1.5 text-base sm:text-lg font-semibold text-white">
             {title}
           </h3>
           {formattedDate && (
-            <div className="text-xs text-neutral-400 mb-2">{formattedDate}</div>
+            <div className="text-xs text-neutral-400 mb-1.5">
+              {formattedDate}
+            </div>
           )}
           {computedDescription && (
-            <p className="mb-3 sm:mb-4 line-clamp-3 text-sm text-neutral-300">
+            <p className="mb-2 sm:mb-3 line-clamp-3 text-xs sm:text-sm text-neutral-300">
               {computedDescription}
             </p>
           )}
           {tags && tags.length > 0 && (
-            <div className="mb-3 sm:mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+            <div className="mb-2 sm:mb-3 flex flex-wrap gap-1.5 sm:gap-2">
               {tags.map((tag) => (
                 <span
                   key={tag}
