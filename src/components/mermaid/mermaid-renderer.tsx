@@ -78,6 +78,7 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
               const diagramDiv = document.createElement("div");
               diagramDiv.className = "mermaid-diagram my-6 text-center";
               diagramDiv.id = id;
+              diagramDiv.style.cssText = "display: block !important; visibility: visible !important; border: 2px solid red !important; padding: 1rem !important; margin: 1rem 0 !important;";
               
               // Insert the diagram div after the pre element
               if (pre.parentNode) {
@@ -87,10 +88,14 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
                 const { svg } = await mermaid.render(id, content);
                 diagramDiv.innerHTML = svg;
                 
+                // Add some debugging text
+                diagramDiv.innerHTML += `<div style="color: red; font-size: 12px; margin-top: 8px;">Debug: Mermaid diagram ${mermaidCount} rendered successfully</div>`;
+                
                 // Hide the original code block
                 pre.classList.add("hidden");
                 
                 console.log(`✅ MermaidRenderer: Successfully rendered Mermaid diagram ${mermaidCount}`);
+                console.log(`🔍 MermaidRenderer: Diagram div inserted:`, diagramDiv);
               }
             } catch (error) {
               console.error(`❌ MermaidRenderer: Failed to render Mermaid diagram ${mermaidCount}:`, error);
