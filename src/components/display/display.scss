@@ -19,7 +19,7 @@
   text-align: center !important;
 }
 
-// Center lists with bullets closer to text
+// Center lists with bullets very close to text
 .reveal .slides section ul,
 .reveal .slides section ol {
   text-align: center !important;
@@ -33,7 +33,9 @@
 .reveal .slides section li {
   text-align: left !important;
   margin: 0.25em 0 !important;
-  padding-left: 0.5em !important;
+  padding-left: 0.1em !important;
+  text-indent: -1.2em !important;
+  padding-left: 1.2em !important;
 }
 
 // Center code blocks and other elements
