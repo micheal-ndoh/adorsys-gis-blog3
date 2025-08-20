@@ -19,23 +19,30 @@
   text-align: center !important;
 }
 
-// Center lists with bullets very close to text
+// Force bullets very close to text with maximum specificity
 .reveal .slides section ul,
-.reveal .slides section ol {
+.reveal .slides section ol,
+.reveal .slides section ul li,
+.reveal .slides section ol li {
   text-align: center !important;
   list-style-position: inside !important;
   display: inline-block !important;
   text-align: left !important;
   margin: 0 !important;
-  padding-left: 0 !important;
+  padding: 0 !important;
 }
 
 .reveal .slides section li {
   text-align: left !important;
-  margin: 0.25em 0 !important;
-  padding-left: 0.1em !important;
-  text-indent: -1.2em !important;
-  padding-left: 1.2em !important;
+  margin: 0.1em 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+// Override any existing list styles
+.reveal .slides section ul li::marker,
+.reveal .slides section ol li::marker {
+  margin-right: 0.2em !important;
 }
 
 // Center code blocks and other elements
