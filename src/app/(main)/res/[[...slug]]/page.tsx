@@ -121,7 +121,7 @@ function FramedImage() {
       </div>
 
       {/* bottom glass overlay bar */}
-      <div className='absolute left-6 right-6 bottom-4 rounded-2xl border border-white/20 bg-gradient-to-b from-base-100/30 to-base-100/10 backdrop-blur-sm shadow-xl p-4'>
+      <div className='absolute left-6 right-6 bottom-4 rounded-2xl border border-white/15 bg-black/60 shadow-xl p-4'>
         <div className='flex items-center gap-2 text-white/90'>
           <span className='inline-block w-2.5 h-2.5 rounded-full bg-emerald-400' />
           <span className='text-sm font-semibold tracking-wide'>Live Session</span>
