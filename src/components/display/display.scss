@@ -3,18 +3,23 @@
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
 
-// Justify all slide content with uniform margins
+// Force justify all slide content with aggressive overrides
 .reveal .slides section {
   text-align: justify !important;
   margin-left: 2rem !important;
   margin-right: 2rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
-// Justify ALL text elements in slides
+// Justify ALL text elements in slides with aggressive overrides
 .reveal .slides section * {
   text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
+// Target specific Reveal.js generated elements
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -28,6 +33,35 @@
   text-align: justify !important;
   margin-left: 2rem !important;
   margin-right: 2rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Force justify text in any container elements
+.reveal .slides section .text-container,
+.reveal .slides section .content,
+.reveal .slides section .slide-content {
+  text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Target the actual text content more specifically
+.reveal .slides section h1 *,
+.reveal .slides section h2 *,
+.reveal .slides section h3 *,
+.reveal .slides section h4 *,
+.reveal .slides section h5 *,
+.reveal .slides section h6 *,
+.reveal .slides section p *,
+.reveal .slides section div *,
+.reveal .slides section span * {
+  text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
 }
 
 // Justify lists with bullets close to text and uniform margins
@@ -38,6 +72,8 @@
   display: inline-block !important;
   margin: 0 2rem !important;
   padding: 0 !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
 .reveal .slides section li {
@@ -45,6 +81,8 @@
   margin: 0 !important;
   padding: 0 !important;
   text-indent: 0 !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
 // Justify code blocks with uniform margins
@@ -59,11 +97,15 @@
   text-align: justify !important;
   margin-left: 3rem !important;
   margin-right: 3rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
-// Justify ALL text elements in prose content
+// Justify ALL text elements in prose content with aggressive overrides
 .prose * {
   text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
 .prose h1,
@@ -79,6 +121,9 @@
   text-align: justify !important;
   margin-left: 3rem !important;
   margin-right: 3rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
 }
 
 .prose ul,
@@ -87,6 +132,8 @@
   list-style-position: inside !important;
   margin: 0 3rem !important;
   padding: 0 !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
 .prose li {
@@ -94,4 +141,6 @@
   margin: 0 !important;
   padding: 0 !important;
   text-indent: 0 !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }

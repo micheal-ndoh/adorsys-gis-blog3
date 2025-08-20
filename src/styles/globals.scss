@@ -133,3 +133,14 @@ article {
     h3 { @apply text-lg; }
   }
 }
+
+// Global text justification override
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose * {
+  text-align: justify !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
