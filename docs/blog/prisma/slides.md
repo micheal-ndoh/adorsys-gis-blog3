@@ -7,11 +7,17 @@ tags: [database, orm, development]
 description: Prisma is an open-source ORM (Object-Relational Mapping) tool that simplifies database interactions for developers by providing a type-safe, intuitive API.
 ---
 
-![Prisma ORM](https://camo.githubusercontent.com/c40c71bc04ddc73535f5fcd4763d1d07a86fe0d0fb5e3b889c028fa42e239923/68747470733a2f2f692e696d6775722e636f6d2f5167774469654f2e706e67)
+![Prisma ORM](https://cdn.hashnode.com/res/hashnode/image/upload/v1695624644455/31ed5d49-a9f8-4091-a889-4f7a40319dbb.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp)
 
 ---
 
-Prisma is an open-source ORM (Object-Relational Mapping) tool designed to streamline database interactions in modern applications. It provides a type-safe, intuitive API for working with databases like PostgreSQL, MySQL, SQLite, MongoDB, and SQL Server. Prisma simplifies tasks like querying, migrations, and data modeling, making it a popular choice for developers building applications with Node.js and TypeScript.
+Prisma is an open-source ORM (Object-Relational Mapping) tool designed to streamline database interactions in modern applications.
+
+---
+
+ It provides a type-safe, intuitive API for working with databases like PostgreSQL, MySQL, SQLite, MongoDB, and SQL Server. Prisma simplifies tasks like querying, migrations, and data modeling, making it a popular choice for developers building applications with Node.js and TypeScript.
+
+---
 
 Unlike traditional ORMs, Prisma uses a schema-first approach, where developers define their database schema in a Prisma schema file, and Prisma generates type-safe client code. This reduces errors and improves developer productivity. Prisma is widely used in full-stack applications, including those built with frameworks like Next.js, Express, or NestJS.
 
@@ -51,6 +57,9 @@ At its core, Prisma is a toolkit that bridges your application and database thro
 
 - **Prisma Schema**: A declarative file (`schema.prisma`) where you define your data models, relationships, and database connection. This serves as the single source of truth for your database structure.
 - **Prisma Client**: A type-safe, auto-generated JavaScript/TypeScript client based on the schema. It provides methods for querying, creating, updating, and deleting data.
+  
+---
+
 - **Prisma Migrate**: A migration tool that generates SQL migrations from changes in the Prisma schema and applies them to the database.
 - **Query Engine**: A Rust-based engine that translates Prisma Client queries into database-specific SQL or NoSQL queries, optimizing performance.
 - **Data Validation and Security**: Prisma validates input data against the schema, reducing risks like SQL injection.

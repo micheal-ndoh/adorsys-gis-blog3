@@ -57,7 +57,7 @@ export function CourseCard({
       >
         {/* minimal, no overlays */}
 
-        {hasSlides ? (
+        {hasSlides && slide1Html && slide1Html.includes("<img") ? (
           <div className="relative w-full overflow-hidden bg-black">
             <div className="relative h-32 sm:h-36 md:h-40 lg:h-44 xl:h-48">
               <div className="slide-preview absolute inset-0">
