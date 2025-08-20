@@ -12,12 +12,12 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-6"
+          className="mb-2"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white/90 tracking-tight">
             About Us
           </h2>
-          <div className="mt-3 h-1 w-24 bg-orange-400/80 rounded-full" />
+          <div className="mt-2 h-1 w-24 bg-orange-400/80 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
