@@ -63,15 +63,15 @@ export function CourseCard({
 
         {hasSlides ? (
           <div className='relative w-full overflow-hidden bg-base-200/80'>
-            <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-56 lg:h-64 xl:h-72'>
+            <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-48 lg:h-56 xl:h-64'>
               <div className='slide-preview absolute inset-0 transition-opacity duration-500 ease-out group-hover:opacity-0'>
-                <div className='slide-preview-inner p-3 sm:p-4'>
+                <div className='slide-preview-inner p-2 sm:p-3 md:p-4'>
                   <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide1Html as string }} />
                 </div>
               </div>
               {(slide2Html ?? "").trim().length > 0 && (
                 <div className='slide-preview absolute inset-0 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100'>
-                  <div className='slide-preview-inner p-3 sm:p-4'>
+                  <div className='slide-preview-inner p-2 sm:p-3 md:p-4'>
                     <div className='prose prose-neutral' dangerouslySetInnerHTML={{ __html: slide2Html as string }} />
                   </div>
                 </div>
@@ -80,27 +80,27 @@ export function CourseCard({
           </div>
         ) : (
           <div className='relative w-full overflow-hidden bg-base-200/80'>
-            <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-56 lg:h-64 xl:h-72'>
+            <div className='relative aspect-[16/9] sm:aspect-[16/8] md:h-48 lg:h-56 xl:h-64'>
               <div className='absolute inset-0 bg-gradient-to-br from-primary/10 via-base-200 to-accent/10' />
             </div>
           </div>
         )}
 
-        <div className='relative p-6 sm:p-7 md:p-8'>
-          <h3 className='mb-2 text-xl font-semibold'>{title}</h3>
+        <div className='relative p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8'>
+          <h3 className='mb-2 text-lg sm:text-xl font-semibold'>{title}</h3>
           {computedDescription && (
-            <p className='mb-4 line-clamp-3 text-sm opacity-80'>{computedDescription}</p>
+            <p className='mb-3 sm:mb-4 line-clamp-3 text-sm opacity-80'>{computedDescription}</p>
           )}
           {tags && tags.length > 0 && (
-            <div className='mb-4 flex flex-wrap gap-2'>
+            <div className='mb-3 sm:mb-4 flex flex-wrap gap-1.5 sm:gap-2'>
               {tags.map((tag) => (
-                <span key={tag} className='badge badge-outline badge-sm'>
+                <span key={tag} className='badge badge-outline badge-sm text-xs'>
                   {tag}
                 </span>
               ))}
             </div>
           )}
-          <span className='absolute bottom-4 right-4 z-10 btn btn-primary btn-sm rounded-full shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>
+          <span className='absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-10 btn btn-primary btn-sm rounded-full shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>
             {t("common.open")}
           </span>
         </div>
