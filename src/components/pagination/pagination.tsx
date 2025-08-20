@@ -72,7 +72,7 @@ export function Pagination({
   return (
     <nav
       aria-label="Course navigation"
-      className="glass-surface flex items-center gap-1 rounded-2xl px-3 py-2 backdrop-saturate-150 sm:gap-2 md:gap-3"
+      className="glass-surface flex items-center gap-1 rounded-2xl px-2 py-2 backdrop-saturate-150 sm:gap-2 md:gap-3 sm:px-3"
     >
       {/* Previous */}
       <Link
@@ -81,7 +81,7 @@ export function Pagination({
         aria-disabled={isPrevDisabled}
         aria-label={t("Previous Page")}
         tabIndex={isPrevDisabled ? -1 : 0}
-        className={`group particle-deconstruct relative rounded-xl border border-transparent px-2 py-2 font-medium text-sm backdrop-blur-md transition-all duration-300 sm:px-3 sm:py-2.5 md:px-4 ${
+        className={`group particle-deconstruct relative rounded-xl border border-transparent px-1.5 py-1.5 font-medium text-xs backdrop-blur-md transition-all duration-300 sm:px-2 sm:py-2 md:px-3 md:py-2.5 lg:px-4 ${
           isPrevDisabled
             ? "pointer-events-none cursor-not-allowed text-neutral-400 opacity-50"
             : "text-neutral-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
@@ -90,11 +90,11 @@ export function Pagination({
         <span className="flex items-center gap-1">
           <svg
             aria-hidden="true"
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             viewBox="0 0 24 24"
             fill="none"
-            className="opacity-80"
+            className="opacity-80 sm:w-[14px] sm:h-[14px]"
           >
             <path
               d="M15 18l-6-6 6-6"
@@ -104,7 +104,7 @@ export function Pagination({
               strokeLinejoin="round"
             />
           </svg>
-          <span>{t("Previous")}</span>
+          <span className="hidden sm:inline">{t("Previous")}</span>
         </span>
       </Link>
 
@@ -120,7 +120,7 @@ export function Pagination({
                 ? t("Current Page {{page}}", { page })
                 : t("Go to Page {{page}}", { page })
             }
-            className={`group particle-deconstruct relative rounded-xl border px-2 py-2 font-medium text-xs backdrop-blur-md transition-all duration-300 hover:scale-105 sm:px-3 sm:py-2.5 sm:text-sm md:px-4 ${
+            className={`group particle-deconstruct relative rounded-xl border px-1.5 py-1.5 font-medium text-xs backdrop-blur-md transition-all duration-300 hover:scale-105 sm:px-2 sm:py-2 md:px-3 md:py-2.5 lg:px-4 sm:text-sm ${
               page === currentPage
                 ? "border-primary/40 bg-gradient-to-r from-primary/30 to-secondary/30 text-base-content shadow-lg shadow-primary/20 hover:border-primary/60 hover:from-primary/40 hover:to-secondary/40 hover:shadow-primary/30 hover:shadow-xl"
                 : "border-transparent text-neutral-400 hover:border-white/20 hover:bg-white/10 hover:text-base-content"
@@ -145,21 +145,21 @@ export function Pagination({
         aria-disabled={isNextDisabled}
         aria-label={t("Next Page")}
         tabIndex={isNextDisabled ? -1 : 0}
-        className={`group particle-deconstruct relative rounded-xl border border-transparent px-2 py-2 font-medium text-sm backdrop-blur-md transition-all duration-300 sm:px-3 sm:py-2.5 md:px-4 ${
+        className={`group particle-deconstruct relative rounded-xl border border-transparent px-1.5 py-1.5 font-medium text-xs backdrop-blur-md transition-all duration-300 sm:px-2 sm:py-2 md:px-3 md:py-2.5 lg:px-4 ${
           isNextDisabled
             ? "pointer-events-none cursor-not-allowed text-neutral-400 opacity-50"
             : "text-neutral-400 hover:border-white/20 hover:bg-white/10 hover:text-white"
         }`}
       >
         <span className="flex items-center gap-1">
-          <span>{t("Next")}</span>
+          <span className="hidden sm:inline">{t("Next")}</span>
           <svg
             aria-hidden="true"
-            width="14"
-            height="14"
+            width="12"
+            height="12"
             viewBox="0 0 24 24"
             fill="none"
-            className="opacity-80"
+            className="opacity-80 sm:w-[14px] sm:h-[14px]"
           >
             <path
               d="M9 6l6 6-6 6"
