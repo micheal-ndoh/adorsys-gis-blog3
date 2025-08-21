@@ -69,7 +69,7 @@ export function CoursesSearch({ children }: PropsWithChildren) {
       </div>
 
       {enabled ? (
-        <div className="mt-8 sm:mt-12 md:mt-16 xl:mt-20">
+        <div className="mt-12 sm:mt-16 md:mt-24 xl:mt-28">
           {isFetching && (
             <div className="text-xs sm:text-sm opacity-70">{t("search.searching")}</div>
           )}
@@ -91,7 +91,7 @@ export function CoursesSearch({ children }: PropsWithChildren) {
           </div>
         </div>
       ) : (
-        <div className="mt-8 sm:mt-12 md:mt-16 xl:mt-20">{children}</div>
+        <div className="mt-12 sm:mt-16 md:mt-24 xl:mt-28">{children}</div>
       )}
     </div>
   );
