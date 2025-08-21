@@ -45,13 +45,17 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
     return redirect("/courses");
   }
 
+  // Determine the best back link once so both success and error states share it
+  const headerList = await headers();
+  const referer = headerList.get("referer") || undefined;
+  const sp = (await searchParams) ?? {};
+  const backHref = sp.returnTo ?? referer ?? "/courses";
+  const reloadHref = sp.returnTo
+    ? `/b/${blog_slug}?returnTo=${encodeURIComponent(sp.returnTo)}`
+    : `/b/${blog_slug}`;
+
   try {
     const { course, slides } = await loadBlog(blog_slug);
-    // Build a resilient back link that prefers an explicit returnTo param, then referrer, then default
-    const headerList = await headers();
-    const referer = headerList.get("referer") || undefined;
-    const sp = (await searchParams) ?? {};
-    const backHref = sp.returnTo ?? referer ?? "/courses";
     return (
       <Container>
         <ProseFixer />
@@ -98,10 +102,10 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
                 Please check the link or try again later.
               </p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <a className="btn btn-outline" href={`/b/${blog_slug}`}>
+                <a className="btn btn-outline" href={reloadHref}>
                   Reload
                 </a>
-                <a className="btn btn-primary" href="/courses">
+                <a className="btn btn-primary" href={backHref}>
                   Return to Blogs
                 </a>
               </div>
