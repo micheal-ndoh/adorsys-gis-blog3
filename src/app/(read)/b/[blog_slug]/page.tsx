@@ -4,7 +4,7 @@ import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
 import Link from "next/link";
-import { MermaidRenderer } from "@blog/components/mermaid/mermaid-renderer";
+import ProseFixer from "@blog/components/display/ProseFixer";
 
 export const dynamic = "force-dynamic";
 
@@ -47,6 +47,7 @@ export default async function SingleBlogPage({ params }: Props) {
     const { course, slides } = await loadBlog(blog_slug);
     return (
       <Container>
+        <ProseFixer />
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
           <Link
             href="/b"
@@ -72,15 +73,7 @@ export default async function SingleBlogPage({ params }: Props) {
 
         {course.content && (
           <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 text-justify px-8">
-            {/* Debug: Add a visible test element */}
-            
-            
-            <MermaidRenderer>
-              <div dangerouslySetInnerHTML={{ __html: course.content }} />
-            </MermaidRenderer>
-            
-            {/* Debug: Add another test element */}
-            
+            <div dangerouslySetInnerHTML={{ __html: course.content }} />
           </article>
         )}
       </Container>
