@@ -37,3 +37,5 @@ graph TD
 ## Conclusion
 
 Prisma streamlines database access with modern tooling and great DX. 
+
+---

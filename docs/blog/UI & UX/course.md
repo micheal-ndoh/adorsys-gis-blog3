@@ -59,3 +59,4 @@ graph TD
 ## Conclusion
 
 UI/UX design is vital for creating user-friendly and engaging digital products. By mastering tools and processes, designers can enhance user experiences and product value. Explore resources and practice to excel in this field.
+---

@@ -22,3 +22,4 @@ Tolgee est une plateforme d'i18n moderne qui simplifie la traduction côté dév
 
 - Notions de base en JavaScript/TypeScript
 - Projet frontend existant 
+---
