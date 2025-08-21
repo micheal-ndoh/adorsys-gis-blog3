@@ -3,9 +3,10 @@ import { redirect } from "next/navigation";
 import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
-import { headers } from "next/headers";
-import ProseFixer from "@blog/components/display/ProseFixer";
 import { BackToBlogs } from "./BackToBlogs";
+import { MermaidRenderer } from "@blog/components/mermaid/mermaid-renderer";
+import ProseFixer from "@blog/components/display/ProseFixer";
+import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -60,27 +61,6 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
       <Container>
         <ProseFixer />
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
-
-          <Link
-            href="/b"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-white/75 hover:text-white hover:font-extrabold transition-colors"
-            aria-label="Back to blogs"
-          >
-            <svg
-              className="w-3 h-3 sm:w-4 sm:h-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden
-            >
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-            Back to blogs
-          </Link>
-
           <BackToBlogs href={backHref} />
         </div>
         {slides && <Display data={slides.content} />}

@@ -12,11 +12,11 @@ export function BackToBlogs({ href }: { href?: string }) {
   return (
     <Link
       href={href ?? defaultHref}
-      className="inline-flex items-center gap-2 text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+      className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-white/75 hover:text-white hover:font-extrabold transition-colors"
       aria-label={t("blogs.back")}
     >
       <svg
-        className="w-4 h-4"
+        className="w-3 h-3 sm:w-4 sm:h-4"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
