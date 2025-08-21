@@ -12,11 +12,11 @@ export default function LargeFooter() {
   return (
     <div className="bg-black/60 border-t border-white/10">
       <Container>
-        <footer className="footer py-8 sm:py-10 sm:footer-horizontal text-white/85 gap-6 sm:gap-8">
-          <aside className="text-center">
+        <div className="py-8 sm:py-10 text-white/85">
+          <div className="text-center sm:text-left">
             <Image
               src={icon}
-              className="fill-current w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto"
+              className="fill-current w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto sm:mx-0"
               alt={t("footer.logo") ?? "logo"}
             />
             <p className="text-sm sm:text-base mt-2">
@@ -24,10 +24,10 @@ export default function LargeFooter() {
               <br />
               {t("footer.rights")}
             </p>
-          </aside>
+          </div>
 
           {/* Social links */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 mb-8">
             <a
               href="#"
               target="_blank"
@@ -71,7 +71,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Mobile: COMPANY and LEGAL on same line */}
-          <div className="flex flex-row flex-wrap justify-center md:hidden gap-6">
+          <div className="flex flex-row flex-wrap justify-center sm:hidden gap-6 mb-8">
             <nav className="text-center">
               <h6 className="footer-title text-base">{t("footer.company")}</h6>
               <div className="flex flex-col gap-1">
@@ -97,7 +97,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Desktop: Original horizontal layout */}
-          <nav className="hidden md:block text-left">
+          <nav className="hidden sm:block text-left">
             <h6 className="footer-title text-base sm:text-lg">{t("footer.company")}</h6>
             <div className="flex flex-col gap-1">
               <Link href="/res/faq" className="link link-hover text-sm sm:text-base">
@@ -108,7 +108,7 @@ export default function LargeFooter() {
               </Link>
             </div>
           </nav>
-          <nav className="hidden md:block text-left">
+          <nav className="hidden sm:block text-left">
             <h6 className="footer-title text-base sm:text-lg">{t("footer.legal")}</h6>
             <div className="flex flex-col gap-1">
               <Link href="/res/tos" className="link link-hover text-sm sm:text-base">
@@ -121,7 +121,7 @@ export default function LargeFooter() {
           </nav>
 
 
-        </footer>
+        </div>
       </Container>
     </div>
   );
