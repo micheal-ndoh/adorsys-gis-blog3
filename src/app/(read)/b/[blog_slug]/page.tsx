@@ -4,6 +4,7 @@ import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
 import Link from "next/link";
+import { headers } from "next/headers";
 import ProseFixer from "@blog/components/display/ProseFixer";
 
 export const dynamic = "force-dynamic";
@@ -15,6 +16,7 @@ export async function generateStaticParams() {
 
 interface Props {
   params: Promise<{ blog_slug: string }>;
+  searchParams?: Promise<{ returnTo?: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -37,7 +39,7 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function SingleBlogPage({ params }: Props) {
+export default async function SingleBlogPage({ params, searchParams }: Props) {
   const { blog_slug } = await params;
   if (!blog_slug) {
     return redirect("/courses");
@@ -45,12 +47,17 @@ export default async function SingleBlogPage({ params }: Props) {
 
   try {
     const { course, slides } = await loadBlog(blog_slug);
+    // Build a resilient back link that prefers an explicit returnTo param, then referrer, then default
+    const headerList = await headers();
+    const referer = headerList.get("referer") || undefined;
+    const sp = (await searchParams) ?? {};
+    const backHref = sp.returnTo ?? referer ?? "/courses";
     return (
       <Container>
         <ProseFixer />
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
           <Link
-            href="/b"
+            href={backHref}
             className="inline-flex items-center gap-2 text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
             aria-label="Back to blogs"
           >
