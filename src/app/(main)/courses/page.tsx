@@ -110,6 +110,8 @@ export default async function CoursesPage({ searchParams }: Props) {
     return qs ? `/courses?${qs}` : "/courses";
   }
 
+  const currentListUrl = linkFor(current);
+
   return (
     <>
       <LanguageRedirect />
@@ -131,6 +133,7 @@ export default async function CoursesPage({ searchParams }: Props) {
                     slide1Html={(previews as any)?.firstHtml}
                     tags={tags}
                     date={date}
+                    returnTo={currentListUrl}
                   />
                 )
               )}
