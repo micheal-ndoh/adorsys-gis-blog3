@@ -12,7 +12,7 @@ export default function LargeFooter() {
   return (
     <div className="bg-black/60 border-t border-white/10">
       <Container>
-        <div className="py-8 sm:py-10 text-white/85">
+        <div className="py-8 sm:py-10 text-white/85 sm:flex sm:justify-between sm:items-start">
           <div className="text-center">
             <Image
               src={icon}
@@ -27,7 +27,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Social links */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-0">
             <a
               href="#"
               target="_blank"
@@ -71,7 +71,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Mobile: COMPANY and LEGAL on same line */}
-          <div className="flex flex-row flex-wrap justify-center sm:hidden gap-6 mb-8">
+          <div className="flex flex-row flex-wrap justify-center sm:hidden gap-6 mb-8 sm:mb-0">
             <nav className="text-center">
               <h6 className="footer-title text-base">{t("footer.company")}</h6>
               <div className="flex flex-col gap-1">
@@ -97,7 +97,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Desktop: Original horizontal layout */}
-          <nav className="hidden sm:block text-center">
+          <nav className="hidden sm:block text-left">
             <h6 className="footer-title text-base sm:text-lg">{t("footer.company")}</h6>
             <div className="flex flex-col gap-1">
               <Link href="/res/faq" className="link link-hover text-sm sm:text-base">
@@ -108,7 +108,7 @@ export default function LargeFooter() {
               </Link>
             </div>
           </nav>
-          <nav className="hidden sm:block text-center">
+          <nav className="hidden sm:block text-left">
             <h6 className="footer-title text-base sm:text-lg">{t("footer.legal")}</h6>
             <div className="flex flex-col gap-1">
               <Link href="/res/tos" className="link link-hover text-sm sm:text-base">
