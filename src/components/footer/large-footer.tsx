@@ -13,10 +13,10 @@ export default function LargeFooter() {
     <div className="bg-black/60 border-t border-white/10">
       <Container>
         <div className="py-8 sm:py-10 text-white/85">
-          <div className="text-center sm:text-left">
+          <div className="text-center">
             <Image
               src={icon}
-              className="fill-current w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto sm:mx-0"
+              className="fill-current w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto"
               alt={t("footer.logo") ?? "logo"}
             />
             <p className="text-sm sm:text-base mt-2">
@@ -27,7 +27,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Social links */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4 mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8">
             <a
               href="#"
               target="_blank"
@@ -97,7 +97,7 @@ export default function LargeFooter() {
           </div>
 
           {/* Desktop: Original horizontal layout */}
-          <nav className="hidden sm:block text-left">
+          <nav className="hidden sm:block text-center">
             <h6 className="footer-title text-base sm:text-lg">{t("footer.company")}</h6>
             <div className="flex flex-col gap-1">
               <Link href="/res/faq" className="link link-hover text-sm sm:text-base">
@@ -108,7 +108,7 @@ export default function LargeFooter() {
               </Link>
             </div>
           </nav>
-          <nav className="hidden sm:block text-left">
+          <nav className="hidden sm:block text-center">
             <h6 className="footer-title text-base sm:text-lg">{t("footer.legal")}</h6>
             <div className="flex flex-col gap-1">
               <Link href="/res/tos" className="link link-hover text-sm sm:text-base">
