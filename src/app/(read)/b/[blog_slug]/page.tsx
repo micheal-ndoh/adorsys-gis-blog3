@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
-import Link from "next/link";
+import { headers } from "next/headers";
 import ProseFixer from "@blog/components/display/ProseFixer";
 import { BackToBlogs } from "./BackToBlogs";
 
@@ -16,6 +16,7 @@ export async function generateStaticParams() {
 
 interface Props {
   params: Promise<{ blog_slug: string }>;
+  searchParams?: Promise<{ returnTo?: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -38,11 +39,20 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function SingleBlogPage({ params }: Props) {
+export default async function SingleBlogPage({ params, searchParams }: Props) {
   const { blog_slug } = await params;
   if (!blog_slug) {
     return redirect("/courses");
   }
+
+  // Determine the best back link once so both success and error states share it
+  const headerList = await headers();
+  const referer = headerList.get("referer") || undefined;
+  const sp = (await searchParams) ?? {};
+  const backHref = sp.returnTo ?? referer ?? "/courses";
+  const reloadHref = sp.returnTo
+    ? `/b/${blog_slug}?returnTo=${encodeURIComponent(sp.returnTo)}`
+    : `/b/${blog_slug}`;
 
   try {
     const { course, slides } = await loadBlog(blog_slug);
@@ -50,7 +60,7 @@ export default async function SingleBlogPage({ params }: Props) {
       <Container>
         <ProseFixer />
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
-          <BackToBlogs />
+          <BackToBlogs href={backHref} />
         </div>
         {slides && <Display data={slides.content} />}
 
@@ -74,10 +84,10 @@ export default async function SingleBlogPage({ params }: Props) {
                 Please check the link or try again later.
               </p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <a className="btn btn-outline" href={`/b/${blog_slug}`}>
+                <a className="btn btn-outline" href={reloadHref}>
                   Reload
                 </a>
-                <a className="btn btn-primary" href="/courses">
+                <a className="btn btn-primary" href={backHref}>
                   Return to Blogs
                 </a>
               </div>

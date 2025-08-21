@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
-export function BackToBlogs() {
+export function BackToBlogs({ href }: { href?: string }) {
   const { t, i18n } = useTranslation();
   const lng = (i18n.language || "en").toLowerCase();
   const short = lng.includes("-") ? lng.split("-")[0] : lng;
-  const href = short !== "en" ? `/b?lang=${short}` : "/b";
+  const defaultHref = short !== "en" ? `/courses?lang=${short}` : "/courses";
 
   return (
     <Link
-      href={href}
+      href={href ?? defaultHref}
       className="inline-flex items-center gap-2 text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
       aria-label={t("blogs.back")}
     >
