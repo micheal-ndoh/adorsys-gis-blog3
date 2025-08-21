@@ -23,6 +23,10 @@ export function AppNavBar() {
     return null;
   }
 
+  // Determine if we're on blogs page or about page
+  const isOnBlogsPage = pathname?.startsWith("/courses") || pathname?.startsWith("/b");
+  const isOnAboutPage = pathname?.startsWith("/res/about");
+
   const buildLanguageUrl = useCallback(
     (lng: "en" | "fr") => {
       const params = new URLSearchParams(searchParams?.toString() ?? "");
@@ -59,11 +63,6 @@ export function AppNavBar() {
     [i18n, buildLanguageUrl, router]
   );
 
-  const buildHomeUrl = useCallback(
-    (lng: "en" | "fr") => (lng === "en" ? "/" : `/?lang=${lng}`),
-    []
-  );
-
   useEffect(() => {
     function onDocClick(ev: MouseEvent) {
       if (!open) return;
@@ -86,17 +85,18 @@ export function AppNavBar() {
         <nav className="navbar min-h-14 sm:min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
-              href={buildHomeUrl(current)}
-              className="group flex flex-row items-center select-none cursor-pointer hover:opacity-80 transition-opacity"
+              href={buildLanguageUrl(current)}
+              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
-              <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90">
+              <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90 tracking-wide">
                 {t("nav.brand")}
               </span>
             </Link>
           </div>
 
           <div className="navbar-end flex items-center gap-2 sm:gap-3">
+            {/* Desktop/Tablet links */}
             <Link
               href={
                 pathname?.startsWith("/courses")
@@ -105,16 +105,26 @@ export function AppNavBar() {
                   ? "/courses"
                   : `/courses?lang=${current}`
               }
-              className="text-primary text-sm sm:text-base hover:font-bold transition-all duration-200"
+              className={`text-sm sm:text-base hover:font-bold transition-all duration-200 hidden md:inline ${
+                isOnBlogsPage
+                  ? "text-primary font-semibold"
+                  : "text-white/80 hover:text-white"
+              }`}
             >
               {t("nav.courses")}
             </Link>
             <Link
               href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
-              className="text-white/80 text-sm sm:text-base hover:text-white hover:font-bold transition-all duration-200"
+              className={`text-sm sm:text-base hover:font-bold transition-all duration-200 hidden md:inline ${
+                isOnAboutPage
+                  ? "text-primary font-semibold"
+                  : "text-white/80 hover:text-white"
+              }`}
             >
               {t("nav.about")}
             </Link>
+
+            {/* Language selector dropdown */}
             <div
               ref={dropdownRef}
               className={`relative dropdown dropdown-end ${
@@ -153,16 +163,16 @@ export function AppNavBar() {
               {open && (
                 <ul
                   role="menu"
-                  className="menu dropdown-content mt-2 p-2 shadow bg-base-200 text-base-content rounded-box w-24 sm:w-28 z-[100]"
+                  className="menu dropdown-content mt-2 p-1 shadow bg-black text-white rounded-box w-32 z-[100]"
                 >
                   <li>
                     <button
                       role="menuitemradio"
                       aria-checked={current === "en"}
                       onClick={() => setLang("en")}
-                      className={`${
-                        current === "en" ? "bg-base-300 text-base-content" : ""
-                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2 text-sm`}
+                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
+                        current === "en" ? "text-primary font-semibold" : "text-white"
+                      }`}
                     >
                       <span
                         role="img"
@@ -179,9 +189,9 @@ export function AppNavBar() {
                       role="menuitemradio"
                       aria-checked={current === "fr"}
                       onClick={() => setLang("fr")}
-                      className={`${
-                        current === "fr" ? "bg-base-300 text-base-content" : ""
-                      } normal-case text-base-content hover:bg-base-300 flex items-center gap-2 text-sm`}
+                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
+                        current === "fr" ? "text-primary font-semibold" : "text-white"
+                      }`}
                     >
                       <span
                         role="img"
@@ -195,6 +205,57 @@ export function AppNavBar() {
                   </li>
                 </ul>
               )}
+            </div>
+
+            {/* Small-screen overflow menu */}
+            <div className="relative md:hidden">
+              <details className="dropdown dropdown-end">
+                <summary className="btn btn-ghost btn-xs text-white/80 hover:text-white px-1 bg-black rounded">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <circle cx="12" cy="6" r="1" />
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="12" cy="18" r="1" />
+                  </svg>
+                </summary>
+                <ul className="menu dropdown-content mt-2 p-1 shadow bg-black text-white rounded-box w-32 z-[100]">
+                  <li>
+                    <Link
+                      href={
+                        pathname?.startsWith("/courses")
+                          ? buildLanguageUrl(current)
+                          : current === "en"
+                          ? "/courses"
+                          : `/courses?lang=${current}`
+                      }
+                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
+                        isOnBlogsPage ? "text-primary font-semibold" : "text-white"
+                      }`}
+                    >
+                      {t("nav.courses")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link 
+                      href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
+                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
+                        isOnAboutPage ? "text-primary font-semibold" : "text-white"
+                      }`}
+                    >
+                      {t("nav.about")}
+                    </Link>
+                  </li>
+                </ul>
+              </details>
             </div>
           </div>
         </nav>
