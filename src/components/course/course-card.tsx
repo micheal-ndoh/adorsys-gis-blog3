@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useReturnTo } from "@blog/components/navigation/useReturnTo";
 
 interface CourseCardProps {
   slug: string;
@@ -47,9 +48,10 @@ export function CourseCard({
     computedDescription = t("courseCard.contentSoon");
   }
 
-  const blogHref = returnTo
-    ? `/b/${slug}?returnTo=${encodeURIComponent(returnTo)}`
-    : `/b/${slug}`;
+  const currentUrl = useReturnTo();
+  const blogHref = `/b/${slug}?returnTo=${encodeURIComponent(
+    returnTo ?? currentUrl
+  )}`;
 
   return (
     <Link
