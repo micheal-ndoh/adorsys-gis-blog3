@@ -1,11 +1,10 @@
 ---
 title: Chakra UI
 slug: chakra-ui
-lang: en
 authors: Micheal Ndoh
 tags: [frontend, react, ui]
-description: Build accessible, themeable interfaces quickly with Chakra UI’s component primitives and theming system.
-date: '2025-08-16'
+lang: en
+
 ---
 
 # Introduction to Chakra UI

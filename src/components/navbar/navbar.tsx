@@ -1,8 +1,6 @@
 "use client";
 import "@blog/i18n/boot";
 import { Container } from "@blog/components/container";
-import icon from "@blog/components/icon.svg";
-import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -89,10 +87,9 @@ export function AppNavBar() {
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
               href={buildHomeUrl(current)}
-              className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
+              className="group flex flex-row items-center select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
-              <Image src={icon} className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" alt="logo" />
               <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90">
                 {t("nav.brand")}
               </span>

@@ -1,10 +1,10 @@
 ---
 title: UI/UX Design
-lang: en
 slug: ui-ux-design
 authors: Micheal Ndoh
 tags: [design, user interface, user experience]
 description: UI/UX design is the art and science of creating intuitive user interfaces (UI) and engaging user experiences (UX) for digital applications.
+lang: en
 ---
 
 # Introduction to UI/UX Design

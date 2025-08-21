@@ -1,7 +1,5 @@
 "use client";
 
-import icon from "@blog/components/icon.svg";
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@blog/components/container";
 import { useTranslation } from "react-i18next";
@@ -14,11 +12,9 @@ export default function LargeFooter() {
       <Container>
         <footer className="footer py-8 sm:py-10 sm:footer-horizontal text-white/85 gap-6 sm:gap-8">
           <aside className="text-center sm:text-left">
-            <Image
-              src={icon}
-              className="fill-current w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto sm:mx-0"
-              alt={t("footer.logo") ?? "logo"}
-            />
+            <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white/90">
+              {t("nav.brand")}
+            </span>
 
             <p className="text-sm sm:text-base mt-2">
               {t("footer.copyright", { year: new Date().getFullYear() })}
@@ -99,23 +95,39 @@ export default function LargeFooter() {
 
           {/* Desktop: Original horizontal layout */}
           <nav className="hidden md:block text-center sm:text-left">
-            <h6 className="footer-title text-base sm:text-lg">{t("footer.company")}</h6>
+            <h6 className="footer-title text-base sm:text-lg">
+              {t("footer.company")}
+            </h6>
             <div className="flex flex-col gap-1">
-              <Link href="/res/faq" className="link link-hover text-sm sm:text-base">
+              <Link
+                href="/res/faq"
+                className="link link-hover text-sm sm:text-base"
+              >
                 {t("footer.faq")}
               </Link>
-              <Link href="/res/contact" className="link link-hover text-sm sm:text-base">
+              <Link
+                href="/res/contact"
+                className="link link-hover text-sm sm:text-base"
+              >
                 {t("footer.contact")}
               </Link>
             </div>
           </nav>
           <nav className="hidden md:block text-center sm:text-left">
-            <h6 className="footer-title text-base sm:text-lg">{t("footer.legal")}</h6>
+            <h6 className="footer-title text-base sm:text-lg">
+              {t("footer.legal")}
+            </h6>
             <div className="flex flex-col gap-1">
-              <Link href="/res/tos" className="link link-hover text-sm sm:text-base">
+              <Link
+                href="/res/tos"
+                className="link link-hover text-sm sm:text-base"
+              >
                 {t("footer.terms")}
               </Link>
-              <Link href="/res/privacy" className="link link-hover text-sm sm:text-base">
+              <Link
+                href="/res/privacy"
+                className="link link-hover text-sm sm:text-base"
+              >
                 {t("footer.privacy")}
               </Link>
             </div>

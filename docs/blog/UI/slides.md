@@ -1,10 +1,10 @@
 ---
 title: Conception UI/UX
-lang: fr
 slug: ui-ux-design
 authors: Micheal Ndoh
 tags: [design, interface utilisateur, expérience utilisateur]
-description: La conception UI/UX est l'art et la science de créer des interfaces utilisateur (UI) intuitives et des expériences utilisateur (UX) engageantes pour les applications numériques.
+lang: fr
+
 ---
 
 
