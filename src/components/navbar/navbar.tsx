@@ -76,21 +76,21 @@ export function AppNavBar() {
   return (
     <div className="sticky top-0 z-40 bg-white/10 backdrop-blur-xl border-b border-white/20">
       <Container className="py-0">
-        <nav className="navbar min-h-16">
+        <nav className="navbar min-h-14 sm:min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
               href={buildLanguageUrl(current)}
               className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
-              <Image src={icon} className="w-6 sm:w-8" alt="logo" />
-              <span className="text-lg sm:text-xl font-extrabold uppercase text-white/90">
+              <Image src={icon} className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" alt="logo" />
+              <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90">
                 {t("nav.brand")}
               </span>
             </Link>
           </div>
 
-          <div className="navbar-end flex items-center gap-3 sm:gap-4">
+          <div className="navbar-end flex items-center gap-2 sm:gap-3">
             <Link
               href={
                 pathname?.startsWith("/courses")
@@ -99,13 +99,13 @@ export function AppNavBar() {
                   ? "/courses"
                   : `/courses?lang=${current}`
               }
-              className="text-primary hover:font-bold transition-all duration-200"
+              className="text-primary text-sm sm:text-base hover:font-bold transition-all duration-200"
             >
               {t("nav.courses")}
             </Link>
             <Link
               href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
-              className="text-white/80 hover:text-white hover:font-bold transition-all duration-200"
+              className="text-white/80 text-sm sm:text-base hover:text-white hover:font-bold transition-all duration-200"
             >
               {t("nav.about")}
             </Link>
@@ -128,12 +128,12 @@ export function AppNavBar() {
                 <span
                   role="img"
                   aria-label={current === "en" ? "English" : "Français"}
-                  className="text-lg sm:text-xl"
+                  className="text-base sm:text-lg"
                 >
                   {current === "en" ? "🇬🇧" : "🇫🇷"}
                 </span>
                 <svg
-                  className="w-3.5 sm:w-4 h-3.5 sm:h-4"
+                  className="w-3 sm:w-4 h-3 sm:h-4"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -161,7 +161,7 @@ export function AppNavBar() {
                       <span
                         role="img"
                         aria-label="English"
-                        className="text-base sm:text-lg"
+                        className="text-sm sm:text-base"
                       >
                         🇬🇧
                       </span>
@@ -180,7 +180,7 @@ export function AppNavBar() {
                       <span
                         role="img"
                         aria-label="Français"
-                        className="text-base sm:text-lg"
+                        className="text-sm sm:text-base"
                       >
                         🇫🇷
                       </span>
