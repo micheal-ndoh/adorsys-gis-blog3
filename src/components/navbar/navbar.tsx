@@ -28,6 +28,10 @@ export function AppNavBar() {
   const buildLanguageUrl = useCallback(
     (lng: "en" | "fr") => {
       const params = new URLSearchParams(searchParams?.toString() ?? "");
+      // On blog reading pages, switch language by going to the home page
+      if (pathname?.startsWith("/b")) {
+        return lng === "en" ? "/" : `/?lang=${lng}`;
+      }
       if (pathname?.startsWith("/courses")) {
         if (lng === "en") params.delete("lang");
         else params.set("lang", lng);
@@ -57,6 +61,11 @@ export function AppNavBar() {
     [i18n, buildLanguageUrl, router]
   );
 
+  const buildHomeUrl = useCallback(
+    (lng: "en" | "fr") => (lng === "en" ? "/" : `/?lang=${lng}`),
+    []
+  );
+
   useEffect(() => {
     function onDocClick(ev: MouseEvent) {
       if (!open) return;
@@ -79,7 +88,7 @@ export function AppNavBar() {
         <nav className="navbar min-h-14 sm:min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
-              href={buildLanguageUrl(current)}
+              href={buildHomeUrl(current)}
               className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >

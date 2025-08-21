@@ -37,7 +37,8 @@
   },
   "blogs": {
     "title": "Blogs",
-    "description": "Articles perspicaces et mises à jour de l'équipe Adorsys GIS — meilleures pratiques, cas d'usage géospatiaux réels et analyses approfondies des outils et flux de travail de données."
+    "description": "Articles perspicaces et mises à jour de l'équipe Adorsys GIS — meilleures pratiques, cas d'usage géospatiaux réels et analyses approfondies des outils et flux de travail de données.",
+    "back": "Retour aux blogs"
   },
   "home": {
     "title": "Pôle de Connaissances",

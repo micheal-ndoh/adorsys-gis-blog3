@@ -37,7 +37,8 @@
   },
   "blogs": {
     "title": "Blogs",
-    "description": "Insightful articles and updates from the Adorsys GIS team — best practices, real-world geospatial use cases, and deep dives into tools and data workflows."
+    "description": "Insightful articles and updates from the Adorsys GIS team — best practices, real-world geospatial use cases, and deep dives into tools and data workflows.",
+    "back": "Back to blogs"
   },
   "home": {
     "title": "Knowledge Hub",

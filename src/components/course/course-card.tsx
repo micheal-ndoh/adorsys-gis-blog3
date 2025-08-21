@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useReturnTo } from "@blog/components/navigation/useReturnTo";
 
 interface CourseCardProps {
   slug: string;
@@ -12,6 +13,9 @@ interface CourseCardProps {
   slide1Html?: string;
   tags?: string[];
   date?: string;
+  // When provided, used to construct a return URL so the detail page can
+  // navigate back to the originating list with correct pagination/filters
+  returnTo?: string;
 }
 
 export function CourseCard({
@@ -22,6 +26,7 @@ export function CourseCard({
   slide1Html,
   tags,
   date,
+  returnTo,
 }: Readonly<CourseCardProps>) {
   const { t } = useTranslation();
   const formattedDate = date
@@ -43,9 +48,14 @@ export function CourseCard({
     computedDescription = t("courseCard.contentSoon");
   }
 
+  const currentUrl = useReturnTo();
+  const blogHref = `/b/${slug}?returnTo=${encodeURIComponent(
+    returnTo ?? currentUrl
+  )}`;
+
   return (
     <Link
-      href={`/b/${slug}`}
+      href={blogHref}
       className="relative overflow-hidden rounded-2xl border border-neutral-800 bg-black"
       aria-label={`Open course ${title}`}
     >
