@@ -1,19 +1,22 @@
 ---
 title: UI/UX Design
-lang: en
 slug: ui-ux-design
 authors: Micheal Ndoh
 tags: [design, user interface, user experience]
-description: UI/UX design is the art and science of creating intuitive user interfaces (UI) and engaging user experiences (UX) for digital applications.
+lang: en
+---
+
+![UI/UX Design](https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149051557.jpg?semt=ais_hybrid&w=740&q=80)
+
+
 ---
 
 # Introduction to UI/UX Design
 
-![UI/UX Design](https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149051557.jpg?semt=ais_hybrid&w=740&q=80)
-
 UI/UX design combines **User Interface (UI)**, focusing on visual aesthetics and interactivity, and **User Experience (UX)**, aiming to optimize usability and satisfaction. It’s essential for creating intuitive web and mobile applications, used by companies like Apple and Airbnb to boost user engagement.
 
 ---
+
 ## Benefits of UI/UX Design
 
 1. **Enhanced Engagement**: Intuitive interfaces reduce frustration and increase user retention.
@@ -22,6 +25,7 @@ UI/UX design combines **User Interface (UI)**, focusing on visual aesthetics and
 4. **Competitive Edge**: Polished UI/UX sets brands apart in crowded markets.
 
 ---
+
 ## Core Principles of UI/UX Design
 
 - **User Research**: Understand needs through surveys and personas.
@@ -30,6 +34,7 @@ UI/UX design combines **User Interface (UI)**, focusing on visual aesthetics and
 - **User Testing**: Gather feedback to iterate and improve.
 
 ---
+
 ## How to Learn UI/UX Design
 
 1. **Tools**: Master Figma, Sketch, or Adobe XD for design.
@@ -38,6 +43,7 @@ UI/UX design combines **User Interface (UI)**, focusing on visual aesthetics and
 4. **Feedback**: Join communities like Dribbble or Behance for critiques.
 
 ---
+
 ## Diagram: UI/UX Design Process
 
 This diagram illustrates the UI/UX design flow: Research → Wireframing → Prototyping → Testing → Launch.
@@ -56,7 +62,7 @@ graph TD
 </xaiArtifact>
 
 ---
+
 ## Conclusion
 
 UI/UX design is vital for creating user-friendly and engaging digital products. By mastering tools and processes, designers can enhance user experiences and product value. Explore resources and practice to excel in this field.
----

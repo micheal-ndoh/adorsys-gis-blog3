@@ -10,6 +10,7 @@ import { CoursesSearch } from "./CoursesSearch";
 import { LanguageRedirect } from "./LanguageRedirect";
 import * as fs from "fs-extra";
 import * as path from "node:path";
+import createdDates from "@blog/server/blog/created-dates.json";
 
 export const dynamic = "force-dynamic";
 
@@ -48,12 +49,17 @@ export default async function CoursesPage({ searchParams }: Props) {
             .map((t) => t.trim())
             .filter(Boolean);
         }
-        // Determine created date: prefer course front matter, then slides, then file mtime
+        // Determine created date: prefer course front matter, then slides, then generated mapping, then file mtime
         let created: string | undefined = undefined;
         if (typeof (course as any)?.date === "string") {
           created = (course as any).date as string;
         } else if (typeof (slides as any)?.date === "string") {
           created = (slides as any).date as string;
+        } else if (
+          createdDates &&
+          typeof (createdDates as Record<string, string>)[slug] === "string"
+        ) {
+          created = (createdDates as Record<string, string>)[slug];
         } else {
           try {
             const coursePath = path.join(
