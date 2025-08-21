@@ -6,7 +6,7 @@ export function Skeleton({ className }: { className?: string }) {
 
 export function ArticleSkeleton() {
     return (
-        <div className="prose prose-neutral mx-auto mt-6 sm:mt-8 px-4 sm:px-0 text-justify">
+        <div className="prose prose-neutral mx-auto mt-6 sm:mt-8 px-4 sm:px-0">
             <Skeleton className="h-8 sm:h-10 w-2/3 mb-4 sm:mb-6" />
             <Skeleton className="h-4 sm:h-5 w-full mb-2 sm:mb-3" />
             <Skeleton className="h-4 sm:h-5 w-11/12 mb-2 sm:mb-3" />
