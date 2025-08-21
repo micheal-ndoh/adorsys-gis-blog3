@@ -35,10 +35,10 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
               <h2 className="text-2xl sm:text-3xl font-bold mb-3">
                 {t("res.about.ourStory")}
               </h2>
-              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 mb-3 text-justify">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 mb-3 text-left">
                 {t("res.about.storyP1")}
               </p>
-              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 text-justify">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 text-left">
                 {t("res.about.storyP2")}
               </p>
             </div>
@@ -54,10 +54,10 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
               <h2 className="text-2xl sm:text-3xl font-bold mb-3">
                 {t("res.about.ourMission")}
               </h2>
-              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 mb-3 text-justify">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 mb-3 text-left">
                 {t("res.about.missionP1")}
               </p>
-              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 text-justify">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 text-left">
                 {t("res.about.missionP2")}
               </p>
             </div>
