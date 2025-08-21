@@ -3,13 +3,28 @@
 @use 'reveal.js/dist/theme/night';
 @use 'highlight.js/scss/sunburst';
 
-// Justify all slide content with uniform margins
+// ===== SLIDE CONTENT STYLING =====
+
+// Force justify all slide content with proper word spacing
 .reveal .slides section {
   text-align: justify !important;
-  margin-left: 2rem !important;
-  margin-right: 2rem !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
 }
 
+// Target all text elements in slides
+.reveal .slides section * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Specific targeting for slide headings and text
 .reveal .slides section h1,
 .reveal .slides section h2,
 .reveal .slides section h3,
@@ -17,43 +32,175 @@
 .reveal .slides section h5,
 .reveal .slides section h6,
 .reveal .slides section p,
-.reveal .slides section blockquote {
+.reveal .slides section blockquote,
+.reveal .slides section div,
+.reveal .slides section span {
   text-align: justify !important;
-  margin-left: 2rem !important;
-  margin-right: 2rem !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+  margin: 0.5rem 0 !important;
 }
 
-// Justify lists with bullets close to text and uniform margins
+// Force text to flow naturally without line breaks
+.reveal .slides section h1 *,
+.reveal .slides section h2 *,
+.reveal .slides section h3 *,
+.reveal .slides section h4 *,
+.reveal .slides section h5 *,
+.reveal .slides section h6 *,
+.reveal .slides section p *,
+.reveal .slides section div *,
+.reveal .slides section span * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  display: inline !important;
+}
+
+// ===== CRITICAL SLIDE TITLE FIXES =====
+
+// Prevent slide titles from being split across lines or columns
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+
+// Ultra-specific targeting for Reveal.js generated content
+.reveal .slides section[data-markdown] h1,
+.reveal .slides section[data-markdown] h2,
+.reveal .slides section[data-markdown] h3,
+.reveal .slides section[data-markdown] h4,
+.reveal .slides section[data-markdown] h5,
+.reveal .slides section[data-markdown] h6 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Target the specific text content within headings
+.reveal .slides section[data-markdown] h1 *,
+.reveal .slides section[data-markdown] h2 *,
+.reveal .slides section[data-markdown] h3 *,
+.reveal .slides section[data-markdown] h4 *,
+.reveal .slides section[data-markdown] h5 *,
+.reveal .slides section[data-markdown] h6 * {
+  display: inline !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: inherit !important;
+}
+
+// Force slide titles to stay on single lines when possible
+.reveal .slides section h1 br,
+.reveal .slides section h2 br,
+.reveal .slides section h3 br {
+  display: none !important;
+}
+
+// Prevent any column layout in slide content
+.reveal .slides section {
+  display: block !important;
+  column-count: 1 !important;
+  column-gap: normal !important;
+  column-fill: auto !important;
+}
+
+// Ensure slide content flows naturally
+.reveal .slides section > * {
+  display: block !important;
+  width: 100% !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Fix for lists in slides
 .reveal .slides section ul,
 .reveal .slides section ol {
   text-align: justify !important;
-  list-style-position: inside !important;
-  display: inline-block !important;
-  margin: 0 2rem !important;
-  padding: 0 !important;
+  text-justify: inter-word !important;
+  list-style-position: outside !important;
+  margin: 0.5rem 0 !important;
+  padding-left: 1.5rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
 .reveal .slides section li {
   text-align: justify !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-indent: 0 !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  margin: 0.25rem 0 !important;
+  line-height: 1.6 !important;
 }
 
-// Justify code blocks with uniform margins
+// Code blocks should remain left-aligned
 .reveal .slides section pre,
 .reveal .slides section code {
   text-align: left !important;
-  margin: 0 2rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
-// Apply same styling to course.md content (prose content)
-.prose {
+// ===== BLOG CONTENT (PROSE) STYLING =====
+
+// Apply justified text to all prose content
+.prose,
+.prose.prose-neutral,
+.prose.prose-invert {
   text-align: justify !important;
-  margin-left: 3rem !important;
-  margin-right: 3rem !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+  max-width: none !important;
 }
 
+// Force justify ALL text elements in prose content
+.prose *,
+.prose.prose-neutral *,
+.prose.prose-invert * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Specific targeting for prose headings and text
 .prose h1,
 .prose h2,
 .prose h3,
@@ -61,23 +208,395 @@
 .prose h5,
 .prose h6,
 .prose p,
-.prose blockquote {
+.prose blockquote,
+.prose div,
+.prose span,
+.prose.prose-neutral h1,
+.prose.prose-neutral h2,
+.prose.prose-neutral h3,
+.prose.prose-neutral h4,
+.prose.prose-neutral h5,
+.prose.prose-neutral h6,
+.prose.prose-neutral p,
+.prose.prose-neutral blockquote,
+.prose.prose-neutral div,
+.prose.prose-neutral span,
+.prose.prose-invert h1,
+.prose.prose-invert h2,
+.prose.prose-invert h3,
+.prose.prose-invert h4,
+.prose.prose-invert h5,
+.prose.prose-invert h6,
+.prose.prose-invert p,
+.prose.prose-invert blockquote,
+.prose.prose-invert div,
+.prose.prose-invert span {
   text-align: justify !important;
-  margin-left: 3rem !important;
-  margin-right: 3rem !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+  margin: 0.5rem 0 !important;
 }
 
+// Fix for lists in prose content
 .prose ul,
-.prose ol {
+.prose ol,
+.prose.prose-neutral ul,
+.prose.prose-neutral ol,
+.prose.prose-invert ul,
+.prose.prose-invert ol {
   text-align: justify !important;
-  list-style-position: inside !important;
-  margin: 0 3rem !important;
-  padding: 0 !important;
+  text-justify: inter-word !important;
+  list-style-position: outside !important;
+  margin: 0.5rem 0 !important;
+  padding-left: 1.5rem !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
 }
 
-.prose li {
+.prose li,
+.prose.prose-neutral li,
+.prose.prose-invert li {
   text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  margin: 0.25rem 0 !important;
+  line-height: 1.6 !important;
+}
+
+// ===== SLIDE PREVIEW STYLING =====
+
+// Ensure slide preview content is also properly justified
+.slide-preview .prose,
+.slide-preview .prose *,
+.slide-preview .prose.prose-invert,
+.slide-preview .prose.prose-invert * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.4 !important;
+}
+
+// Fix slide preview titles specifically
+.slide-preview .prose h1,
+.slide-preview .prose h2,
+.slide-preview .prose h3,
+.slide-preview .prose.prose-invert h1,
+.slide-preview .prose.prose-invert h2,
+.slide-preview .prose.prose-invert h3 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.3 !important;
+  margin: 0.25rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+
+// Prevent line breaks in slide preview titles
+.slide-preview .prose h1 br,
+.slide-preview .prose h2 br,
+.slide-preview .prose h3 br,
+.slide-preview .prose.prose-invert h1 br,
+.slide-preview .prose.prose-invert h2 br,
+.slide-preview .prose.prose-invert h3 br {
+  display: none !important;
+}
+
+// ===== OVERRIDE ANY TAILWIND CLASSES =====
+
+// Override any Tailwind text alignment classes with maximum specificity
+.prose.text-justify,
+.prose.text-justify *,
+.prose.prose-neutral.text-justify,
+.prose.prose-neutral.text-justify *,
+.prose.prose-invert.text-justify,
+.prose.prose-invert.text-justify *,
+.reveal .slides section.text-justify,
+.reveal .slides section.text-justify * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// ===== CRITICAL FIXES FOR WORD SPACING =====
+
+// Force normal word spacing for all text content
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose *,
+.prose.prose-neutral,
+.prose.prose-neutral *,
+.prose.prose-invert,
+.prose.prose-invert * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-justify: inter-word !important;
+  text-align-last: auto !important;
+}
+
+// Prevent text from breaking unnaturally
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose div,
+.prose span {
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+// ===== RESPONSIVE ADJUSTMENTS =====
+
+@media (max-width: 768px) {
+  .reveal .slides section,
+  .prose,
+  .prose.prose-neutral,
+  .prose.prose-invert {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    line-height: 1.5 !important;
+  }
+}
+
+// ===== REVEAL.JS THEME OVERRIDES =====
+
+// Override any Reveal.js theme column layouts
+.reveal .slides section[data-markdown] {
+  display: block !important;
+  column-count: 1 !important;
+  column-gap: normal !important;
+  column-fill: auto !important;
+}
+
+// Force single column layout for all slide content
+.reveal .slides section[data-markdown] * {
+  column-span: none !important;
+  break-inside: avoid !important;
+}
+
+// Override any grid or flex layouts that might cause text splitting
+.reveal .slides section {
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  flex-direction: column !important;
+}
+
+// Ensure text containers don't create columns
+.reveal .slides section .text-container,
+.reveal .slides section .content,
+.reveal .slides section .slide-content {
+  display: block !important;
+  width: 100% !important;
+  column-count: 1 !important;
+  column-gap: normal !important;
+}
+
+// ===== AGGRESSIVE OVERRIDES FOR SLIDE LAYOUT =====
+
+// Force all slide content to be in a single column
+.reveal .slides section,
+.reveal .slides section[data-markdown],
+.reveal .slides section[data-markdown] > * {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  column-count: 1 !important;
+  column-gap: normal !important;
+  column-fill: auto !important;
+  grid-template-columns: 1fr !important;
+  flex-direction: column !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Prevent any two-column or multi-column layouts
+.reveal .slides section[data-markdown] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: center !important;
+}
+
+// Force headings to be full width and centered
+.reveal .slides section[data-markdown] h1,
+.reveal .slides section[data-markdown] h2,
+.reveal .slides section[data-markdown] h3,
+.reveal .slides section[data-markdown] h4,
+.reveal .slides section[data-markdown] h5,
+.reveal .slides section[data-markdown] h6 {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  margin: 0.5rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+  display: block !important;
+}
+
+// ===== ULTRA-AGGRESSIVE WORD SPACING FIXES =====
+
+// Force normal word spacing on ALL text elements in slides
+.reveal .slides section *,
+.reveal .slides section[data-markdown] *,
+.reveal .slides section[data-markdown] h1 *,
+.reveal .slides section[data-markdown] h2 *,
+.reveal .slides section[data-markdown] h3 *,
+.reveal .slides section[data-markdown] h4 *,
+.reveal .slides section[data-markdown] h5 *,
+.reveal .slides section[data-markdown] h6 *,
+.reveal .slides section[data-markdown] p *,
+.reveal .slides section[data-markdown] div *,
+.reveal .slides section[data-markdown] span * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: inherit !important;
+  display: inline !important;
+  float: none !important;
+  clear: none !important;
+}
+
+// Specific fix for the "Introduction to LPIC-1" spacing issue
+.reveal .slides section[data-markdown] h1,
+.reveal .slides section[data-markdown] h2,
+.reveal .slides section[data-markdown] h3 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 0.5rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Override any CSS that might be adding extra spacing
+.reveal .slides section[data-markdown] h1 *,
+.reveal .slides section[data-markdown] h2 *,
+.reveal .slides section[data-markdown] h3 * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  display: inline !important;
   margin: 0 !important;
   padding: 0 !important;
   text-indent: 0 !important;
+}
+
+// ===== MAXIMUM SPECIFICITY OVERRIDES =====
+
+// Target the exact issue with maximum specificity
+html body .reveal .slides section[data-markdown] h1,
+html body .reveal .slides section[data-markdown] h2,
+html body .reveal .slides section[data-markdown] h3,
+html body .reveal .slides section[data-markdown] h4,
+html body .reveal .slides section[data-markdown] h5,
+html body .reveal .slides section[data-markdown] h6 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 0.5rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Target all child elements with maximum specificity
+html body .reveal .slides section[data-markdown] h1 *,
+html body .reveal .slides section[data-markdown] h2 *,
+html body .reveal .slides section[data-markdown] h3 *,
+html body .reveal .slides section[data-markdown] h4 *,
+html body .reveal .slides section[data-markdown] h5 *,
+html body .reveal .slides section[data-markdown] h6 * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+  float: none !important;
+  clear: none !important;
+}
+
+// Force override any Reveal.js theme styles
+html body .reveal .slides section[data-markdown] {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  column-count: 1 !important;
+  column-gap: normal !important;
+  column-fill: auto !important;
 }
