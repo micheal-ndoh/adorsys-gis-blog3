@@ -23,8 +23,8 @@ export default function NotFound() {
               {t("errors.notFoundDesc")}
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Link className="btn btn-outline" href="/">
-                <Home className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
+              <Link className="btn btn-outline" href="/courses">
+                Go to blogs
               </Link>
               <Link className="btn btn-primary" href="/courses">
                 <Search className="mr-2 h-4 w-4" /> {t("errors.returnCourses")}

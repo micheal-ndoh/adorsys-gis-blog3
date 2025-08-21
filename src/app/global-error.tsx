@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import '@blog/styles/globals.scss';
-import { RefreshCw, Home, AlertTriangle } from 'react-feather';
+import "@blog/styles/globals.scss";
+import { RefreshCw, Home, AlertTriangle } from "react-feather";
 
 export default function GlobalError({
   error,
@@ -10,7 +10,11 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }>) {
-  console.error('global app error', error);
+  console.error("global app error", error);
+
+  // Note: Global error cannot use useTranslation hook as it's outside the i18n context
+  // We'll use English as fallback, but the error page will handle translations
+
   return (
     // global-error must include html and body tags
     <html lang="en">
@@ -21,7 +25,9 @@ export default function GlobalError({
               <div className="mx-auto mb-6 grid h-20 w-20 place-items-center rounded-2xl bg-base-100 shadow">
                 <AlertTriangle className="h-10 w-10 text-error" aria-hidden />
               </div>
-              <h1 className="text-3xl font-extrabold md:text-5xl">Something went wrong</h1>
+              <h1 className="text-3xl font-extrabold md:text-5xl">
+                Something went wrong
+              </h1>
               <p className="mx-auto mt-3 max-w-xl opacity-80">
                 An unexpected error occurred. Please try again.
               </p>
@@ -29,8 +35,8 @@ export default function GlobalError({
                 <button className="btn btn-primary" onClick={() => reset()}>
                   <RefreshCw className="mr-2 h-4 w-4" /> Try again
                 </button>
-                <a className="btn btn-ghost" href="/">
-                  <Home className="mr-2 h-4 w-4" /> Home
+                <a className="btn btn-ghost" href="/courses">
+                  Go to blogs
                 </a>
               </div>
               {/* Technical details intentionally hidden for end-users */}

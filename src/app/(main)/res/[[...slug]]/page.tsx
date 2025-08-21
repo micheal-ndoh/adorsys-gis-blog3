@@ -1,38 +1,33 @@
-import { redirect } from 'next/navigation';
-import {loadRes} from "@blog/converters";
-import {Container} from "@blog/components/container";
+import { redirect } from "next/navigation";
+import { loadRes } from "@blog/converters";
+import { Container } from "@blog/components/container";
+import { ResPageContent } from "./ResPageContent";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
   return [
     {},
-    {
-      slug: 'faq',
-    },
-    {
-      slug: 'tos',
-    },
-    {
-      slug: 'contact',
-    },
-    {
-      slug: 'privacy',
-    },
+    { slug: ["faq"] },
+    { slug: ["tos"] },
+    { slug: ["contact"] },
+    { slug: ["privacy"] },
+    { slug: ["about"] },
   ];
 }
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug?: string[] }>;
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  if (!slug) {
+  const slugStr = Array.isArray(slug) ? slug.join("/") : "";
+  if (!slugStr) {
     return null;
   }
 
-  const content = await loadRes(slug);
+  const content = await loadRes(slugStr);
   if (!content) {
     return null;
   }
@@ -44,14 +39,26 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ResourcePage({ params }: Props) {
   const { slug } = await params;
-  if (!slug) {
-    return redirect('/');
+  const slugStr = Array.isArray(slug) ? slug[0] : "";
+  if (!slugStr) {
+    return redirect("/res/about");
   }
 
-  const content = await loadRes(slug);
+  // Route known resource slugs to the translated content component
+  if (["about", "contact", "faq", "privacy", "tos"].includes(slugStr)) {
+    const content = await loadRes(slugStr);
+    return (
+      <ResPageContent
+        type={slugStr as any}
+        contentHtml={content?.contentHtml}
+      />
+    );
+  }
+
+  const content = await loadRes(slugStr);
   return (
     <Container>
-      <div className='prose prose-neutral mx-auto mt-6 sm:mt-8'>
+      <div className="prose prose-neutral mx-auto mt-6 sm:mt-8">
         {content.contentHtml && (
           <div dangerouslySetInnerHTML={{ __html: content.contentHtml }} />
         )}

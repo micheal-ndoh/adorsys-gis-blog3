@@ -3,7 +3,9 @@ import { redirect } from "next/navigation";
 import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
-import { CoursesLink } from "./CoursesLink";
+import { headers } from "next/headers";
+import ProseFixer from "@blog/components/display/ProseFixer";
+import { BackToBlogs } from "./BackToBlogs";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +16,7 @@ export async function generateStaticParams() {
 
 interface Props {
   params: Promise<{ blog_slug: string }>;
+  searchParams?: Promise<{ returnTo?: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -36,23 +39,33 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export default async function SingleBlogPage({ params }: Props) {
+export default async function SingleBlogPage({ params, searchParams }: Props) {
   const { blog_slug } = await params;
   if (!blog_slug) {
-    return redirect("/");
+    return redirect("/courses");
   }
+
+  // Determine the best back link once so both success and error states share it
+  const headerList = await headers();
+  const referer = headerList.get("referer") || undefined;
+  const sp = (await searchParams) ?? {};
+  const backHref = sp.returnTo ?? referer ?? "/courses";
+  const reloadHref = sp.returnTo
+    ? `/b/${blog_slug}?returnTo=${encodeURIComponent(sp.returnTo)}`
+    : `/b/${blog_slug}`;
 
   try {
     const { course, slides } = await loadBlog(blog_slug);
     return (
       <Container>
-        <div className="mb-4 flex justify-end">
-          <CoursesLink />
+        <ProseFixer />
+        <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
+          <BackToBlogs href={backHref} />
         </div>
         {slides && <Display data={slides.content} />}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8">
+          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 text-justify px-4 sm:px-6 lg:px-8">
             <div dangerouslySetInnerHTML={{ __html: course.content }} />
           </article>
         )}
@@ -71,11 +84,11 @@ export default async function SingleBlogPage({ params }: Props) {
                 Please check the link or try again later.
               </p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <a className="btn btn-outline" href={`/b/${blog_slug}`}>
+                <a className="btn btn-outline" href={reloadHref}>
                   Reload
                 </a>
-                <a className="btn btn-primary" href="/">
-                  Return Home
+                <a className="btn btn-primary" href={backHref}>
+                  Return to Blogs
                 </a>
               </div>
             </div>

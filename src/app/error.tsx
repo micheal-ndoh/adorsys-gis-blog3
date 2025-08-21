@@ -76,9 +76,11 @@ export default function ErrorPage({
           </div>
 
           <h1 className="text-3xl font-extrabold md:text-5xl">{meta.title}</h1>
-          <p className="mx-auto mt-3 max-w-xl opacity-80">
-            {t("errors.somethingWrong")}
-          </p>
+          {meta.title !== t("errors.somethingWrong") && (
+            <p className="mx-auto mt-3 max-w-xl opacity-80">
+              {t("errors.somethingWrong")}
+            </p>
+          )}
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <button className="btn btn-primary" onClick={() => reset()}>
@@ -88,10 +90,11 @@ export default function ErrorPage({
               <RefreshCw className="mr-2 h-4 w-4" /> Reload
             </button>
             <button className="btn btn-outline" onClick={() => history.back()}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
+              <ArrowLeft className="mr-2 h-4 w-4" /> {t("errors.back")}
             </button>
-            <Link className="btn btn-ghost" href="/">
-              <Home className="mr-2 h-4 w-4" /> {t("errors.returnHome")}
+            <Link className="btn btn-ghost" href="/courses">
+              Go to blogs
+              <Home className="mr-2 h-4 w-4" /> {t("errors.returnCourses")}
             </Link>
           </div>
 

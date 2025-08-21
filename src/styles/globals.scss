@@ -44,6 +44,40 @@ code.mermaid {
   }
 }
 
+// Mermaid diagram styles
+.mermaid-diagram {
+  @apply my-6 text-center;
+  display: block !important;
+  visibility: visible !important;
+  
+  svg {
+    @apply max-w-full h-auto mx-auto;
+    max-height: 600px;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  // Ensure diagrams are responsive
+  @media (max-width: 768px) {
+    svg {
+      max-height: 400px;
+    }
+  }
+}
+
+// Hide original mermaid code blocks after rendering
+pre.hidden {
+  @apply hidden;
+}
+
+// Debug: Make sure mermaid diagrams are visible
+.mermaid-diagram svg {
+  border: 2px solid #3b82f6 !important;
+  background: #1f2937 !important;
+  padding: 1rem !important;
+  border-radius: 0.5rem !important;
+}
+
 .display {
   section {
     section {
@@ -132,4 +166,311 @@ article {
     h2 { @apply text-xl; }
     h3 { @apply text-lg; }
   }
+}
+
+// ===== GLOBAL TEXT JUSTIFICATION AND SPACING FIXES =====
+
+// Force justified text with proper word spacing for all content
+.reveal .slides section,
+.reveal .slides section *,
+.prose,
+.prose *,
+.prose.prose-neutral,
+.prose.prose-neutral *,
+.prose.prose-invert,
+.prose.prose-invert * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.6 !important;
+}
+
+// Ensure slide preview content is also properly justified
+.slide-preview .prose,
+.slide-preview .prose *,
+.slide-preview .prose.prose-invert,
+.slide-preview .prose.prose-invert * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  line-height: 1.4 !important;
+}
+
+// Override any Tailwind prose text alignment with maximum specificity
+.prose.text-justify,
+.prose.text-justify *,
+.prose.prose-neutral.text-justify,
+.prose.prose-neutral.text-justify *,
+.prose.prose-invert.text-justify,
+.prose.prose-invert.text-justify *,
+.reveal .slides section.text-justify,
+.reveal .slides section.text-justify * {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Critical fixes for word spacing and text flow
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3,
+.reveal .slides section h4,
+.reveal .slides section h5,
+.reveal .slides section h6,
+.reveal .slides section p,
+.reveal .slides section div,
+.reveal .slides section span,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose p,
+.prose div,
+.prose span {
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  line-height: 1.6 !important;
+}
+
+// ===== SLIDE TITLE SPECIFIC FIXES =====
+
+// Force slide titles to display properly without column splitting
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+}
+
+// Prevent line breaks in slide titles
+.reveal .slides section h1 br,
+.reveal .slides section h2 br,
+.reveal .slides section h3 br {
+  display: none !important;
+}
+
+// Override any Reveal.js column layouts
+.reveal .slides section {
+  column-count: 1 !important;
+  column-gap: normal !important;
+  column-fill: auto !important;
+  display: block !important;
+  grid-template-columns: 1fr !important;
+  flex-direction: column !important;
+}
+
+// ===== ULTRA-AGGRESSIVE WORD SPACING FIXES =====
+
+// Force normal word spacing on ALL slide content
+.reveal .slides section *,
+.reveal .slides section[data-markdown] *,
+.reveal .slides section[data-markdown] h1 *,
+.reveal .slides section[data-markdown] h2 *,
+.reveal .slides section[data-markdown] h3 *,
+.reveal .slides section[data-markdown] h4 *,
+.reveal .slides section[data-markdown] h5 *,
+.reveal .slides section[data-markdown] h6 * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: inherit !important;
+  display: inline !important;
+  float: none !important;
+  clear: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+// Specific fix for titles like "Introduction to LPIC-1"
+.reveal .slides section[data-markdown] h1,
+.reveal .slides section[data-markdown] h2,
+.reveal .slides section[data-markdown] h3 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 0.5rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// ===== PROSE CONTENT TITLE FIXES =====
+
+// Fix prose content titles (general blog content)
+.prose h1,
+.prose.prose-neutral h1,
+.prose.prose-invert h1 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Force normal word spacing on prose content
+.prose *,
+.prose.prose-neutral *,
+.prose.prose-invert * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Maximum specificity for prose titles
+html body .prose h1,
+html body .prose.prose-neutral h1,
+html body .prose.prose-invert h1 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Ultra-specific targeting for the exact classes used in the blog page
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h1,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h2,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h3,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h4,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h5,
+html body .prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h6 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Target the specific article element
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h1,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h2,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h3,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h4,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h5,
+html body article.prose.prose-neutral.lg\:prose-xl.mx-auto.mt-8.text-justify.px-8 h6 {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  line-height: 1.4 !important;
+  margin: 1rem 0 !important;
+  padding: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  column-span: all !important;
+  break-inside: avoid !important;
+  float: none !important;
+  clear: both !important;
+}
+
+// Target prose content child elements
+html body .prose h1 *,
+html body .prose.prose-neutral h1 *,
+html body .prose.prose-invert h1 * {
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+  float: none !important;
+  clear: none !important;
+}
+
+// Force text to flow naturally without excessive spacing
+.reveal .slides section {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.6 !important;
+}
+
+// Ensure prose content is properly justified
+.prose,
+.prose.prose-neutral,
+.prose.prose-invert {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  line-height: 1.6 !important;
+  max-width: none !important;
 }

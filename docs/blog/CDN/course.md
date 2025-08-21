@@ -5,7 +5,6 @@ slug: cdn
 authors: Micheal Ndoh
 tags: [security, development, network]
 description: A Content Delivery Network (CDN) is a geographically distributed group of servers that caches content close to end users.
-date: 2025-08-16
 ---
 
 # Introduction to CDNs
@@ -214,3 +213,5 @@ graph TD
 ## Conclusion
 
 CDNs are essential for modern web performance, offering speed, cost savings, reliability, and security. They complement frameworks like Next.js for global scalability. This file synthesizes our entire discussion—feel free to reference or expand on specific sections.
+
+---

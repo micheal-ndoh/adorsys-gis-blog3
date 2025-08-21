@@ -33,3 +33,5 @@ import { Box, Flex, Stack } from '@chakra-ui/react';
 ## Conclusion
 
 Chakra UI accelerates building polished, accessible React UIs. 
+
+---

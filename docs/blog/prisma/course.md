@@ -10,7 +10,7 @@ date: '2025-08-16'
 
 # Introduction to Prisma
 
-![Prisma](https://raw.githubusercontent.com/prisma/presskit/master/Assets/Prisma-Light-PrismaLogo.svg)
+![Prisma](https://media.licdn.com/dms/image/D4E12AQGNGAGtiYivsQ/article-cover_image-shrink_600_2000/0/1703380012682?e=2147483647&v=beta&t=p-XeuOKHgiYLVSS6npTxOkEyr5w5AJWPV3oo1DkGI04)
 
 Prisma is a next‑generation ORM that provides end‑to‑end type safety and a great developer experience for working with databases.
 
@@ -37,3 +37,5 @@ graph TD
 ## Conclusion
 
 Prisma streamlines database access with modern tooling and great DX. 
+
+---
