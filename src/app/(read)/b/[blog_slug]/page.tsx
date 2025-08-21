@@ -51,11 +51,11 @@ export default async function SingleBlogPage({ params }: Props) {
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
           <Link
             href="/b"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white hover:font-extrabold transition-colors px-1"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-white/75 hover:text-white hover:font-extrabold transition-colors"
             aria-label="Back to blogs"
           >
             <svg
-              className="w-4 h-4"
+              className="w-3 h-3 sm:w-4 sm:h-4"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -72,7 +72,7 @@ export default async function SingleBlogPage({ params }: Props) {
         {slides && <Display data={slides.content} />}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 text-justify px-4 sm:px-6 lg:px-8">
+          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 prose-justify">
             <div dangerouslySetInnerHTML={{ __html: course.content }} />
           </article>
         )}
