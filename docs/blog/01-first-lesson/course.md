@@ -1,6 +1,6 @@
 ---
-title: Contact
-slug: contact
+title: Secure Software Development Lifecycle (SSDLC)
+slug: secure-software-development-lifecycle
 authors: stephane-segning
 lang: en
 tags:
