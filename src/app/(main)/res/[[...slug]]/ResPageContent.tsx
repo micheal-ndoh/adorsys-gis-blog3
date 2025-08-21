@@ -18,27 +18,27 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
   if (type === "about") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-6xl pb-16 sm:pb-20">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-6xl pb-16 sm:pb-20 px-4 sm:px-6">
           {/* Title */}
-          <header className="text-center mb-14 sm:mb-16">
+          <header className="text-center mb-10 sm:mb-14">
             <div className="inline-block text-left">
-              <h1 className="text-4xl sm:text-5xl font-extrabold">
+              <h1 className="text-3xl sm:text-5xl font-extrabold">
                 {t("res.about.title")}
               </h1>
-              <div className="mt-3 h-1 w-24 sm:w-28 bg-primary rounded-full" />
+              <div className="mt-3 h-1 w-20 sm:w-28 bg-primary rounded-full" />
             </div>
           </header>
 
           {/* Our Story */}
-          <section className="grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center mb-16 sm:mb-24">
+          <section className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-16 lg:gap-20 items-center mb-14 sm:mb-20">
             <div className="md:pr-8 lg:pr-12">
-              <h2 className="text-3xl font-bold mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3">
                 {t("res.about.ourStory")}
               </h2>
-              <p className="text-base sm:text-lg opacity-80 mb-3">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 mb-3 text-justify">
                 {t("res.about.storyP1")}
               </p>
-              <p className="text-base sm:text-lg opacity-80">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 text-justify">
                 {t("res.about.storyP2")}
               </p>
             </div>
@@ -46,18 +46,18 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
           </section>
 
           {/* Our Mission */}
-          <section className="grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
+          <section className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-16 lg:gap-20 items-center">
             <div className="order-2 md:order-1">
               <FramedImage src="/ab4.jpg" alt={t("res.about.imageAlt")} />
             </div>
             <div className="order-1 md:order-2 md:pl-8 lg:pl-12">
-              <h2 className="text-3xl font-bold mb-3">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3">
                 {t("res.about.ourMission")}
               </h2>
-              <p className="text-base sm:text-lg opacity-80 mb-3">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 mb-3 text-justify">
                 {t("res.about.missionP1")}
               </p>
-              <p className="text-base sm:text-lg opacity-80">
+              <p className="text-base sm:text-lg md:leading-relaxed opacity-80 text-justify">
                 {t("res.about.missionP2")}
               </p>
             </div>
@@ -76,7 +76,7 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
   if (type === "contact") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20 px-4 sm:px-6">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.contact.title")}
@@ -147,7 +147,7 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
   if (type === "faq") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20 px-4 sm:px-6">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.faq.title")}
@@ -179,7 +179,7 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
   if (type === "privacy") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20 px-4 sm:px-6">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.privacy.title")}
@@ -211,7 +211,7 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
   if (type === "tos") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20 px-4 sm:px-6">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.tos.title")}
@@ -246,7 +246,7 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
 // Clean image display without colorful frames
 function FramedImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative h-72 sm:h-80 lg:h-96 rounded-2xl overflow-hidden border border-base-300/40 bg-base-200/60">
+    <div className="relative h-56 sm:h-72 lg:h-96 rounded-2xl overflow-hidden border border-base-300/40 bg-base-200/60">
       <Image
         src={src}
         alt={alt}
