@@ -66,8 +66,18 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
         {slides && <Display data={slides.content} />}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 max-w-[700px] px-4 sm:px-6 lg:px-8 prose-justify">
-            <div dangerouslySetInnerHTML={{ __html: course.content }} />
+          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 prose-justify">
+            <div 
+              className="blog-content-container max-w-[1200px] mx-auto" 
+              style={{
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                display: 'block',
+                width: '100%',
+                maxWidth: '1200px'
+              }}
+              dangerouslySetInnerHTML={{ __html: course.content }} 
+            />
           </article>
         )}
       </Container>
