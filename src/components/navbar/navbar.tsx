@@ -1,8 +1,6 @@
 "use client";
 import "@blog/i18n/boot";
 import { Container } from "@blog/components/container";
-import icon from "@blog/components/icon.svg";
-import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -88,18 +86,18 @@ export function AppNavBar() {
         <nav className="navbar min-h-14 sm:min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
-              href={buildHomeUrl(current)}
+              href={buildLanguageUrl(current)}
               className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
-              <Image src={icon} className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8" alt="logo" />
-              <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90">
+              <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90 tracking-wide">
                 {t("nav.brand")}
               </span>
             </Link>
           </div>
 
           <div className="navbar-end flex items-center gap-2 sm:gap-3">
+            {/* Desktop/Tablet links */}
             <Link
               href={
                 pathname?.startsWith("/courses")
@@ -108,16 +106,59 @@ export function AppNavBar() {
                   ? "/courses"
                   : `/courses?lang=${current}`
               }
-              className="text-primary text-sm sm:text-base hover:font-bold transition-all duration-200"
+              className="text-primary text-sm sm:text-base hover:font-bold transition-all duration-200 hidden md:inline"
             >
               {t("nav.courses")}
             </Link>
             <Link
               href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
-              className="text-white/80 text-sm sm:text-base hover:text-white hover:font-bold transition-all duration-200"
+              className="text-white/80 text-sm sm:text-base hover:text-white hover:font-bold transition-all duration-200 hidden md:inline"
             >
               {t("nav.about")}
             </Link>
+
+            {/* Small-screen overflow menu */}
+            <div className="relative md:hidden">
+              <details className="dropdown dropdown-end">
+                <summary className="btn btn-ghost btn-xs text-white/80 hover:text-white px-1">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <circle cx="5" cy="12" r="1" />
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="19" cy="12" r="1" />
+                  </svg>
+                </summary>
+                <ul className="menu dropdown-content mt-2 p-2 shadow bg-base-200 text-base-content rounded-box w-40 z-[100]">
+                  <li>
+                    <Link
+                      href={
+                        pathname?.startsWith("/courses")
+                          ? buildLanguageUrl(current)
+                          : current === "en"
+                          ? "/courses"
+                          : `/courses?lang=${current}`
+                      }
+                    >
+                      {t("nav.courses")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}>
+                      {t("nav.about")}
+                    </Link>
+                  </li>
+                </ul>
+              </details>
+            </div>
             <div
               ref={dropdownRef}
               className={`relative dropdown dropdown-end ${
