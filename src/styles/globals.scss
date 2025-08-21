@@ -474,3 +474,10 @@ html body .prose.prose-invert h1 * {
   line-height: 1.6 !important;
   max-width: none !important;
 }
+
+// Prose: justify only paragraph and list text, not headings
+.prose-justify {
+  p, li {
+    text-align: justify;
+  }
+}

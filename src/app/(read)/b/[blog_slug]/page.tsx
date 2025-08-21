@@ -3,9 +3,10 @@ import { redirect } from "next/navigation";
 import { loadBlog } from "@blog/converters";
 import { getAllBlogs } from "@blog/server/blog/api";
 import Display from "@blog/components/display";
-import { headers } from "next/headers";
-import ProseFixer from "@blog/components/display/ProseFixer";
 import { BackToBlogs } from "./BackToBlogs";
+import { MermaidRenderer } from "@blog/components/mermaid/mermaid-renderer";
+import ProseFixer from "@blog/components/display/ProseFixer";
+import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +66,7 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
         {slides && <Display data={slides.content} />}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 text-justify px-4 sm:px-6 lg:px-8">
+          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 prose-justify">
             <div dangerouslySetInnerHTML={{ __html: course.content }} />
           </article>
         )}
