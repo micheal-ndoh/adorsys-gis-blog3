@@ -124,6 +124,57 @@ export function AppNavBar() {
               {t("nav.about")}
             </Link>
 
+            {/* Small-screen overflow menu */}
+            <div className="relative md:hidden">
+              <details className="dropdown dropdown-end">
+                <summary className="btn btn-ghost btn-xs text-white/80 hover:text-white px-1 bg-black rounded">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <circle cx="12" cy="6" r="1" />
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="12" cy="18" r="1" />
+                  </svg>
+                </summary>
+                <ul className="menu dropdown-content mt-2 p-1 shadow bg-black text-white rounded-box w-32 z-[100]">
+                  <li>
+                    <Link
+                      href={
+                        pathname?.startsWith("/courses")
+                          ? buildLanguageUrl(current)
+                          : current === "en"
+                          ? "/courses"
+                          : `/courses?lang=${current}`
+                      }
+                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
+                        isOnBlogsPage ? "text-primary font-semibold" : "text-white"
+                      }`}
+                    >
+                      {t("nav.courses")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link 
+                      href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
+                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
+                        isOnAboutPage ? "text-primary font-semibold" : "text-white"
+                      }`}
+                    >
+                      {t("nav.about")}
+                    </Link>
+                  </li>
+                </ul>
+              </details>
+            </div>
+
             {/* Language selector dropdown */}
             <div
               ref={dropdownRef}
@@ -205,57 +256,6 @@ export function AppNavBar() {
                   </li>
                 </ul>
               )}
-            </div>
-
-            {/* Small-screen overflow menu */}
-            <div className="relative md:hidden">
-              <details className="dropdown dropdown-end">
-                <summary className="btn btn-ghost btn-xs text-white/80 hover:text-white px-1 bg-black rounded">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden
-                  >
-                    <circle cx="12" cy="6" r="1" />
-                    <circle cx="12" cy="12" r="1" />
-                    <circle cx="12" cy="18" r="1" />
-                  </svg>
-                </summary>
-                <ul className="menu dropdown-content mt-2 p-1 shadow bg-black text-white rounded-box w-32 z-[100]">
-                  <li>
-                    <Link
-                      href={
-                        pathname?.startsWith("/courses")
-                          ? buildLanguageUrl(current)
-                          : current === "en"
-                          ? "/courses"
-                          : `/courses?lang=${current}`
-                      }
-                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
-                        isOnBlogsPage ? "text-primary font-semibold" : "text-white"
-                      }`}
-                    >
-                      {t("nav.courses")}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      href={current === "fr" ? "/res/about?lang=fr" : "/res/about"}
-                      className={`hover:text-primary hover:brightness-125 transition-all duration-200 ${
-                        isOnAboutPage ? "text-primary font-semibold" : "text-white"
-                      }`}
-                    >
-                      {t("nav.about")}
-                    </Link>
-                  </li>
-                </ul>
-              </details>
             </div>
           </div>
         </nav>

@@ -481,3 +481,82 @@ html body .prose.prose-invert h1 * {
     text-align: justify;
   }
 }
+
+// ===== BLOG CONTENT CONTAINER STYLING =====
+// Ensure the blog content container is properly centered and styled
+.max-w-\[1200px\] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+}
+
+// Override any conflicting prose styles for the blog content container
+.max-w-\[1200px\] .prose,
+.max-w-\[1200px\] .prose * {
+  max-width: none !important;
+  width: auto !important;
+}
+
+// Force center alignment for the blog content container specifically
+article .max-w-\[1200px\] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  text-align: center !important;
+}
+
+// Ensure the container itself is centered on the page
+article .max-w-\[1200px\] {
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+// Override any prose justify rules for the blog container
+article .max-w-\[1200px\] .prose,
+article .max-w-\[1200px\] .prose * {
+  text-align: inherit !important;
+}
+
+// Force the container to be centered regardless of parent styles
+.max-w-\[1200px\]:where(article *) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+}
+
+// ===== SPECIFIC BLOG CONTENT CONTAINER STYLING =====
+// Target the specific blog content container class
+.blog-content-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+// Override any prose styles that might interfere
+.blog-content-container .prose,
+.blog-content-container .prose * {
+  max-width: none !important;
+  width: auto !important;
+}
+
+// Ensure the container is centered on all screen sizes
+@media (min-width: 1200px) {
+  .blog-content-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}

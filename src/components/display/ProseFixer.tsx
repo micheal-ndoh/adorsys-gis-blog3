@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 export default function ProseFixer() {
   useEffect(() => {
     const fixProseContent = () => {
-      // Target all possible prose content selectors
+      // Target all possible prose content selectors, but exclude blog content container
       const selectors = [
         '.prose h1',
         '.prose.prose-neutral h1',
@@ -19,6 +19,11 @@ export default function ProseFixer() {
       const proseTitles = document.querySelectorAll(selectors.join(', '));
       
       proseTitles.forEach(title => {
+        // Skip if the title is inside the blog content container (max-w-[1200px])
+        if (title.closest('.max-w-\\[1200px\\]')) {
+          return;
+        }
+        
         if (title instanceof HTMLElement) {
           console.log('Fixing prose title:', title.textContent);
           title.style.wordSpacing = 'normal';
