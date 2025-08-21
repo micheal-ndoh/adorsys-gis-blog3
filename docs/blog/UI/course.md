@@ -66,4 +66,5 @@ graph TD
 ## Conclusion
 
 La conception UI/UX est cruciale pour créer des produits numériques conviviaux et attrayants. En maîtrisant les outils et processus, les designers peuvent améliorer l’expérience utilisateur et la valeur des produits. Explorez les ressources et pratiquez pour exceller dans ce domaine.
+
 ---

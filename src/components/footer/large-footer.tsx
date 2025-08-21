@@ -10,20 +10,18 @@ export default function LargeFooter() {
   return (
     <div className="bg-black/60 border-t border-white/10">
       <Container>
-
         <footer className="py-8 sm:py-10 text-white/85 sm:flex sm:justify-between sm:items-start">
           <aside className="text-center mb-8 sm:mb-0">
             <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white/90">
               {t("nav.brand")}
             </span>
 
-
             <p className="text-sm sm:text-base mt-2">
               {t("footer.copyright", { year: new Date().getFullYear() })}
               <br />
               {t("footer.rights")}
             </p>
-          </div>
+          </aside>
 
           {/* Social links */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-0">
@@ -97,7 +95,9 @@ export default function LargeFooter() {
 
           {/* Desktop: Original horizontal layout */}
           <nav className="hidden sm:block text-left">
-            <h6 className="footer-title text-base sm:text-lg">{t("footer.company")}</h6>
+            <h6 className="footer-title text-base sm:text-lg">
+              {t("footer.company")}
+            </h6>
 
             <div className="flex flex-col gap-1">
               <Link
@@ -115,7 +115,9 @@ export default function LargeFooter() {
             </div>
           </nav>
           <nav className="hidden sm:block text-left">
-            <h6 className="footer-title text-base sm:text-lg">{t("footer.legal")}</h6>
+            <h6 className="footer-title text-base sm:text-lg">
+              {t("footer.legal")}
+            </h6>
 
             <div className="flex flex-col gap-1">
               <Link
@@ -132,9 +134,7 @@ export default function LargeFooter() {
               </Link>
             </div>
           </nav>
-
-
-        </div>
+        </footer>
       </Container>
     </div>
   );
