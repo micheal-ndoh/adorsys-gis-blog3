@@ -25,18 +25,22 @@ export function AppNavBar() {
     return null;
   }
 
-  const buildCoursesUrl = useCallback(
+  const buildLanguageUrl = useCallback(
     (lng: "en" | "fr") => {
+      const params = new URLSearchParams(searchParams?.toString() ?? "");
       if (pathname?.startsWith("/courses")) {
-        const params = new URLSearchParams(searchParams?.toString() ?? "");
         if (lng === "en") params.delete("lang");
         else params.set("lang", lng);
+        // reset pagination when switching language on courses
         params.delete("page");
         const qs = params.toString();
         return qs ? `${pathname}?${qs}` : pathname;
       }
-      // When not on courses, redirect to courses with appropriate language
-      return lng === "en" ? "/courses" : `/courses?lang=${lng}`;
+      // Preserve current route elsewhere (e.g., /res, /b, /)
+      if (lng === "en") params.delete("lang");
+      else params.set("lang", lng);
+      const qs = params.toString();
+      return pathname ? (qs ? `${pathname}?${qs}` : pathname) : "/";
     },
     [pathname, searchParams]
   );
@@ -44,13 +48,13 @@ export function AppNavBar() {
   const setLang = useCallback(
     (lng: "en" | "fr") => {
       void i18n.changeLanguage(lng);
-      const url = buildCoursesUrl(lng);
+      const url = buildLanguageUrl(lng);
       if (url) {
         router.push(url);
       }
       setOpen(false);
     },
-    [i18n, buildCoursesUrl, router]
+    [i18n, buildLanguageUrl, router]
   );
 
   useEffect(() => {
@@ -75,7 +79,7 @@ export function AppNavBar() {
         <nav className="navbar min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
-              href={buildCoursesUrl(current)}
+              href={buildLanguageUrl(current)}
               className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
@@ -88,7 +92,13 @@ export function AppNavBar() {
 
           <div className="navbar-end flex items-center gap-3 sm:gap-4">
             <Link
-              href={buildCoursesUrl(current)}
+              href={
+                pathname?.startsWith("/courses")
+                  ? buildLanguageUrl(current)
+                  : current === "en"
+                  ? "/courses"
+                  : `/courses?lang=${current}`
+              }
               className="text-primary hover:font-bold transition-all duration-200"
             >
               {t("nav.courses")}

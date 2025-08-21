@@ -9,15 +9,16 @@ type ResPageType = "about" | "contact" | "faq" | "privacy" | "tos";
 
 interface ResPageContentProps {
   type: ResPageType;
+  contentHtml?: string;
 }
 
-export function ResPageContent({ type }: ResPageContentProps) {
+export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
   const { t } = useTranslation();
 
   if (type === "about") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-6xl pb-24 sm:pb-28">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-6xl pb-16 sm:pb-20">
           {/* Title */}
           <header className="text-center mb-14 sm:mb-16">
             <div className="inline-block text-left">
@@ -61,6 +62,12 @@ export function ResPageContent({ type }: ResPageContentProps) {
               </p>
             </div>
           </section>
+
+          {contentHtml && (
+            <div className="prose prose-neutral mx-auto mt-10">
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+          )}
         </div>
       </Container>
     );
@@ -69,7 +76,7 @@ export function ResPageContent({ type }: ResPageContentProps) {
   if (type === "contact") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-24 sm:pb-28">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.contact.title")}
@@ -126,6 +133,12 @@ export function ResPageContent({ type }: ResPageContentProps) {
               </div>
             </div>
           </div>
+
+          {contentHtml && (
+            <div className="prose prose-neutral mx-auto mt-10">
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+          )}
         </div>
       </Container>
     );
@@ -134,7 +147,7 @@ export function ResPageContent({ type }: ResPageContentProps) {
   if (type === "faq") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-24 sm:pb-28">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.faq.title")}
@@ -152,6 +165,12 @@ export function ResPageContent({ type }: ResPageContentProps) {
               </h2>
             </div>
           </div>
+
+          {contentHtml && (
+            <div className="prose prose-neutral mx-auto mt-10">
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+          )}
         </div>
       </Container>
     );
@@ -160,7 +179,7 @@ export function ResPageContent({ type }: ResPageContentProps) {
   if (type === "privacy") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-24 sm:pb-28">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.privacy.title")}
@@ -178,6 +197,12 @@ export function ResPageContent({ type }: ResPageContentProps) {
               </h2>
             </div>
           </div>
+
+          {contentHtml && (
+            <div className="prose prose-neutral mx-auto mt-10">
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+          )}
         </div>
       </Container>
     );
@@ -186,7 +211,7 @@ export function ResPageContent({ type }: ResPageContentProps) {
   if (type === "tos") {
     return (
       <Container>
-        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-24 sm:pb-28">
+        <div className="mx-auto mt-8 sm:mt-10 max-w-4xl pb-16 sm:pb-20">
           <header className="text-center mb-14 sm:mb-16">
             <h1 className="text-4xl sm:text-5xl font-extrabold">
               {t("res.tos.title")}
@@ -204,6 +229,12 @@ export function ResPageContent({ type }: ResPageContentProps) {
               </h2>
             </div>
           </div>
+
+          {contentHtml && (
+            <div className="prose prose-neutral mx-auto mt-10">
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            </div>
+          )}
         </div>
       </Container>
     );
