@@ -15,7 +15,7 @@
     "courses": "Blogs",
     "search": "Recherche",
     "about": "À propos",
-    "brand": "Adorsys Blog"
+    "brand": "GIS Blog"
   },
   "search": {
     "title": "Recherche",
@@ -37,7 +37,7 @@
   },
   "blogs": {
     "title": "Blogs",
-    "description": "Articles perspicaces et mises à jour de l'équipe Adorsys GIS — meilleures pratiques, cas d'usage géospatiaux réels et analyses approfondies des outils et flux de travail de données.",
+    "description": "Articles perspicaces et mises à jour de l'équipe GIS — meilleures pratiques, cas d'usage géospatiaux réels et analyses approfondies des outils et flux de travail de données.",
     "back": "Retour aux blogs"
   },
   "home": {
@@ -67,7 +67,7 @@
     "about": {
       "title": "À propos de nous",
       "ourStory": "Notre Histoire",
-      "storyP1": "Adorsys GIS Blog est plus qu'un site de connaissances — c'est une communauté d'apprenants curieux et de praticiens qui aiment le contenu clair et pratique. Nous transformons des sujets complexes en leçons accessibles que vous pouvez appliquer immédiatement.",
+      "storyP1": "GIS Blog est plus qu'un site de connaissances — c'est une communauté d'apprenants curieux et de praticiens qui aiment le contenu clair et pratique. Nous transformons des sujets complexes en leçons accessibles que vous pouvez appliquer immédiatement.",
       "storyP2": "Né de l'idée que partager les connaissances élève tout le monde, nous créons des articles, des cours et des présentations qui rassemblent les gens pour apprendre, construire et grandir.",
       "ourMission": "Notre Mission",
       "missionP1": "Notre mission est de rendre l'apprentissage rapide, agréable et efficace. Nous mettons l'accent sur la clarté, les exemples pratiques et les ressources fiables pour que vous puissiez passer de la compréhension à l'exécution avec confiance.",
@@ -76,9 +76,9 @@
     },
     "contact": {
       "title": "Contact",
-      "description": "Contactez l'équipe Adorsys GIS. Nous sommes là pour vous aider avec vos questions, commentaires et opportunités de collaboration.",
+      "description": "Contactez l'équipe GIS. Nous sommes là pour vous aider avec vos questions, commentaires et opportunités de collaboration.",
       "email": "Envoyez-nous un email à",
-      "emailAddress": "contact@adorsys-gis.com",
+      "emailAddress": "contact@gis.com",
       "social": "Suivez-nous sur les réseaux sociaux",
       "responseTime": "Nous répondons généralement dans les 24 heures pendant les jours ouvrables."
     },
@@ -101,14 +101,14 @@
   "footer": {
     "logo": "logo",
     "copyright": "Droits d'auteur © {{year}}",
-    "rights": "Tous droits réservés par adorsys GIS",
+    "rights": "Tous droits réservés par GIS",
     "company": "Entreprise",
     "faq": "FAQ",
     "contact": "Contact",
     "legal": "Légal",
     "terms": "Conditions d'utilisation",
     "privacy": "Politique de confidentialité",
-    "copyrightInline": "Droits d'auteur © {{year}} - Tous droits réservés par adorsys GIS"
+    "copyrightInline": "Droits d'auteur © {{year}} - Tous droits réservés par GIS"
   },
   "errors": {
     "somethingWrong": "Une erreur s'est produite !",
