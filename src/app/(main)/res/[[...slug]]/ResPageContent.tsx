@@ -93,7 +93,7 @@ export function ResPageContent({ type, contentHtml }: ResPageContentProps) {
                   {t("res.contact.email")}
                 </h2>
                 <a
-                  href="mailto:contact@adorsys-gis.com"
+                  href="mailto:contact@gis.com"
                   className="text-primary text-xl font-medium hover:underline"
                 >
                   {t("res.contact.emailAddress")}

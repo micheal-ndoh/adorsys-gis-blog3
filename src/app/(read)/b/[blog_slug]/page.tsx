@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: Props) {
   try {
     const { course } = await loadBlog(blog_slug);
     if (!course || !course.title) {
-      return { title: `${blog_slug} | adorsys GIS` };
+      return { title: `${blog_slug} | GIS Blog` };
     }
     return {
-      title: `${course.title} | adorsys GIS`,
+      title: `${course.title} | GIS Blog`,
     };
   } catch {
     // Gracefully fall back when course metadata cannot be loaded
-    return { title: `${blog_slug} | adorsys GIS` };
+    return { title: `${blog_slug} | GIS Blog` };
   }
 }
 

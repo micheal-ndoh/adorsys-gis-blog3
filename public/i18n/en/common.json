@@ -15,7 +15,7 @@
     "courses": "Blogs",
     "search": "Search",
     "about": "About",
-    "brand": "Adorsys Blog"
+    "brand": "GIS Blog"
   },
   "search": {
     "title": "Search",
@@ -37,7 +37,7 @@
   },
   "blogs": {
     "title": "Blogs",
-    "description": "Insightful articles and updates from the Adorsys GIS team — best practices, real-world geospatial use cases, and deep dives into tools and data workflows.",
+    "description": "Insightful articles and updates from the GIS team — best practices, real-world geospatial use cases, and deep dives into tools and data workflows.",
     "back": "Back to blogs"
   },
   "home": {
@@ -67,7 +67,7 @@
     "about": {
       "title": "About Us",
       "ourStory": "Our Story",
-      "storyP1": "Adorsys GIS Blog is more than a knowledge site — it is a community of curious learners and practitioners who love clear, practical content. We turn complex topics into approachable lessons you can apply right away.",
+      "storyP1": "GIS Blog is more than a knowledge site — it is a community of curious learners and practitioners who love clear, practical content. We turn complex topics into approachable lessons you can apply right away.",
       "storyP2": "Born from the idea that sharing knowledge elevates everyone, we craft articles, courses, and slide decks that bring people together to learn, build, and grow.",
       "ourMission": "Our Mission",
       "missionP1": "Our mission is to make learning fast, enjoyable, and effective. We emphasise clarity, hands‑on examples, and reliable resources so you can move from understanding to execution with confidence.",
@@ -76,9 +76,9 @@
     },
     "contact": {
       "title": "Contact",
-      "description": "Get in touch with the Adorsys GIS team. We're here to help with your questions, feedback, and collaboration opportunities.",
+      "description": "Get in touch with the GIS team. We're here to help with your questions, feedback, and collaboration opportunities.",
       "email": "Email us at",
-      "emailAddress": "contact@adorsys-gis.com",
+      "emailAddress": "contact@gis.com",
       "social": "Follow us on social media",
       "responseTime": "We typically respond within 24 hours during business days."
     },
@@ -101,14 +101,14 @@
   "footer": {
     "logo": "logo",
     "copyright": "Copyright © {{year}}",
-    "rights": "All right reserved by adorsys GIS",
+    "rights": "All right reserved by GIS",
     "company": "Company",
     "faq": "FAQ",
     "contact": "Contact",
     "legal": "Legal",
     "terms": "Terms of use",
     "privacy": "Privacy policy",
-    "copyrightInline": "Copyright © {{year}} - All right reserved by adorsys GIS"
+    "copyrightInline": "Copyright © {{year}} - All right reserved by GIS"
   },
   "errors": {
     "somethingWrong": "Something went wrong!",
