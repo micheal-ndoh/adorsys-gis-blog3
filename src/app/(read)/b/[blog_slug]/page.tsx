@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: Props) {
   try {
     const { course } = await loadBlog(blog_slug);
     if (!course || !course.title) {
-      return { title: `${blog_slug} | adorsys GIS` };
+      return { title: `${blog_slug} | GIS Blog` };
     }
     return {
-      title: `${course.title} | adorsys GIS`,
+      title: `${course.title} | GIS Blog`,
     };
   } catch {
     // Gracefully fall back when course metadata cannot be loaded
-    return { title: `${blog_slug} | adorsys GIS` };
+    return { title: `${blog_slug} | GIS Blog` };
   }
 }
 
@@ -66,8 +66,11 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
         {slides && <Display data={slides.content} />}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 px-4 sm:px-6 lg:px-8 prose-justify">
-            <div dangerouslySetInnerHTML={{ __html: course.content }} />
+          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 prose-justify">
+            <div 
+              className="blog-content-container" 
+              dangerouslySetInnerHTML={{ __html: course.content }} 
+            />
           </article>
         )}
       </Container>
