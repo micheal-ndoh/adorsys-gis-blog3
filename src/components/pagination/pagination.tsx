@@ -17,17 +17,10 @@ function computeVisiblePages(
   totalPages: number,
   maxVisible: number
 ): number[] {
-  const clampedMax = Math.max(1, Math.floor(maxVisible));
-  if (totalPages <= clampedMax) {
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  }
-  const half = Math.floor(clampedMax / 2);
+  const half = Math.floor(maxVisible / 2);
   let start = Math.max(1, currentPage - half);
-  let end = start + clampedMax - 1;
-  if (end > totalPages) {
-    end = totalPages;
-    start = Math.max(1, end - clampedMax + 1);
-  }
+  let end = Math.min(totalPages, start + maxVisible - 1);
+  start = Math.max(1, end - maxVisible + 1);
   return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
@@ -72,7 +65,7 @@ export function Pagination({
   return (
     <nav
       aria-label="Course navigation"
-      className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 rounded-md bg-black text-neutral-300"
+      className="flex items-center justify-center gap-2 sm:gap-2 bg-transparent"
     >
       {/* Previous */}
       <Link
@@ -82,16 +75,14 @@ export function Pagination({
         aria-label={t("Previous Page")}
         tabIndex={isPrevDisabled ? -1 : 0}
         className={`${
-          isPrevDisabled
-            ? "pointer-events-none cursor-not-allowed text-neutral-600"
-            : "hover:text-white"
-        } px-1.5 py-1 text-[11px] sm:px-2 sm:py-1.5 sm:text-xs`}
+          isPrevDisabled ? "pointer-events-none cursor-not-allowed text-neutral-600" : "hover:text-white"
+        } rounded-lg px-3 py-2 text-base sm:px-2 sm:py-1.5 sm:text-sm`}
       >
         <span className="flex items-center gap-1">
           <svg
             aria-hidden="true"
-            width="12"
-            height="12"
+            width="16"
+            height="16"
             viewBox="0 0 24 24"
             fill="none"
             className="opacity-80 sm:w-[14px] sm:h-[14px]"
@@ -109,7 +100,7 @@ export function Pagination({
       </Link>
 
       {/* Pages */}
-      <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+      <div className="flex items-center gap-2 sm:gap-2">
         {visiblePages.map((page) => (
           <Link
             key={page}
@@ -124,7 +115,7 @@ export function Pagination({
               page === currentPage
                 ? "bg-neutral-800 text-white"
                 : "bg-black text-neutral-300 hover:text-white"
-            } border border-neutral-800 rounded px-1.5 py-1 text-[11px] sm:px-2 sm:py-1.5 sm:text-xs`}
+            } border border-neutral-800 rounded-lg min-w-[2.5rem] text-center px-3 py-2 text-base sm:min-w-[2rem] sm:px-2 sm:py-1.5 sm:text-sm`}
           >
             <span>{page}</span>
           </Link>
@@ -139,17 +130,15 @@ export function Pagination({
         aria-label={t("Next Page")}
         tabIndex={isNextDisabled ? -1 : 0}
         className={`${
-          isNextDisabled
-            ? "pointer-events-none cursor-not-allowed text-neutral-600"
-            : "hover:text-white"
-        } px-1.5 py-1 text-[11px] sm:px-2 sm:py-1.5 sm:text-xs`}
+          isNextDisabled ? "pointer-events-none cursor-not-allowed text-neutral-600" : "hover:text-white"
+        } rounded-lg px-3 py-2 text-base sm:px-2 sm:py-1.5 sm:text-sm`}
       >
         <span className="flex items-center gap-1">
           <span className="hidden sm:inline">{t("Next")}</span>
           <svg
             aria-hidden="true"
-            width="12"
-            height="12"
+            width="16"
+            height="16"
             viewBox="0 0 24 24"
             fill="none"
             className="opacity-80 sm:w-[14px] sm:h-[14px]"
