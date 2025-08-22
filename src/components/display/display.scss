@@ -220,52 +220,44 @@
 .prose.prose-neutral p,
 .prose.prose-neutral blockquote,
 .prose.prose-neutral div,
-.prose.prose-neutral span,
-.prose.prose-invert h1,
-.prose.prose-invert h2,
-.prose.prose-invert h3,
-.prose.prose-invert h4,
-.prose.prose-invert h5,
-.prose.prose-invert h6,
-.prose.prose-invert p,
-.prose.prose-invert blockquote,
-.prose.prose-invert div,
-.prose.prose-invert span {
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  white-space: normal !important;
-  line-height: 1.6 !important;
-  margin: 0.5rem 0 !important;
+.prose.prose-neutral span {
+  // keep justified text while allowing full width on mobile
 }
 
-// Fix for lists in prose content
-.prose ul,
-.prose ol,
-.prose.prose-neutral ul,
-.prose.prose-neutral ol,
-.prose.prose-invert ul,
-.prose.prose-invert ol {
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  list-style-position: outside !important;
-  margin: 0.5rem 0 !important;
-  padding-left: 1.5rem !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-}
+// ===== MOBILE FULL-WIDTH FIX FOR SLIDES =====
+@media (max-width: 640px) {
+  // Make inner wrappers fill the slide width
+  .reveal .slides section,
+  .reveal .slides section div,
+  .reveal .slides section p {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 
-.prose li,
-.prose.prose-neutral li,
-.prose.prose-invert li {
-  text-align: justify !important;
-  text-justify: inter-word !important;
-  word-spacing: normal !important;
-  letter-spacing: normal !important;
-  white-space: normal !important;
-  margin: 0.25rem 0 !important;
-  line-height: 1.6 !important;
+  // Ensure media inside paragraphs or divs take full width
+  .reveal .slides section p > img,
+  .reveal .slides section div > img,
+  .reveal .slides section img,
+  .reveal .slides section video,
+  .reveal .slides section canvas,
+  .reveal .slides section svg {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+
+  // Prevent centered small columns; stack and stretch
+  .reveal .slides section .columns,
+  .reveal .slides section [style*="max-width"],
+  .reveal .slides section [style*="width:"] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 
 // ===== SLIDE PREVIEW STYLING =====
