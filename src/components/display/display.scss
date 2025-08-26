@@ -186,7 +186,9 @@
   letter-spacing: normal !important;
   white-space: normal !important;
   line-height: 1.6 !important;
-  max-width: none !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 // Force justify ALL text elements in prose content
@@ -201,27 +203,20 @@
 }
 
 // Specific targeting for prose headings and text
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6,
-.prose p,
-.prose blockquote,
-.prose div,
-.prose span,
-.prose.prose-neutral h1,
-.prose.prose-neutral h2,
-.prose.prose-neutral h3,
-.prose.prose-neutral h4,
-.prose.prose-neutral h5,
-.prose.prose-neutral h6,
-.prose.prose-neutral p,
-.prose.prose-neutral blockquote,
-.prose.prose-neutral div,
-.prose.prose-neutral span {
-  // keep justified text while allowing full width on mobile
+// (no additional rules needed; justification handled globally above)
+
+// Constrain media inside prose to the same width and center them
+.prose img,
+.prose video,
+.prose canvas,
+.prose svg,
+.prose figure {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 // ===== MOBILE FULL-WIDTH FIX FOR SLIDES =====
@@ -381,6 +376,7 @@
     word-spacing: normal !important;
     letter-spacing: normal !important;
     line-height: 1.5 !important;
+    max-width: 100% !important;
   }
 }
 
