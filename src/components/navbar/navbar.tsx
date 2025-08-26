@@ -85,7 +85,7 @@ export function AppNavBar() {
         <nav className="navbar min-h-14 sm:min-h-16">
           <div className="navbar-start flex gap-2 sm:gap-4">
             <Link
-              href={buildLanguageUrl(current)}
+              href={current === "en" ? "/" : `/?lang=${current}`}
               className="group flex flex-row items-center gap-1.5 sm:gap-2 select-none cursor-pointer hover:opacity-80 transition-opacity"
               aria-label="Brand"
             >
