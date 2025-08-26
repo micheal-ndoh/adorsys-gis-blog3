@@ -215,6 +215,7 @@
   width: 100% !important;
   max-width: 1200px !important;
   height: auto !important;
+  max-height: 600px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -587,4 +588,50 @@ html body .reveal .slides section[data-markdown] {
   column-count: 1 !important;
   column-gap: normal !important;
   column-fill: auto !important;
+}
+
+// ===== REVEAL RESET: prefer Reveal.js defaults for slide layout and typography =====
+// Undo earlier aggressive overrides so Reveal can scale correctly
+.reveal .slides,
+.reveal .slides * {
+  text-align: unset !important;
+  text-justify: auto !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  white-space: normal !important;
+}
+
+// Constrain embedded display area to match blog content width
+.display {
+  max-width: 1155px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.display .reveal {
+  width: 100% !important;
+}
+.display .reveal .slides {
+  width: 100% !important;
+}
+
+// Body text should be readable and not oversized
+.reveal p,
+.reveal li,
+.reveal blockquote {
+  font-size: 1.0em !important;
+}
+
+// Cap heading sizes for consistency across slide decks
+.reveal h1 { font-size: 1.8em !important; line-height: 1.2 !important; }
+.reveal h2 { font-size: 1.5em !important; line-height: 1.25 !important; }
+.reveal h3 { font-size: 1.25em !important; line-height: 1.3 !important; }
+
+// Keep headings centered but allow regular flow
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-align: center !important;
 }
