@@ -11,7 +11,7 @@ export default function LargeFooter() {
     <div className="bg-black/60 border-t border-white/10">
       <Container>
         <footer className="py-8 sm:py-10 text-white/85 sm:flex sm:justify-between sm:items-start">
-          <aside className="text-center mb-8 sm:mb-0">
+          <aside className="text-center sm:text-left mb-8 sm:mb-0">
             <Link href="/" aria-label="Go to Home" className="inline-block">
               <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white/90 hover:text-white transition-colors">
                 {t("nav.brand")}
