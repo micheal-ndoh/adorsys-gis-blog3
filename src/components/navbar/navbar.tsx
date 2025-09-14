@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export function AppNavBar() {
-  const { t, i18n } = useTranslation();
+  const { t, i18n, ready } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -17,10 +17,21 @@ export function AppNavBar() {
   // Safety check for i18n initialization
   const current = i18n?.language?.startsWith("fr") ? "fr" : "en";
 
-  // Safety check for translation function
-  if (!t) {
-    console.warn("Translation function not available");
-    return null;
+  // Prevent hydration mismatch by showing fallback during translation loading
+  if (!ready || !t) {
+    return (
+      <div className="sticky top-0 z-40 bg-white/10 backdrop-blur-xl border-b border-white/20">
+        <Container className="py-0">
+          <nav className="navbar min-h-14 sm:min-h-16">
+            <div className="navbar-start flex gap-2 sm:gap-4">
+              <span className="text-base sm:text-lg md:text-xl font-extrabold uppercase text-white/90 tracking-wide">
+                GIS Blog
+              </span>
+            </div>
+          </nav>
+        </Container>
+      </div>
+    );
   }
 
   // Determine if we're on blogs page or about page
@@ -141,12 +152,8 @@ export function AppNavBar() {
                   current === "en" ? "English" : "Français"
                 }`}
               >
-                <span
-                  role="img"
-                  aria-label={current === "en" ? "English" : "Français"}
-                  className="text-base sm:text-lg"
-                >
-                  {current === "en" ? "🇬🇧" : "🇫🇷"}
+                <span className="text-sm sm:text-base font-medium">
+                  {current === "en" ? "English" : "Français"}
                 </span>
                 <svg
                   className="w-3 sm:w-4 h-3 sm:h-4"
@@ -174,14 +181,7 @@ export function AppNavBar() {
                         current === "en" ? "text-primary font-semibold" : "text-white"
                       }`}
                     >
-                      <span
-                        role="img"
-                        aria-label="English"
-                        className="text-sm sm:text-base"
-                      >
-                        🇬🇧
-                      </span>
-                      en
+                      English
                     </button>
                   </li>
                   <li>
@@ -193,14 +193,7 @@ export function AppNavBar() {
                         current === "fr" ? "text-primary font-semibold" : "text-white"
                       }`}
                     >
-                      <span
-                        role="img"
-                        aria-label="Français"
-                        className="text-sm sm:text-base"
-                      >
-                        🇫🇷
-                      </span>
-                      fr
+                      Français
                     </button>
                   </li>
                 </ul>

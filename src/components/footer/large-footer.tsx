@@ -6,7 +6,25 @@ import { useTranslation } from "react-i18next";
 import { GitHub, Linkedin, Send, Youtube } from "react-feather";
 
 export default function LargeFooter() {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
+  
+  // Prevent hydration mismatch by showing fallback during translation loading
+  if (!ready) {
+    return (
+      <div className="bg-black/60 border-t border-white/10">
+        <Container>
+          <footer className="py-8 sm:py-10 text-white/85 sm:flex sm:justify-between sm:items-start">
+            <aside className="text-center sm:text-left mb-8 sm:mb-0">
+              <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white/90">
+                GIS Blog
+              </span>
+            </aside>
+          </footer>
+        </Container>
+      </div>
+    );
+  }
+  
   return (
     <div className="bg-black/60 border-t border-white/10">
       <Container>

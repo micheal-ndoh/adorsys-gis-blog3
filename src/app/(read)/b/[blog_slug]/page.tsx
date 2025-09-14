@@ -63,10 +63,14 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
         <div className="mt-6 sm:mt-8 mb-4 flex justify-start">
           <BackToBlogs href={backHref} />
         </div>
-        {slides && <Display data={slides.content} />}
+        {slides && (
+          <div className="max-w-5xl mx-auto">
+            <Display data={slides.content} />
+          </div>
+        )}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 prose-justify">
+          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 prose-justify max-w-4xl">
             <div 
               className="blog-content-container" 
               dangerouslySetInnerHTML={{ __html: course.content }} 
