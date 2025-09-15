@@ -64,18 +64,22 @@ export default async function SingleBlogPage({ params, searchParams }: Props) {
           <BackToBlogs href={backHref} />
         </div>
         {slides && (
-          <div className="max-w-5xl mx-auto">
-            <Display data={slides.content} />
-          </div>
+          <MermaidRenderer>
+            <div className="max-w-5xl mx-auto">
+              <Display data={slides.content} />
+            </div>
+          </MermaidRenderer>
         )}
 
         {course.content && (
-          <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 prose-justify max-w-4xl">
-            <div 
-              className="blog-content-container" 
-              dangerouslySetInnerHTML={{ __html: course.content }} 
-            />
-          </article>
+          <MermaidRenderer>
+            <article className="prose prose-neutral lg:prose-xl mx-auto mt-8 prose-justify">
+              <div 
+                className="blog-content-container" 
+                dangerouslySetInnerHTML={{ __html: course.content }} 
+              />
+            </article>
+          </MermaidRenderer>
         )}
       </Container>
     );
