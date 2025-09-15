@@ -16,8 +16,6 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
     if (processed || !containerRef.current) return;
 
     const processElements = async () => {
-      console.log("🚀 Processing Mermaid diagrams...");
-      
       // Initialize Mermaid
       mermaid.initialize({
         startOnLoad: false,
@@ -87,16 +85,14 @@ export function MermaidRenderer({ children }: MermaidRendererProps) {
             if (parentElement && parentElement.parentNode) {
               parentElement.parentNode.replaceChild(diagramContainer, parentElement);
               processedElements.current.add(diagramContainer);
-              console.log(`✅ Rendered diagram ${diagramCount}`);
             }
           } catch (error) {
-            console.error("❌ Failed to render diagram:", error);
+            // Silently handle errors
           }
         }
       }
       
       setProcessed(true);
-      console.log(`🎉 Completed processing ${diagramCount} diagrams`);
     };
 
     // Process after DOM settles
