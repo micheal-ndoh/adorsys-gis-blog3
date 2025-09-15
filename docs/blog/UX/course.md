@@ -42,7 +42,7 @@ UI/UX design combines **User Interface (UI)**, focusing on visual aesthetics and
 
 This diagram illustrates the UI/UX design flow: Research → Wireframing → Prototyping → Testing → Launch.
 
-<xaiArtifact artifact_id="84e190bd-8dce-41c8-9a04-37ff61511e8d" artifact_version_id="f956b039-cddb-4326-9e0a-7bcace30e959" title="ui-ux-process.mmd" contentType="text/mermaid">
+```mermaid
 graph TD
     A[User Research] -->|Define| B[Wireframing]
     B -->|Build| C[Prototyping]
@@ -53,7 +53,7 @@ graph TD
     style C fill:#ff9,stroke:#333
     style D fill:#f99,stroke:#333
     style E fill:#9f9,stroke:#333
-</xaiArtifact>
+```
 
 ---
 ## Conclusion
