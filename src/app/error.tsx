@@ -83,17 +83,10 @@ export default function ErrorPage({
           )}
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button className="btn btn-primary" onClick={() => reset()}>
-              <RefreshCw className="mr-2 h-4 w-4" /> {t("errors.tryAgain")}
-            </button>
-            <button className="btn" onClick={() => window.location.reload()}>
+            <button className="btn btn-primary" onClick={() => window.location.reload()}>
               <RefreshCw className="mr-2 h-4 w-4" /> Reload
             </button>
-            <button className="btn btn-outline" onClick={() => history.back()}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> {t("errors.back")}
-            </button>
             <Link className="btn btn-ghost" href="/courses">
-              Go to blogs
               <Home className="mr-2 h-4 w-4" /> {t("errors.returnCourses")}
             </Link>
           </div>
