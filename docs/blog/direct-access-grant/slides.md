@@ -23,9 +23,9 @@ OAuth 2.0 grant type for **trusted applications**
 
 ```mermaid
 flowchart LR
-    A[👤 User] --> B[📱 Trusted App]
-    B --> C[🔑 Get Token]
-    C --> D[🌐 Access API]
+    A["👤 User"] --> B["📱 Trusted App"]
+    B --> C["🔑 Get Token"]
+    C --> D["🌐 Access API"]
     
     style A fill:#e1f5fe
     style B fill:#f3e5f5
@@ -72,7 +72,7 @@ scope=openid profile
 
 ```mermaid
 flowchart LR
-    A[📱 Client App] -->|"🔐 POST /token<br/>credentials"| B[🏛️ Keycloak]
+    A["📱 Client App"] -->|"🔐 POST /token credentials"| B["🏛️ Keycloak"]
     
     style A fill:#f3e5f5
     style B fill:#e3f2fd
@@ -96,7 +96,7 @@ Keycloak validates and returns tokens
 
 ```mermaid
 flowchart LR
-    A[🏛️ Keycloak] -->|"✅ access_token<br/>+ refresh_token"| B[📱 Client App]
+    A["🏛️ Keycloak"] -->|"✅ access_token + refresh_token"| B["📱 Client App"]
     
     style A fill:#e3f2fd
     style B fill:#f3e5f5
@@ -116,7 +116,7 @@ Content-Type: application/json
 
 ```mermaid
 flowchart LR
-    A[📱 Client App] -->|"🎫 Bearer Token"| B[🌐 API Server]
+    A["📱 Client App"] -->|"🎫 Bearer Token"| B["🌐 API Server"]
     B -->|"📊 Protected Data"| A
     
     style A fill:#f3e5f5
@@ -129,30 +129,30 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    participant U as 👤 User
-    participant C as 📱 Client
-    participant K as 🏛️ Keycloak
-    participant A as 🌐 API Server
+    participant U as User
+    participant C as Client
+    participant K as Keycloak
+    participant A as API Server
 
     Note over U,A: Direct Access Grant Flow
 
-    U->>C: 🔐 Enter username/password
+    U->>C: Enter username/password
     
     rect rgb(240, 248, 255)
         Note over C,K: Authentication Phase
-        C->>K: 📤 POST /token<br/>(credentials + client_id)
-        K->>K: ✅ Validate client & user
-        K->>C: 🎫 access_token + refresh_token
+        C->>K: POST /token (credentials + client_id)
+        K->>K: Validate client and user
+        K->>C: access_token + refresh_token
     end
     
     rect rgb(248, 255, 240)
         Note over C,A: Resource Access Phase
-        C->>A: 🌐 GET /api/resource<br/>(Bearer token)
-        A->>A: 🔍 Validate token
-        A->>C: 📊 Protected resource data
+        C->>A: GET /api/resource (Bearer token)
+        A->>A: Validate token
+        A->>C: Protected resource data
     end
     
-    C->>U: 📱 Display user data
+    C->>U: Display user data
 ```
 
 ---
