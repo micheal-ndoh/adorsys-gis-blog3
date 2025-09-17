@@ -94,13 +94,13 @@ graph LR
 
 ## Step 3: Validation & Token Issuance
 
-**Authorization Server** (Keycloak) validates and issues tokens
+**Authorization Server** validates and issues tokens
 
 **Validation Process:**
-1. Verify client identity and permissions
-2. Authenticate user credentials
-3. Check if client is allowed to use Direct Access Grant
-4. Generate access and refresh tokens
+- Verify client identity and permissions
+- Authenticate user credentials
+- Check if client is allowed to use Direct Access Grant
+- Generate access and refresh tokens
 
 ```mermaid
 graph LR
@@ -113,9 +113,8 @@ graph LR
 
 ## Step 4: Resource Access
 
-**Client** (Application) uses token to access **Resource Server** (Backend API)
+**Client** uses token to access **Resource Server**
 
-The client application:
 - Includes access token in request headers
 - Requests protected user data
 - Receives authorized information
@@ -149,36 +148,18 @@ sequenceDiagram
 
 ---
 
-## When to Use Direct Access Grant
-
-### ✅ **Recommended Scenarios:**
-- **📱 First-party mobile apps** - Your organization's own applications
-- **💻 Command-line tools** - Developer utilities and scripts
-- **🔄 Legacy system migration** - Transitioning from basic authentication
-- **🏢 Internal enterprise apps** - High-trust corporate environments
-
-### ❌ **Avoid These Scenarios:**
-- **🌐 Third-party applications** - External developer applications
-- **🖥️ Web applications** - Browser-based apps (use Authorization Code)
-- **🔓 Public clients** - Apps that cannot securely store secrets
-- **📱 App store applications** - Downloaded by unknown users
-
----
-
 ## Security Best Practices
 
-### 🔴 **Key Risks:**
+### **Key Risks:**
 - User credentials exposed to client application
 - No granular permission consent
 - Potential for credential theft or misuse
-- Difficult to audit access patterns
 
-### 🛡️ **Essential Mitigations:**
-- Use **only with highly trusted** first-party clients
-- Implement **HTTPS everywhere** - never use HTTP
-- Configure **short token lifetimes** (5-15 minutes)
-- Enable **strong client authentication**
-- Conduct **regular security audits** and monitoring
-- Consider **alternative flows** for better security
+### **Essential Mitigations:**
+- Use only with highly trusted first-party clients
+- Implement HTTPS everywhere
+- Configure short token lifetimes
+- Enable strong client authentication
+- Conduct regular security audits
 
 ---
