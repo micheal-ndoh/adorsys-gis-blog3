@@ -24,13 +24,9 @@ OAuth 2.0 grant type for **highly trusted applications**
 
 ```mermaid
 graph TD
-    A[Resource Owner] -->|Provides Credentials| B[Client]
-    B -->|Sends Credentials| C[Authorization Server]
-    C -->|Issues Tokens| D[Resource Server]
-    style A fill:#f9f,stroke:#333
-    style B fill:#9ff,stroke:#333
-    style C fill:#ff9,stroke:#333
-    style D fill:#f99,stroke:#333
+    A[Resource Owner] --> B[Client]
+    B --> C[Authorization Server]
+    C --> D[Resource Server]
 ```
 
 ---
@@ -89,9 +85,7 @@ The client application collects:
 
 ```mermaid
 graph TD
-    A[Client] -->|Send Credentials| B[Authorization Server]
-    style A fill:#9ff,stroke:#333
-    style B fill:#ff9,stroke:#333
+    A[Client] --> B[Authorization Server]
 ```
 
 **Key Point:** Both user credentials and client credentials are validated
@@ -110,9 +104,7 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Authorization Server] -->|Return Tokens| B[Client]
-    style A fill:#ff9,stroke:#333
-    style B fill:#9ff,stroke:#333
+    A[Authorization Server] --> B[Client]
 ```
 
 **Result:** Client receives tokens to access protected resources
@@ -129,10 +121,8 @@ graph TD
 
 ```mermaid
 graph TD
-    A[Client] -->|Bearer Token| B[Resource Server]
-    B -->|Protected Data| A
-    style A fill:#9ff,stroke:#333
-    style B fill:#f99,stroke:#333
+    A[Client] --> B[Resource Server]
+    B --> A
 ```
 
 **Final Step:** User sees their data displayed in the application
