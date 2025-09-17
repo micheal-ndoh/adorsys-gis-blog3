@@ -23,10 +23,14 @@ OAuth 2.0 grant type for **highly trusted applications**
 - Designed for first-party applications only
 
 ```mermaid
-graph LR
-  A[Resource Owner] --> B[Client]
-  B --> C[Authorization Server]
-  C --> D[Resource Server]
+graph TD
+    A[Resource Owner] -->|Provides Credentials| B[Client]
+    B -->|Sends Credentials| C[Authorization Server]
+    C -->|Issues Tokens| D[Resource Server]
+    style A fill:#f9f,stroke:#333
+    style B fill:#9ff,stroke:#333
+    style C fill:#ff9,stroke:#333
+    style D fill:#f99,stroke:#333
 ```
 
 ---
@@ -84,8 +88,10 @@ The client application collects:
 - Requested access scopes
 
 ```mermaid
-graph LR
-  A[Client] -->|Send Credentials| B[Authorization Server]
+graph TD
+    A[Client] -->|Send Credentials| B[Authorization Server]
+    style A fill:#9ff,stroke:#333
+    style B fill:#ff9,stroke:#333
 ```
 
 **Key Point:** Both user credentials and client credentials are validated
@@ -103,8 +109,10 @@ graph LR
 - Generate access and refresh tokens
 
 ```mermaid
-graph LR
-  A[Authorization Server] -->|Return Tokens| B[Client]
+graph TD
+    A[Authorization Server] -->|Return Tokens| B[Client]
+    style A fill:#ff9,stroke:#333
+    style B fill:#9ff,stroke:#333
 ```
 
 **Result:** Client receives tokens to access protected resources
@@ -120,9 +128,11 @@ graph LR
 - Receives authorized information
 
 ```mermaid
-graph LR
-  A[Client] -->|Bearer Token| B[Resource Server]
-  B -->|Protected Data| A
+graph TD
+    A[Client] -->|Bearer Token| B[Resource Server]
+    B -->|Protected Data| A
+    style A fill:#9ff,stroke:#333
+    style B fill:#f99,stroke:#333
 ```
 
 **Final Step:** User sees their data displayed in the application
@@ -131,19 +141,19 @@ graph LR
 
 ```mermaid
 sequenceDiagram
-  participant RO as Resource Owner
-  participant C as Client
-  participant AS as Authorization Server
-  participant RS as Resource Server
+    participant RO as Resource Owner
+    participant C as Client
+    participant AS as Authorization Server
+    participant RS as Resource Server
 
-  RO->>C: Enter credentials
-  C->>AS: Send credentials + client_id
-  AS->>AS: Validate client & user
-  AS->>C: Return access_token
-  C->>RS: Request data with token
-  RS->>RS: Validate token
-  RS->>C: Return protected data
-  C->>RO: Display user data
+    RO->>C: Enter credentials
+    C->>AS: Send credentials + client_id
+    AS->>AS: Validate client & user
+    AS->>C: Return access_token
+    C->>RS: Request data with token
+    RS->>RS: Validate token
+    RS->>C: Return protected data
+    C->>RO: Display user data
 ```
 
 ---
