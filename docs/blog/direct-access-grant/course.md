@@ -40,6 +40,43 @@ The Direct Access Grant flow involves four main participants:
 4. **Token Issuance**: Upon successful validation, the authorization server issues access and refresh tokens
 5. **Resource Access**: The client uses the access token to request protected resources from the resource server
 
+## Direct Access Grant Flow Diagram
+
+The following diagram illustrates the complete Direct Access Grant flow:
+
+```mermaid
+sequenceDiagram
+    participant RO as Resource Owner (User)
+    participant C as Client Application
+    participant AS as Authorization Server
+    participant RS as Resource Server
+    
+    Note over RO,RS: Direct Access Grant Flow
+    
+    RO->>C: 1. Enter username & password
+    Note right of C: User provides credentials directly to trusted app
+    
+    C->>AS: 2. POST /token<br/>grant_type=password<br/>username=user<br/>password=pass<br/>client_id=app
+    Note right of AS: Validate user credentials<br/>and client identity
+    
+    AS->>C: 3. Return access_token<br/>& refresh_token
+    Note right of C: Tokens issued for<br/>authenticated user
+    
+    C->>RS: 4. GET /api/resource<br/>Authorization: Bearer token
+    Note right of RS: Access protected resource<br/>using access token
+    
+    RS->>C: 5. Return protected data
+    Note right of C: User data successfully<br/>retrieved and displayed
+```
+
+### Flow Breakdown:
+
+1. **Credential Collection**: User enters username and password directly into the trusted client application
+2. **Token Request**: Client sends user credentials along with its own client credentials to the authorization server
+3. **Token Response**: Authorization server validates credentials and returns access and refresh tokens
+4. **Resource Request**: Client uses the access token to request protected resources from the resource server
+5. **Resource Response**: Resource server validates the token and returns the requested data
+
 ## When to Use Direct Access Grant
 
 ### Appropriate Scenarios:
