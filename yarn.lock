@@ -740,6 +740,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@netlify/plugin-nextjs@npm:^5.14.0":
+  version: 5.14.0
+  resolution: "@netlify/plugin-nextjs@npm:5.14.0"
+  checksum: 10c0/49415edb83f022138d250e2c5297a19a726b2809b1dcd8a450f7fe6bca797402bff997cbac0f5e9a519163ec1153840da836b003c8e326991991adf4521db93e
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:15.4.6":
   version: 15.4.6
   resolution: "@next/env@npm:15.4.6"
@@ -2193,6 +2200,7 @@ __metadata:
     "@commitlint/cli": "npm:^19.5.0"
     "@commitlint/config-conventional": "npm:^19.8.0"
     "@fontsource/roboto": "npm:^5.1.1"
+    "@netlify/plugin-nextjs": "npm:^5.14.0"
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/auto-instrumentations-web": "npm:^0.45.0"
     "@opentelemetry/context-zone": "npm:^1.30.1"
